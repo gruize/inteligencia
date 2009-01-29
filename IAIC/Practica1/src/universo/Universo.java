@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import universo.util.Nodo;
 
 public class Universo {
 
@@ -29,8 +28,8 @@ public class Universo {
         try {
             this.nombre = "Universo";
             this.solucion = false;
-            this.planetas = this.getInstancia();
-            this.estado = new Estado(this);
+            Universo.planetas = Universo.getInstancia();
+            this.estado = new Estado();
             this.objetivo = new Objetivo(this);
             this.problema = new Problem(this.estado, new FuncionSucesora(this), this.objetivo, new FuncionCoste(), new FuncionHeuristica());
         } catch (Exception ex) {

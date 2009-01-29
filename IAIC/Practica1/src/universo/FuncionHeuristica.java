@@ -1,6 +1,8 @@
 package universo;
 
 import aima.search.framework.HeuristicFunction;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * 
@@ -9,7 +11,13 @@ import aima.search.framework.HeuristicFunction;
 public class FuncionHeuristica implements HeuristicFunction{
 
     public double getHeuristicValue(Object estado) {
-        return ((Estado)estado).obtenerValorHeuristico();
+        Double heuristica = null;
+        try {
+            heuristica = ((Estado) estado).obtenerValorHeuristico();
+        } catch (Exception ex) {
+            Logger.getLogger(FuncionHeuristica.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return heuristica;
     }
 
 }

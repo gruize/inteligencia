@@ -1,5 +1,6 @@
 package universo.util;
 
+import universo.*;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
@@ -60,17 +61,17 @@ public class Nodo {
         Nodo temp = (Nodo)obj;
         return ((this.getId() == temp.getId()) && (this.getNombre() == temp.getNombre()));
     }          
-    public double obtenerValorHeuristico(Hashtable<Integer, Nodo> objetivos, Hashtable<Integer, Nodo> nodosH){
+    public double obtenerValorHeuristico() throws Exception{
         Double valor = null, aux = 0.0;
         Enumeration<Enlace> caminos = this.getEnlaces().elements();
         Enumeration<Integer> destinos;
         Enlace ruta;
         while(caminos.hasMoreElements()){            
             ruta = caminos.nextElement();
-            destinos = objetivos.keys();
+            destinos = Universo.getInstancia().getDestinos().keys();
             while(destinos.hasMoreElements()){
                 if(destinos.nextElement() != caminos.nextElement().getDestino())
-                    aux = aux + ruta.getDistancia() + nodosH.get(ruta.getDestino()).obtenerValorHeuristico(objetivos, nodosH);
+                    aux = aux + ruta.getDistancia() + Universo.getInstancia().getNodosH().get(ruta.getDestino()).obtenerValorHeuristico();
             }
             if(valor == null)
                 valor = aux;

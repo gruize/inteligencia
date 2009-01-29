@@ -16,8 +16,8 @@ public interface Juego {
 
 	public String getNombre();
 	
-        public String imprimir(List eventos);
-        
-        public String imprimirPropiedades(Properties propiedades);
+    public String imprimir(List eventos);
+    
+    public String imprimirPropiedades(Properties propiedades);
         
 }

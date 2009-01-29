@@ -1,10 +1,7 @@
 package universo;
-
-import java.util.Enumeration;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import universo.util.Enlace;
 import universo.util.Nodo;
 
 /**
@@ -13,7 +10,6 @@ import universo.util.Nodo;
  */
 public class Estado {
 
-    private Universo galaxia;
     private Nodo actual;
     private Vector<Nodo> recorridos;
     
@@ -22,12 +18,10 @@ public class Estado {
      * 
      * @param aThis Universo, que contiene los datos obtenidos desde el fichero
      */
-    public Estado(Universo aThis) {
+    public Estado() {
         try {
-            this.galaxia = aThis;
-            this.actual = this.galaxia.getInstancia().getOrigen();
+            this.actual = Universo.getInstancia().getOrigen();
             this.recorridos = new Vector<Nodo>();
-            this.recorridos.add(actual);
         } catch (Exception ex) {
             Logger.getLogger(Estado.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -44,8 +38,7 @@ public class Estado {
      * @param recorridos Listado de los nodos en los que hemos estado y que han 
      * realizado con exito el juego que impone su enlace.
      */
-    public Estado(Universo galaxia, Nodo actual, Vector<Nodo> recorridos) {
-        this.galaxia = galaxia;
+    public Estado(Nodo actual, Vector<Nodo> recorridos) {
         this.actual = actual;
         this.recorridos = recorridos;
     }
@@ -56,14 +49,6 @@ public class Estado {
 
     public void setActual(Nodo actual) {
         this.actual = actual;
-    }
-
-    public Universo getGalaxia() {
-        return galaxia;
-    }
-
-    public void setGalaxia(Universo galaxia) {
-        this.galaxia = galaxia;
     }
 
     public Vector<Nodo> getRecorridos() {
@@ -97,8 +82,8 @@ public class Estado {
     }
 
     //TODO: Por hacer
-    public double obtenerValorHeuristico(){
-        return this.getActual().obtenerValorHeuristico(this.galaxia.planetas.getDestinos(),this.galaxia.planetas.getNodosH());
+    public double obtenerValorHeuristico() throws Exception{
+        return this.getActual().obtenerValorHeuristico();
     }
  
     /**

@@ -9,6 +9,8 @@ import aima.search.framework.TreeSearch;
 import aima.search.informed.AStarSearch;
 import aima.search.informed.GreedyBestFirstSearch;
 import aima.search.uninformed.BreadthFirstSearch;
+import aima.search.uninformed.DepthFirstSearch;
+import aima.search.uninformed.DepthLimitedSearch;
 import aima.search.uninformed.UniformCostSearch;
 import conector.Conector;
 
@@ -140,10 +142,13 @@ public class Universo {
     
     public boolean ejecutar() {
         //this.busqueda = new BreadthFirstSearch(new TreeSearch());
-        this.busqueda = new UniformCostSearch(new TreeSearch());
+        //this.busqueda = new UniformCostSearch(new TreeSearch());
         //this.busqueda = new AStarSearch(new TreeSearch());
         //this.busqueda = new GreedyBestFirstSearch(new TreeSearch());
         //this.busqueda = new AStarSearch(new GraphSearch());
+    	//this.busqueda = new DepthFirstSearch(new GraphSearch());
+    	this.busqueda = new DepthLimitedSearch(10);
+    	//this.busqueda=new IterativeDeepeningSearch();
         try{
             this.agente = new SearchAgent(this.problema,this.busqueda);
             this.imprimir(this.agente.getActions());

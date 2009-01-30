@@ -62,6 +62,7 @@ public class FuncionSucesora implements SuccessorFunction{
         List<Successor> siguientes = new ArrayList<Successor>();
         Estado actual = (Estado)estado;
         
+        System.out.println();
         System.out.println("Estado actual: " + actual.getActual().getId());
         
         Estado posible = null;        
@@ -74,7 +75,7 @@ public class FuncionSucesora implements SuccessorFunction{
                 	
                 	posible = crearSiguienteEstado(actual, Universo.getPlanetas().getNodosH().get(j));
                     if(posible != null){
-                    	siguientes.add(new Successor("Enlazar el planeta " + actual.getActual().getNombre() + " " + actual.getActual().getId() + " con el planeta " + posible.getActual().getNombre() + " " + posible.getActual().getId() + " : ", posible));
+                    	siguientes.add(new Successor("Enlazar el planeta " + actual.getActual().getNombre() + " " + actual.getActual().getId() + " con el planeta " + posible.getActual().getNombre() + " " + posible.getActual().getId() + " cuya distancia es : " + actual.getActual().getEnlaces().get(posible.getActual().getId()).getDistancia(), posible));
                     	System.out.println("Estado: Planeta " + actual.getActual().getId() + " -> Planeta " + posible.getActual().getId() + " con coste " + actual.getActual().getEnlaces().get(posible.getActual().getId()).getDistancia() + "con el juego " + actual.getActual().getEnlaces().get(posible.getActual().getId()).getJuego());
                     }
                     posible = null;

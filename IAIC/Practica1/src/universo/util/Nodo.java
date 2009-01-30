@@ -70,7 +70,7 @@ public class Nodo {
     	double valor = 0.1, aux = 0.0;
     	for(int j = 0; j < Universo.getPlanetas().getNodosH().size(); j++){
     		if(this.getEnlaces().containsKey(j)){
-    			aux = aux + this.getEnlaces().get(j).getDistancia() + Universo.getInstancia().getNodosH().get(this.getEnlaces().get(j).getDestino()).obtenerValorHeuristico();
+    			aux = aux + this.getEnlaces().get(j).getDistancia();     			
     			if(valor == 0.1)
     				valor = aux;
     			if(valor > aux)

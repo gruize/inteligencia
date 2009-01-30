@@ -62,22 +62,21 @@ public class Nodo {
         return ((this.getId() == temp.getId()) && (this.getNombre() == temp.getNombre()));
     }          
     public double obtenerValorHeuristico() throws Exception{
-        Double valor = null, aux = 0.0;
-        Enumeration<Enlace> caminos = this.getEnlaces().elements();
-        Enumeration<Integer> destinos;
-        Enlace ruta;
-        while(caminos.hasMoreElements()){            
-            ruta = caminos.nextElement();
-            destinos = Universo.getInstancia().getDestinos().keys();
-            while(destinos.hasMoreElements()){
-                if(destinos.nextElement() != caminos.nextElement().getDestino())
-                    aux = aux + ruta.getDistancia() + Universo.getInstancia().getNodosH().get(ruta.getDestino()).obtenerValorHeuristico();
-            }
-            if(valor == null)
-                valor = aux;
-            if(valor > aux)
-                valor = aux;
-        }
+        /**
+         * Ya que trabajamos con valores enteros, los decimales resultan utiles para
+         * distinguir si es el valor de inicializacion o un valor obtenido mediante
+         * el procedimiento.
+         */
+    	double valor = 0.1, aux = 0.0;
+    	for(int j = 0; j < Universo.getPlanetas().getNodosH().size(); j++){
+    		if(this.getEnlaces().containsKey(j)){
+    			aux = aux + this.getEnlaces().get(j).getDistancia() + Universo.getInstancia().getNodosH().get(this.getEnlaces().get(j).getDestino()).obtenerValorHeuristico();
+    			if(valor == 0.1)
+    				valor = aux;
+    			if(valor > aux)
+    				valor = aux;
+    		}
+    	}
         return valor;        
     }            
 }

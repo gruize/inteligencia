@@ -1,14 +1,17 @@
 package universo;
 
 
+import aima.search.framework.GraphSearch;
 import aima.search.framework.Problem;
 import aima.search.framework.Search;
 import aima.search.framework.SearchAgent;
 import aima.search.framework.TreeSearch;
+import aima.search.informed.AStarSearch;
+import aima.search.informed.GreedyBestFirstSearch;
 import aima.search.uninformed.BreadthFirstSearch;
+import aima.search.uninformed.UniformCostSearch;
 import conector.Conector;
 
-import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
@@ -18,7 +21,7 @@ import java.util.logging.Logger;
 public class Universo {
 
     private static Conector planetas = null;
-    private static String file = null; // Archivo de carga del universo
+    private static String file = "GabiFinal.txt"; // Archivo de carga del universo
     private String nombre;
     private boolean solucion;
     private Search busqueda = null;
@@ -34,7 +37,7 @@ public class Universo {
             Universo.planetas = Universo.getInstancia();
             this.estado = new Estado();
             this.objetivo = new Objetivo(this);
-            this.problema = new Problem(this.estado, new FuncionSucesora(this), this.objetivo, new FuncionCoste(), new FuncionHeuristica());
+            this.problema = new Problem(this.estado, new FuncionSucesora(this), this.objetivo,new FuncionCoste(),new FuncionHeuristica());
         } catch (Exception ex) {
             Logger.getLogger(Universo.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -136,7 +139,11 @@ public class Universo {
     
     
     public boolean ejecutar() {
-        this.busqueda = new BreadthFirstSearch(new TreeSearch());
+        //this.busqueda = new BreadthFirstSearch(new TreeSearch());
+        this.busqueda = new UniformCostSearch(new TreeSearch());
+        //this.busqueda = new AStarSearch(new TreeSearch());
+        //this.busqueda = new GreedyBestFirstSearch(new TreeSearch());
+        //this.busqueda = new AStarSearch(new GraphSearch());
         try{
             this.agente = new SearchAgent(this.problema,this.busqueda);
             this.imprimir(this.agente.getActions());

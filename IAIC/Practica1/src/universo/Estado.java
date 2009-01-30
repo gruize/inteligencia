@@ -41,6 +41,7 @@ public class Estado {
     public Estado(Nodo actual, Vector<Nodo> recorridos) {
         this.actual = actual;
         this.recorridos = recorridos;
+        this.recorridos.add(actual);
     }
 
     public Nodo getActual() {

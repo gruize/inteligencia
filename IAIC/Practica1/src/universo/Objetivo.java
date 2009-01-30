@@ -32,9 +32,7 @@ public class Objetivo implements GoalTest{
         boolean goal = false;
         Estado actual = (Estado)estado;
         if(this.objetivos.containsKey(actual.getActual().getId()))
-            goal = true;
-        //Agrega el nodo actual al recorrido porque ya ha pasado por él.
-        actual.getRecorridos().add(actual.getActual());      
+            goal = true;     
         this.galaxia.setSolucion(goal);
         return goal;
     }

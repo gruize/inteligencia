@@ -45,6 +45,9 @@ public class FuncionSucesora implements SuccessorFunction{
         if(padre.movimientoPosible(posible)){
             Juego game = padre.getActual().getEnlaces().get(posible.getId()).dameJuego();
             if(game != null){
+            	
+            	System.out.println(game.getNombre());
+            	
                 if(game.ejecutar())
                     siguiente = new Estado(posible,padre.getRecorridos());
             }else
@@ -58,13 +61,22 @@ public class FuncionSucesora implements SuccessorFunction{
     public List getSuccessors(Object estado) {
         List<Successor> siguientes = new ArrayList<Successor>();
         Estado actual = (Estado)estado;
+        
+        System.out.println("Estado actual: " + actual.getActual().getId());
+        
         Estado posible = null;        
         //Recorrido de los enlaces posible del nodo del estado actual 
         for(int j = 0; j < 10; j++){
             if(actual.getActual().getEnlaces().containsKey(j)){
                 try {
-                    posible = crearSiguienteEstado(actual, Universo.getPlanetas().getNodosH().get(j));
-                    siguientes.add(new Successor("Enlazar el planeta " + actual.getActual().getNombre() + " con el planeta " + posible.getActual().getNombre() + " : ", posible));
+                    
+                    System.out.println(j);
+                	
+                	posible = crearSiguienteEstado(actual, Universo.getPlanetas().getNodosH().get(j));
+                    if(posible != null){
+                    	siguientes.add(new Successor("Enlazar el planeta " + actual.getActual().getNombre() + " " + actual.getActual().getId() + " con el planeta " + posible.getActual().getNombre() + " " + posible.getActual().getId() + " : ", posible));
+                    	System.out.println("Estado: Planeta " + actual.getActual().getId() + " -> Planeta " + posible.getActual().getId() + " con coste " + actual.getActual().getEnlaces().get(posible.getActual().getId()).getDistancia() + "con el juego " + actual.getActual().getEnlaces().get(posible.getActual().getId()).getJuego());
+                    }
                     posible = null;
                 } catch (IOException ex) {
                     Logger.getLogger(FuncionSucesora.class.getName()).log(Level.SEVERE, null, ex);

@@ -1,7 +1,5 @@
 package conector;
 
-//TODO: Permitir que se generen ciclos. Para poner a prueba las busquedas.
-
 import universo.util.Enlace;
 import universo.util.Nodo;
 import universo.util.Tipo;
@@ -14,14 +12,18 @@ import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Set;
 
-public class generaUniverso {
+public class GeneraUniverso {
 	
 	private Hashtable<Integer, Nodo> universo = null;
 	private boolean primero = false;
-	private final Integer planetas = 216;
-	private final Integer destinos = 4;
-	private final Integer rangoDest = 13;
-	private final Integer probJuegos = 33;
+	private final Integer planetas = 250;    // Numero de planetas en el Universo
+	private final Integer destinos = 4;     // Numero de planetas destino
+	private final Integer rangoDest = 15;    // Rango para asignar enalces
+	private final Integer probJuegos = 46;  // Probailidad de que haya juego en un enlace
+	private final Integer topeInicio = 5;   // Numero de enlaces para el primer nodo.
+	private final Integer topeDelante = 3;  // Numero de enlaces hacia delante como minimo 
+	private final Integer topeDetras = 2;   // Numero de enlaces hacia detras como minimo
+    private String fich = null;
 	
 	private Integer dameJuego(){
 		Integer random;
@@ -68,8 +70,9 @@ public class generaUniverso {
 		return random;
 	}
 	
-	public generaUniverso(){
+	public GeneraUniverso(String fichero){
 		universo = new Hashtable<Integer, Nodo>();
+                this.fich = fichero;
 	}
 	public void generar() throws IOException{
 		
@@ -98,7 +101,7 @@ public class generaUniverso {
 			 * 
 			 */
 			String enlacesHechos = "";
-			//60% de tener enlaces.
+			//79& de tener enlaces.
 			
 			Nodo nodoTemp = new Nodo();
 			
@@ -106,10 +109,25 @@ public class generaUniverso {
 			nodoTemp.setNombre(universo.get(i).getNombre());
 			nodoTemp.setTipo(universo.get(i).getTipo());
 			
-			while( ( (int)(Math.random()*100) < 75 ) || ( !primero ) ) {
+			Integer numEnlaceDelante = 0;
+			Integer numEnlaceAtras = 0;
+			
+			while( ( (int)(Math.random()*100) < 60 ) || ( !primero ) || (( numEnlaceDelante<=topeDelante ) && ( (numEnlaceAtras<=topeDetras) && (i>rangoDest-topeInicio) ) )) {
 				Enlace newEnlace = new Enlace();
-				
-				Integer destino = Integer.valueOf( ((int)(Math.random()*(planetas)) % (rangoDest)) + i);
+				// Refinar los rangos para que encuentre casi siempre un destino
+				// y no salgan destinos en planetas que no existen.
+				// El normal, solo hacia delante Integer.valueOf( (int)(Math.random()*(planetas)) % (rangoDest) + i); 
+				Integer destino;
+				if ( i < rangoDest ){
+					// Solo damos valores hacia delante.
+					destino = Integer.valueOf( (int)(Math.random()*(planetas)) % (rangoDest + i ));
+				}else if ( i+rangoDest > planetas  ){
+					// Nos podemos pasar por arriba
+					destino = Integer.valueOf( (int)(Math.random()*(planetas)) % (rangoDest + (planetas-i)) + i -(rangoDest));
+				}else{
+					//es una situacion normal
+					destino = Integer.valueOf( (int)(Math.random()*(planetas)) % (rangoDest*2) + i-(rangoDest));
+				}
 				Integer distancia = Integer.valueOf((int)(Math.random()*100));
 				Integer juego = dameJuego(); 
 				
@@ -117,14 +135,19 @@ public class generaUniverso {
 				newEnlace.setDistancia(distancia);
 				newEnlace.setJuego(juego);
 				
-				// Solo añadimos el enlace si no lo hemos añadido ya.
+				// Solo aï¿½adimos el enlace si no lo hemos aï¿½adido ya.
 				// Nos aseguramos que no se meta el mismo nodo, aunque probablemente no pasa nada.
-				if ( ( enlacesHechos.indexOf(String.valueOf(destino)) <= 0) && (i != destino) && (destino < planetas) ){
+				if ( ( enlacesHechos.indexOf(String.valueOf(destino)) < 0) && (i != destino) && (destino < planetas) && (destino > 0) ){
 					enlacesHechos += String.valueOf(destino)+" ";
-					nodoTemp.addEnlaces(newEnlace);	
+					nodoTemp.addEnlaces(newEnlace);
+					if ( i < destino ){
+						numEnlaceDelante++;
+					}else if ( i > destino ){
+						numEnlaceAtras++;
+					}
 				}
 				
-				if ( (nodoTemp.getEnlaces().size() > 4 ) && (!primero) ){
+				if ( (nodoTemp.getEnlaces().size() >= topeInicio ) && (!primero) ){
 					//Ya tenemos enlaces para el primer nodo.
 					primero = true;
 				}
@@ -141,18 +164,19 @@ public class generaUniverso {
 		    while (itr.hasNext()) {
 		    	inte = itr.next();
 			    if ( inte >= planetas-destinos){
-			    	System.out.println("Hay enlace con el planeta: "+ i + "y el planeta destino: " +nodoAux.getEnlaces().get(inte).getDestino() );
+			    	System.out.println("Hay enlace con el planeta: "+ i + " y el planeta destino: " +nodoAux.getEnlaces().get(inte).getDestino() );
 			    }
 		    }
 		}
 		// Generamos el archivo.
-		
-		String sFichero = "planetas.txt";
-
-		File fichero = new File(sFichero);
-		if (fichero.exists()) {
+		File fichero = new File("universos/"+this.fich);
+		if (!fichero.exists()) {
 			
-			BufferedWriter bw = new BufferedWriter(new FileWriter(sFichero));
+			BufferedWriter bw = new BufferedWriter(new FileWriter("universos/"+this.fich));
+			
+			// Introducimos la cabecera del fichero.
+			
+			bw.write("[Fichero de universo]\n");
 			
 			for(int i = 0; i<planetas;i++){
 				Nodo nodoPrint = this.universo.get(i);
@@ -188,8 +212,12 @@ public class generaUniverso {
 			    bw.write("\n");
 		    }
 			bw.close();
+		}else{
+			System.out.print("\tYa existe un archivo con ese nombre.");
 		}
 
 	}
-	
+	public void setFichero(String fich){
+            this.fich = fich;
+        }
 }

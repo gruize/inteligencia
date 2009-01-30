@@ -7,6 +7,8 @@ import aima.search.framework.SearchAgent;
 import aima.search.framework.TreeSearch;
 import aima.search.uninformed.BreadthFirstSearch;
 import conector.Conector;
+
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
@@ -15,7 +17,8 @@ import java.util.logging.Logger;
 
 public class Universo {
 
-    public static Conector planetas = null;
+    private static Conector planetas = null;
+    private static String file = null; // Archivo de carga del universo
     private String nombre;
     private boolean solucion;
     private Search busqueda = null;
@@ -100,12 +103,37 @@ public class Universo {
     public void setSolucion(boolean solucion) {
         this.solucion = solucion;
     }
-     	
-    public static Conector getInstancia()throws Exception{
-        if (planetas == null)
-            planetas = new Conector("planetas.txt");
+    /**
+     * 
+     * GetInstancia para los casos en los que no se desea cambiar
+     * el universo
+     * 
+     * @return
+     * @throws Exception
+     */
+    public static Conector getInstancia() {
+        if (planetas == null) {
+			planetas = new Conector(Universo.file);
+        }
         return planetas;
     }
+    
+    /**
+     * 
+     * GetInstancia para la primera llamada al conector o
+     * para cambiar el universo que este cargado en ese momento.
+     * 
+     * @param file
+     * @return
+     * @throws Exception
+     */
+    
+    public static Conector getInstancia(String file) {
+        if (planetas == null)
+            planetas = new Conector(file);
+        return planetas;
+    }
+    
     
     public boolean ejecutar() {
         this.busqueda = new BreadthFirstSearch(new TreeSearch());
@@ -148,4 +176,12 @@ public class Universo {
     public boolean controlaCiclos(){
         return !this.busqueda.getClass().getName().contains("IterativeDeepeningSearch");
     }
+
+	public static String getFile() {
+		return file;
+	}
+
+	public static void setFile(String file) {
+		Universo.file = file;
+	}
 }

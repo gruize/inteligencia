@@ -1,15 +1,12 @@
 package run;
 
-import java.io.FileInputStream;
 import java.util.Hashtable;
-import java.util.Properties;
 
 import juegos.Juego;
-
 import universo.Universo;
 import universo.util.Enlace;
 import universo.util.Nodo;
-import conector.generaUniverso;
+import conector.GeneraUniverso;
 
 public class Main {
 	public static void main(String[] args) throws Exception {
@@ -30,10 +27,9 @@ public class Main {
 		 *  (Es algo parametrizable pero no preocupa ahora mismo.)
 		 *  
 		 */
-		generaUniverso uni = new generaUniverso();
+		GeneraUniverso uni = new GeneraUniverso("planetas.plan");
 		uni.generar();
 		System.out.println(uni.getClass());
-		
 		
 		Hashtable<Integer, Nodo> nodosUniverso = Universo.getInstancia().getNodosH();
 		Hashtable<Integer, Nodo> nodosDestino = Universo.getInstancia().getDestinos();

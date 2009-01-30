@@ -6,10 +6,13 @@ import java.util.logging.Logger;
 
 /**
  * 
- * @author GabiPC
+ * @author Grupo C15
  */
 public class FuncionHeuristica implements HeuristicFunction{
 
+	/**
+	 * Devuelve el valor heuristico de un estado
+	 */
     public double getHeuristicValue(Object estado) {
         Double heuristica = null;
         try {

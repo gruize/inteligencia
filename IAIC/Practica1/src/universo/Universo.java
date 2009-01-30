@@ -1,6 +1,5 @@
 package universo;
 
-
 import aima.search.framework.GraphSearch;
 import aima.search.framework.Problem;
 import aima.search.framework.Search;
@@ -20,6 +19,13 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Clase Universo, establece los objetos necesarios para realizar los recorridos 
+ * necesarios por todos los estados que necesite generar y a su vez, escoger el mejor 
+ * camino segun el metodo de busqueda que se especifique, ya sea de forma manual o 
+ * aleatoriamente. 
+ * @author Grupo C15 
+ */
 public class Universo {
 
     private static Conector planetas = null;
@@ -32,6 +38,9 @@ public class Universo {
     private Estado estado = null;
     private Objetivo objetivo = null;
 
+    /** 
+     * Constructor por defecto
+     */
     public Universo(){
         try {
             this.nombre = "Universo";
@@ -39,7 +48,7 @@ public class Universo {
             Universo.planetas = Universo.getInstancia();
             this.estado = new Estado();
             this.objetivo = new Objetivo(this);
-            this.problema = new Problem(this.estado, new FuncionSucesora(this), this.objetivo,new FuncionCoste(),new FuncionHeuristica());
+            this.problema = new Problem(this.estado, new FuncionSucesora(), this.objetivo,new FuncionCoste(),new FuncionHeuristica());
         } catch (Exception ex) {
             Logger.getLogger(Universo.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -139,15 +148,20 @@ public class Universo {
         return planetas;
     }
     
-    
+    /**
+     * Establece el metodo de busqueda y hace las llamadas necesarias a las diferentes 
+     * clases, para obtener una lista de acciones que deben realizarse segun el algoritmo
+     * establecido para poder conseguir el mejor recorrido llegando a sus objetivos  
+     * @return
+     */
     public boolean ejecutar() {
         //this.busqueda = new BreadthFirstSearch(new TreeSearch());
         //this.busqueda = new UniformCostSearch(new TreeSearch());
-        //this.busqueda = new AStarSearch(new TreeSearch());
+        this.busqueda = new AStarSearch(new TreeSearch());
         //this.busqueda = new GreedyBestFirstSearch(new TreeSearch());
         //this.busqueda = new AStarSearch(new GraphSearch());
     	//this.busqueda = new DepthFirstSearch(new GraphSearch());
-    	this.busqueda = new DepthLimitedSearch(10);
+    	//this.busqueda = new DepthLimitedSearch(10);
     	//this.busqueda=new IterativeDeepeningSearch();
         try{
             this.agente = new SearchAgent(this.problema,this.busqueda);
@@ -163,6 +177,11 @@ public class Universo {
         return this.getSolucion();
     }
 
+    /**
+     * Genera un String con todos las acciones que deben realizarse
+     * @param eventos Listado de acciones que deben realizarse
+     * @return String con el listado de acciones concatenados
+     */
     public String imprimir(List eventos){
         String ret = "";
         for (int i = 0; i < eventos.size(); i++) {
@@ -172,7 +191,12 @@ public class Universo {
         }
         return ret;
     }
-
+    
+    /**
+     * Genera un String con las propiedades resultantes del recorrido
+     * @param propiedades Propiedades obtenidas
+     * @return String con las propiedades concatenadas
+     */
     public String imprimirPropiedades(Properties propiedades) {
         String ret = "";
         Iterator keys = propiedades.keySet().iterator();
@@ -185,6 +209,12 @@ public class Universo {
         return ret;
     }
     
+    /**
+     * Devuelve la certeza de si el metodo de busqueda que se esta utilizando realiza
+     * el control de ciclos
+     * @return 	True si controla los ciclos
+     * 			False en caso contrario
+     */
     public boolean controlaCiclos(){
         return !this.busqueda.getClass().getName().contains("IterativeDeepeningSearch");
     }

@@ -14,24 +14,10 @@ import universo.util.Nodo;
 
 /**
  * 
- * @author GabiPC
+ * @author Grupo C15
  */      
 public class FuncionSucesora implements SuccessorFunction{
 
-    private Universo galaxia = null;
-
-    public FuncionSucesora(Universo auxiliar) {
-        this.galaxia = auxiliar;
-    }
-
-    public Universo getGalaxia() {
-        return galaxia;
-    }
-
-    public void setGalaxia(Universo galaxia) {
-        this.galaxia = galaxia;
-    }
-    
     /**
      * En este metodo, es donde se añade al recorrido el nodo, unicamente despues
      * de haber superado el juego.
@@ -56,8 +42,9 @@ public class FuncionSucesora implements SuccessorFunction{
         return siguiente;
     }
     
-    //FIXME: PPuede generar errores por el acceso a la Hashtable o simplemente por la no generacion de nodos
-    //Solo utilizo los nodos existentes en la tabla NodosH
+    /**
+     * Funcion sucesora
+     */
     public List getSuccessors(Object estado) {
         List<Successor> siguientes = new ArrayList<Successor>();
         Estado actual = (Estado)estado;

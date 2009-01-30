@@ -5,8 +5,8 @@ import java.util.logging.Logger;
 import universo.util.Nodo;
 
 /**
- *
- * @author usuario_local
+ * Contiene las datos del estado actual y el recorrido que se ha realizado.
+ * @author Grupo C15
  */
 public class Estado {
 
@@ -82,7 +82,11 @@ public class Estado {
         return valido;
     }
 
-    //TODO: Por hacer
+    /**
+     * Genera el valor heuristico del estado actual.
+     * @return Valor heuristico del estado actual.
+     * @throws Exception
+     */
     public double obtenerValorHeuristico() throws Exception{
         return this.getActual().obtenerValorHeuristico();
     }

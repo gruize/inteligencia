@@ -8,7 +8,7 @@ import universo.util.Nodo;
 
 /**
  *
- * @author usuario_local
+ * @author Grupo C15
  */
 public class Objetivo implements GoalTest{
 
@@ -24,10 +24,6 @@ public class Objetivo implements GoalTest{
         }
     }
 
-    /**
-     * FixMe: Puede dar fallos. Mirar como funciona lo de la obtencionde las claves
-     * en la Hashtable
-     */
     public boolean isGoalState(Object estado) {
         boolean goal = false;
         Estado actual = (Estado)estado;

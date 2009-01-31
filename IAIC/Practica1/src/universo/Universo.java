@@ -28,8 +28,6 @@ import java.util.logging.Logger;
  */
 public class Universo {
 
-    private static Conector planetas = null;
-    private static String file = "GabiFinal.txt"; // Archivo de carga del universo
     private String nombre;
     private boolean solucion;
     private Search busqueda = null;
@@ -45,7 +43,6 @@ public class Universo {
         try {
             this.nombre = "Universo";
             this.solucion = false;
-            Universo.planetas = Universo.getInstancia();
             this.estado = new Estado();
             this.objetivo = new Objetivo(this);
             this.problema = new Problem(this.estado, new FuncionSucesora(), this.objetivo,new FuncionCoste(),new FuncionHeuristica());
@@ -94,14 +91,6 @@ public class Universo {
         this.objetivo = objetivo;
     }
 
-    public static Conector getPlanetas() {
-        return planetas;
-    }
-
-    public static void setPlanetas(Conector planetas) {
-        Universo.planetas = planetas;
-    }
-
     public Problem getProblema() {
         return problema;
     }
@@ -117,36 +106,7 @@ public class Universo {
     public void setSolucion(boolean solucion) {
         this.solucion = solucion;
     }
-    /**
-     * 
-     * GetInstancia para los casos en los que no se desea cambiar
-     * el universo
-     * 
-     * @return
-     * @throws Exception
-     */
-    public static Conector getInstancia() {
-        if (planetas == null) {
-			planetas = new Conector(Universo.file);
-        }
-        return planetas;
-    }
-    
-    /**
-     * 
-     * GetInstancia para la primera llamada al conector o
-     * para cambiar el universo que este cargado en ese momento.
-     * 
-     * @param file
-     * @return
-     * @throws Exception
-     */
-    
-    public static Conector getInstancia(String file) {
-        if (planetas == null)
-            planetas = new Conector(file);
-        return planetas;
-    }
+
     
     /**
      * Establece el metodo de busqueda y hace las llamadas necesarias a las diferentes 
@@ -218,12 +178,4 @@ public class Universo {
     public boolean controlaCiclos(){
         return !this.busqueda.getClass().getName().contains("IterativeDeepeningSearch");
     }
-
-	public static String getFile() {
-		return file;
-	}
-
-	public static void setFile(String file) {
-		Universo.file = file;
-	}
 }

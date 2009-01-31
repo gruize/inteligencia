@@ -3,6 +3,7 @@ package run;
 import java.util.Hashtable;
 
 import juegos.Juego;
+import universo.GestorConexion;
 import universo.Universo;
 import universo.util.Enlace;
 import universo.util.Nodo;
@@ -31,9 +32,9 @@ public class Main {
 		uni.generar();
 		System.out.println(uni.getClass());
 		
-		Hashtable<Integer, Nodo> nodosUniverso = Universo.getInstancia().getNodosH();
-		Hashtable<Integer, Nodo> nodosDestino = Universo.getInstancia().getDestinos();
-		Nodo nodoOrigen = Universo.getInstancia().getOrigen();
+		Hashtable<Integer, Nodo> nodosUniverso = GestorConexion.getInstancia().getNodosH();
+		Hashtable<Integer, Nodo> nodosDestino = GestorConexion.getInstancia().getDestinos();
+		Nodo nodoOrigen = GestorConexion.getInstancia().getOrigen();
 		System.out.println(nodosUniverso.getClass());
 		System.out.println(nodosDestino.getClass());
 		System.out.println(nodoOrigen.getClass());

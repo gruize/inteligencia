@@ -33,7 +33,7 @@ public class Enlace {
             return distancia;
     }
     public Juego dameJuego() throws IOException{
-        FileInputStream prop = new FileInputStream("juegos.conf");
+        FileInputStream prop = new FileInputStream("conf/juegos.conf");
         Properties propiedades = new Properties();
         propiedades.load(prop);
         prop.close();     

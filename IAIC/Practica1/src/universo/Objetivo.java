@@ -18,7 +18,7 @@ public class Objetivo implements GoalTest{
     public Objetivo(Universo aThis) {
         try {
             this.galaxia = aThis;
-            this.objetivos = Universo.getInstancia().getDestinos();
+            this.objetivos = GestorConexion.getInstancia().getDestinos();
         } catch (Exception ex) {
             Logger.getLogger(Objetivo.class.getName()).log(Level.SEVERE, null, ex);
         }

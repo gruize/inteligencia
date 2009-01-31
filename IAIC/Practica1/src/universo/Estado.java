@@ -20,7 +20,7 @@ public class Estado {
      */
     public Estado() {
         try {
-            this.actual = Universo.getInstancia().getOrigen();
+            this.actual = GestorConexion.getInstancia().getOrigen();
             this.recorridos = new Vector<Nodo>();
         } catch (Exception ex) {
             Logger.getLogger(Estado.class.getName()).log(Level.SEVERE, null, ex);

@@ -4,22 +4,22 @@
 
 package GUI;
 
-import conector.GeneraUniverso;
 import java.io.IOException;
 import java.util.Hashtable;
-
-import org.jdesktop.application.Action;
-import org.jdesktop.application.SingleFrameApplication;
-import org.jdesktop.application.FrameView;
-
-import universo.Universo;
-import universo.util.Nodo;
 
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.filechooser.FileFilter;
+
+import org.jdesktop.application.Action;
+import org.jdesktop.application.FrameView;
+import org.jdesktop.application.SingleFrameApplication;
+
+import universo.GestorConexion;
+import universo.Universo;
+import universo.util.Nodo;
+import conector.GeneraUniverso;
 
 /**
  * The application's main frame.
@@ -235,11 +235,11 @@ public class IAICbuenoView extends FrameView {
         	System.out.println("Vas a cargar el fichero: " +
                 chooser.getSelectedFile().getName());
            
-           	Universo.setFile(chooser.getSelectedFile().getPath());
+        	GestorConexion.setFile(chooser.getSelectedFile().getPath());
 
-           	Hashtable<Integer, Nodo> nodosUniverso = Universo.getInstancia().getNodosH();
-           	Hashtable<Integer, Nodo> nodosDestino = Universo.getInstancia().getDestinos();
-		   	Nodo nodoOrigen = Universo.getInstancia().getOrigen();
+           	Hashtable<Integer, Nodo> nodosUniverso = GestorConexion.getInstancia().getNodosH();
+           	Hashtable<Integer, Nodo> nodosDestino = GestorConexion.getInstancia().getDestinos();
+		   	Nodo nodoOrigen = GestorConexion.getInstancia().getOrigen();
 		   	
 	   		System.out.println(nodosUniverso.getClass());
 	   		System.out.println(nodosDestino.getClass());

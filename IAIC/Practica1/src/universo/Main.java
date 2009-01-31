@@ -6,7 +6,8 @@ package universo;
  */
 public class Main {
     public static void main(String[] args) {
+       GestorConexion.getInstancia();
        Universo nuevo = new Universo();
-        nuevo.ejecutar();
+       nuevo.ejecutar();
     }        
 }

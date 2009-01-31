@@ -68,7 +68,7 @@ public class Nodo {
          * el procedimiento.
          */
     	double valor = 0.1, aux = 0.0;
-    	for(int j = 0; j < Universo.getPlanetas().getNodosH().size(); j++){
+    	for(int j = 0; j < GestorConexion.getInstancia().getNodosH().size(); j++){
     		if(this.getEnlaces().containsKey(j)){
     			aux = aux + this.getEnlaces().get(j).getDistancia();     			
     			if(valor == 0.1)

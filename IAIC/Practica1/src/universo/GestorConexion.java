@@ -1,6 +1,11 @@
 package universo;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import universo.util.exceptions.BadFormattedFile;
 import conector.Conector;
+import conector.util.exceptions.BadUniFileException;
 
 public class GestorConexion {
 	
@@ -17,7 +22,21 @@ public class GestorConexion {
      */
     public static Conector getInstancia() {
         if (planetas == null) {
-			planetas = new Conector(GestorConexion.file);
+			try {
+				planetas = new Conector(GestorConexion.file);
+			} catch (FileNotFoundException e) {
+				System.out.println("No se encuentra el archivo especificado.");
+				planetas = null;
+			} catch (IOException e) {
+				System.out.println("No se encuentra el archivo especificado.");
+				planetas = null;
+			} catch (BadFormattedFile e) {
+				System.out.println("El fichero de entrada es de un formato desconocido.");
+				planetas = null;
+			} catch (BadUniFileException e) {
+				System.out.println("Error en el archivo de universo, no cumple las normas.");
+				planetas = null;
+			}   
         }
         return planetas;
     }
@@ -33,14 +52,27 @@ public class GestorConexion {
      */
     
     public static Conector getInstancia(String file) {
-        planetas = new Conector(file);
+        try {
+			planetas = new Conector(file);
+		} catch (FileNotFoundException e) {
+			System.out.println("No se encuentra el archivo especificado.");
+			planetas = null;
+		} catch (IOException e) {
+			System.out.println("No se encuentra el archivo especificado.");
+			planetas = null;
+		} catch (BadFormattedFile e) {
+			System.out.println("El fichero de entrada es de un formato desconocido.");
+			planetas = null;
+		} catch (BadUniFileException e) {
+			System.out.println("Error en el archivo de universo, no cumple las normas.");
+			planetas = null;
+		}   
         return planetas;
     }
 
 	public static String getFile() {
 		return file;
 	}
-
 	public static void setFile(String file) {
 		GestorConexion.file = file;
 	}

@@ -7,6 +7,8 @@ import aima.search.framework.TreeSearch;
 import aima.search.informed.AStarSearch;
 import aima.search.uninformed.BreadthFirstSearch;
 import aima.search.uninformed.DepthFirstSearch;
+import aima.search.uninformed.DepthLimitedSearch;
+
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
@@ -95,8 +97,8 @@ public class Puzzle implements Juego{
         //this.busqueda = new AStarSearch(new TreeSearch());
         //this.busqueda = new GreedyBestFirstSearch(new TreeSearch());
         //this.busqueda = new BreadthFirstSearch(new TreeSearch());
-        this.busqueda = new DepthFirstSearch(new TreeSearch());
-        //this.busqueda = new DepthLimitedSearch();
+        //this.busqueda = new DepthFirstSearch(new TreeSearch());
+        this.busqueda = new DepthLimitedSearch(10);
         //this.busqueda = new UniformCostSearch(new TreeSearch());           
         try{
             this.agente = new SearchAgent(this.problema, this.busqueda);

@@ -2,7 +2,9 @@ package universo;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -52,24 +54,29 @@ public class FuncionSucesora implements SuccessorFunction{
         System.out.println("Estado actual: " + actual.getActual().getId());
         
         Estado posible = null;        
-        //Recorrido de los enlaces posible del nodo del estado actual 
-        for(int j = 0; j < 10; j++){
-            if(actual.getActual().getEnlaces().containsKey(j)){
-                try {
-                    
-                    System.out.println(j);
-                	
-                	posible = crearSiguienteEstado(actual, GestorConexion.getInstancia().getNodosH().get(j));
-                    if(posible != null){
-                    	siguientes.add(new Successor("Enlazar el planeta " + actual.getActual().getNombre() + " " + actual.getActual().getId() + " con el planeta " + posible.getActual().getNombre() + " " + posible.getActual().getId() + " cuya distancia es : " + actual.getActual().getEnlaces().get(posible.getActual().getId()).getDistancia(), posible));
-                    	System.out.println("Estado: Planeta " + actual.getActual().getId() + " -> Planeta " + posible.getActual().getId() + " con coste " + actual.getActual().getEnlaces().get(posible.getActual().getId()).getDistancia() + "con el juego " + actual.getActual().getEnlaces().get(posible.getActual().getId()).getJuego());
-                    }
-                    posible = null;
-                } catch (IOException ex) {
-                    Logger.getLogger(FuncionSucesora.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }  
+        //Recorrido de los enlaces posible del nodo del estado actual
+        
+        
+        
+        
+		Set<Integer> set = actual.getActual().getEnlaces().keySet();
+	    Iterator<Integer> itr = set.iterator();
+	    Integer inte;
+	    while (itr.hasNext()) {
+	    	inte = itr.next();
+        	try {
+        		System.out.println(inte);
+				posible = crearSiguienteEstado(actual, GestorConexion.getInstancia().getNodosH().get(inte));
+	            if(posible != null){
+	            	siguientes.add(new Successor("Enlazar el planeta " + actual.getActual().getNombre() + " " + actual.getActual().getId() + " con el planeta " + posible.getActual().getNombre() + " " + posible.getActual().getId() + " cuya distancia es : " + actual.getActual().getEnlaces().get(posible.getActual().getId()).getDistancia(), posible));
+	            	System.out.println("Estado: Planeta " + actual.getActual().getId() + " -> Planeta " + posible.getActual().getId() + " con coste " + actual.getActual().getEnlaces().get(posible.getActual().getId()).getDistancia() + " con el juego " + actual.getActual().getEnlaces().get(posible.getActual().getId()).getJuego());
+	            }
+	            posible = null;
+        	} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    }  
         return siguientes;
     }
 }

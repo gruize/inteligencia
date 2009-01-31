@@ -6,11 +6,17 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.sun.jmx.snmp.Timestamp;
+
+import juegos.Juego;
+
 import aima.search.framework.Problem;
 import aima.search.framework.Search;
 import aima.search.framework.SearchAgent;
 import aima.search.framework.TreeSearch;
 import aima.search.informed.AStarSearch;
+import aima.search.informed.GreedyBestFirstSearch;
+import aima.search.uninformed.BreadthFirstSearch;
 
 /**
  * Clase Universo, establece los objetos necesarios para realizar los recorridos 
@@ -107,27 +113,29 @@ public class Universo {
      * establecido para poder conseguir el mejor recorrido llegando a sus objetivos  
      * @return
      */
-    public boolean ejecutar() {
-        //this.busqueda = new BreadthFirstSearch(new TreeSearch());
-        //this.busqueda = new UniformCostSearch(new TreeSearch());
-        this.busqueda = new AStarSearch(new TreeSearch());
-        //this.busqueda = new GreedyBestFirstSearch(new TreeSearch());
-        //this.busqueda = new AStarSearch(new GraphSearch());
-    	//this.busqueda = new DepthFirstSearch(new GraphSearch());
-    	//this.busqueda = new DepthLimitedSearch(10);
-    	//this.busqueda=new IterativeDeepeningSearch();
+    public Properties ejecutar(Search b) {
+        this.busqueda = b;
+        Properties prop = null;
+        Long tiempo = new Timestamp().getDateTime();
         try{
             this.agente = new SearchAgent(this.problema,this.busqueda);
             this.imprimir(this.agente.getActions());
             this.imprimirPropiedades(this.agente.getInstrumentation());
-            if(this.getSolucion())
-                System.out.println("ES solucion");
-            else
-                System.out.println("NO es solucion");
+            
+            prop = this.agente.getInstrumentation();
+            
+            if(this.getSolucion()) {
+                System.out.println("Es solucion");
+            	prop.setProperty("resultado", "true");
+            }else{
+            	prop.setProperty("resultado", "false");
+                System.out.println("No es solucion");
+            }
+            prop.setProperty("tiempo", String.valueOf(((new Timestamp().getDateTime())-tiempo)/(1000*60)));
         }catch(Exception e){
             System.out.println(e);
         }
-        return this.getSolucion();
+        return prop;
     }
 
     /**

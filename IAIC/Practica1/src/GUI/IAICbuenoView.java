@@ -6,6 +6,7 @@ package GUI;
 
 import java.io.IOException;
 import java.util.Hashtable;
+import java.util.Properties;
 
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
@@ -15,6 +16,17 @@ import javax.swing.JOptionPane;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.FrameView;
 import org.jdesktop.application.SingleFrameApplication;
+
+import aima.search.framework.GraphSearch;
+import aima.search.framework.Search;
+import aima.search.framework.TreeSearch;
+import aima.search.informed.AStarSearch;
+import aima.search.informed.GreedyBestFirstSearch;
+import aima.search.uninformed.BreadthFirstSearch;
+import aima.search.uninformed.DepthFirstSearch;
+import aima.search.uninformed.DepthLimitedSearch;
+import aima.search.uninformed.IterativeDeepeningSearch;
+import aima.search.uninformed.UniformCostSearch;
 
 import universo.GestorConexion;
 import universo.Universo;
@@ -51,6 +63,8 @@ public class IAICbuenoView extends FrameView {
     private void initComponents() {
 
         mainPanel = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jComboBox1 = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -69,10 +83,46 @@ public class IAICbuenoView extends FrameView {
 
         mainPanel.setName("mainPanel"); // NOI18N
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige...", "A*", "En profundidad", "En profundidad limitada", "En anchura" }));
+        jScrollPane1.setName("jScrollPane1"); // NOI18N
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        		new Object [][] {
+                        {"", "", "", ""},
+                        {"", "", "", ""},
+                        {"", "", "", ""},
+                        {"", "", "", ""}
+                    },
+                    new String [] {
+                        "", "", "", ""
+                    }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.setName("jTable1"); // NOI18N
+        jTable1.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(jTable1);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(GUI.IAICbuenoApp.class).getContext().getResourceMap(IAICbuenoView.class);
+        jTable1.getColumnModel().getColumn(0).setHeaderValue(resourceMap.getString("jTable1.columnModel.title3")); // NOI18N
+        jTable1.getColumnModel().getColumn(1).setHeaderValue(resourceMap.getString("jTable1.columnModel.title0")); // NOI18N
+        jTable1.getColumnModel().getColumn(2).setHeaderValue(resourceMap.getString("jTable1.columnModel.title1")); // NOI18N
+        jTable1.getColumnModel().getColumn(3).setHeaderValue(resourceMap.getString("jTable1.columnModel.title2")); // NOI18N
+        
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige...", "Primero en anchura","Coste uniforme","A*(arbol)","Voraz","A*Grafo","Primero en profundidad","Profundidad limitada","Profundidad iterativa", "A*" }));
         jComboBox1.setName("jComboBox1"); // NOI18N
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(GUI.IAICbuenoApp.class).getContext().getResourceMap(IAICbuenoView.class);
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
         jLabel1.setName("jLabel1"); // NOI18N
 
@@ -89,13 +139,13 @@ public class IAICbuenoView extends FrameView {
         jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
         jLabel2.setName("jLabel2"); // NOI18N
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige...", "A*", "En profundidad", "En profundidad limitada", "En anchura" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige...", "Primero en anchura","Coste uniforme","A*(arbol)","Voraz","A*Grafo","Primero en profundidad","Profundidad limitada","Profundidad iterativa", "A*" }));
         jComboBox2.setName("jComboBox2"); // NOI18N
 
         jLabel3.setText(resourceMap.getString("jLabel3.text")); // NOI18N
         jLabel3.setName("jLabel3"); // NOI18N
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige...", "A*", "En profundidad", "En profundidad limitada", "En anchura" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige...", "Primero en anchura","Coste uniforme","A*(arbol)","Voraz","A*Grafo","Primero en profundidad","Profundidad limitada","Profundidad iterativa", "A*" }));
         jComboBox3.setName("jComboBox3"); // NOI18N
 
         org.jdesktop.layout.GroupLayout mainPanelLayout = new org.jdesktop.layout.GroupLayout(mainPanel);
@@ -104,46 +154,50 @@ public class IAICbuenoView extends FrameView {
             mainPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(mainPanelLayout.createSequentialGroup()
                 .add(mainPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(mainPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(mainPanelLayout.createSequentialGroup()
+                        .addContainerGap()
                         .add(mainPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(mainPanelLayout.createSequentialGroup()
-                                .add(13, 13, 13)
                                 .add(jLabel1)
-                                .add(18, 18, 18)
-                                .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                            .add(org.jdesktop.layout.GroupLayout.TRAILING, mainPanelLayout.createSequentialGroup()
-                                .addContainerGap()
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(jComboBox1, 0, 311, Short.MAX_VALUE))
+                            .add(mainPanelLayout.createSequentialGroup()
                                 .add(jLabel2)
-                                .add(18, 18, 18)
-                                .add(jComboBox2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                        .add(org.jdesktop.layout.GroupLayout.TRAILING, mainPanelLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .add(jLabel3)
-                            .add(18, 18, 18)
-                            .add(jComboBox3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(jComboBox2, 0, 311, Short.MAX_VALUE))
+                            .add(mainPanelLayout.createSequentialGroup()
+                                .add(jLabel3)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(jComboBox3, 0, 311, Short.MAX_VALUE))))
                     .add(mainPanelLayout.createSequentialGroup()
-                        .add(68, 68, 68)
-                        .add(jButton1)))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)))
+                .addContainerGap())
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, mainPanelLayout.createSequentialGroup()
+                .addContainerGap(152, Short.MAX_VALUE)
+                .add(jButton1)
+                .add(141, 141, 141))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(mainPanelLayout.createSequentialGroup()
-                .add(23, 23, 23)
+                .addContainerGap()
                 .add(mainPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel1)
                     .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(mainPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jComboBox2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel2))
+                    .add(jLabel2)
+                    .add(jComboBox2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(mainPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jComboBox3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel3))
-                .add(18, 18, 18)
+                    .add(jLabel3)
+                    .add(jComboBox3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 88, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 53, Short.MAX_VALUE)
                 .add(jButton1)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         menuBar.setName("menuBar"); // NOI18N
@@ -193,7 +247,7 @@ public class IAICbuenoView extends FrameView {
 
         setComponent(mainPanel);
         setMenuBar(menuBar);
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         //Aqui realizaremos la creacion del universo
@@ -219,17 +273,152 @@ public class IAICbuenoView extends FrameView {
         Integer busqueda1 = Integer.valueOf(jComboBox1.getSelectedIndex());
         Integer busqueda2 = Integer.valueOf(jComboBox2.getSelectedIndex());
         Integer busqueda3 = Integer.valueOf(jComboBox3.getSelectedIndex());
+        Search search1 = null;
+        Search search2 = null;
+        Search search3 = null;
         
-        if ( GestorConexion.getInstancia(GestorConexion.getFile()).getNodosH().size() > 0 ){
+        Properties prop1 = null;
+        Properties prop2 = null;
+        Properties prop3 = null;
+        
+        if ( GestorConexion.getInstancia(GestorConexion.getFile()) != null ){
+        	
         	// Se ha cargado correctamente asi que procedemos a ejecutar la busqueda
         	// a traves de universo.
         	
-        	Universo uni = new Universo();
-        	if (uni.ejecutar()){
-        		System.out.println("Se encontro el camino.");
-        	}else{
-        		System.out.println("Algo no fue bien del todo.");
+        	Universo uni1 = new Universo();
+        	Universo uni2 = new Universo();
+        	Universo uni3 = new Universo();
+        	
+        	if (busqueda1 > 0){
+        		switch(busqueda1){
+        		case 1:
+        			search1 = new BreadthFirstSearch(new TreeSearch());
+        			break;
+        		case 2:
+        			search1 = new UniformCostSearch(new TreeSearch());
+        			break;
+        		case 3:
+        			search1 = new AStarSearch(new TreeSearch());
+        			break;
+        		case 4:
+        			search1 = new GreedyBestFirstSearch(new TreeSearch());
+        			break;
+        		case 5:
+        			search1 = new AStarSearch(new GraphSearch());
+        			break;
+        		case 6:
+        			search1 = new DepthFirstSearch(new GraphSearch());
+        			break;
+        		case 7:
+        			search1 = new DepthLimitedSearch(50);
+        			break;
+        		case 8:
+        			search1 = new IterativeDeepeningSearch();
+        			break;
+        		default:
+        			search1 = new AStarSearch(new TreeSearch());        			
+        		}
+        		prop1 = uni1.ejecutar(search1);
         	}
+
+        	if ( busqueda2 > 0){
+        		switch(busqueda2){
+        		case 1:
+        			search2 = new BreadthFirstSearch(new TreeSearch());
+        			break;
+        		case 2:
+        			search2 = new UniformCostSearch(new TreeSearch());
+        			break;
+        		case 3:
+        			search2 = new AStarSearch(new TreeSearch());
+        			break;
+        		case 4:
+        			search2 = new GreedyBestFirstSearch(new TreeSearch());
+        			break;
+        		case 5:
+        			search2 = new AStarSearch(new GraphSearch());
+        			break;
+        		case 6:
+        			search2 = new DepthFirstSearch(new GraphSearch());
+        			break;
+        		case 7:
+        			search2 = new DepthLimitedSearch(50);
+        			break;
+        		case 8:
+        			search2 = new IterativeDeepeningSearch();
+        			break;
+        		default:
+        			search2 = new AStarSearch(new TreeSearch());        			
+            	}
+        		prop2 = uni2.ejecutar(search2);
+        	}
+        	
+        	if ( busqueda3 > 0){
+        		switch(busqueda3){
+        		case 1:
+        			search3 = new BreadthFirstSearch(new TreeSearch());
+        			break;
+        		case 2:
+        			search3 = new UniformCostSearch(new TreeSearch());
+        			break;
+        		case 3:
+        			search3 = new AStarSearch(new TreeSearch());
+        			break;
+        		case 4:
+        			search3 = new GreedyBestFirstSearch(new TreeSearch());
+        			break;
+        		case 5:
+        			search3 = new AStarSearch(new GraphSearch());
+        			break;
+        		case 6:
+        			search3 = new DepthFirstSearch(new GraphSearch());
+        			break;
+        		case 7:
+        			search3 = new DepthLimitedSearch(50);
+        			break;
+        		case 8:
+        			search3 = new IterativeDeepeningSearch();
+        			break;
+        		default:
+        			search3 = new AStarSearch(new TreeSearch());        			
+            	}
+        		prop3 = uni3.ejecutar(search3);
+        	}
+
+        	jTable1.setVisible(true);
+        	
+        	
+        	//Aqui va la comparacion:
+        	jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                    new Object [][] {
+                        {"Coste", prop1.getProperty("pathCost"), prop2.getProperty("pathCost"), prop3.getProperty("pathCost")},
+                        {"Tiempo", prop1.getProperty("tiempo"), prop2.getProperty("tiempo"), prop3.getProperty("tiempo")},
+                        {"Nodos Expandidos", prop1.get("nodesExpanded"), prop2.getProperty("nodesExpanded"), prop3.getProperty("nodesExpanded")},
+                        {"Solcuion?", prop1.getProperty("resultado").toString(), prop2.getProperty("resultado").toString(), prop3.getProperty("resultado").toString()}
+                    },
+                    new String [] {
+                        "Atributos", search1.getClass().toString(), search2.getClass().toString(), search3.getClass().toString()
+                    }
+                ){
+                   
+					Class[] types = new Class [] {
+                        java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                    };
+                    boolean[] canEdit = new boolean [] {
+                        false, false, false, false
+                    };
+
+                    public Class getColumnClass(int columnIndex) {
+                        return types [columnIndex];
+                    }
+
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return canEdit [columnIndex];
+                    }
+                });
+        	
+        	
         }else{
         	JFrame parent = new JFrame();
             JOptionPane.showMessageDialog(parent, "No se ha cargado ningun universo.");
@@ -259,9 +448,11 @@ public class IAICbuenoView extends FrameView {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
     private JDialog aboutBox;

@@ -1,13 +1,11 @@
 package universo.util;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
-import universo.util.factoria.factoriaJuegosAbs;
-
 import juegos.Juego;
+import universo.util.factoria.factoriaJuegosAbs;
 
 public class Enlace {
     private Integer destino;

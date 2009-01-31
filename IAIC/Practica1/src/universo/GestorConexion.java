@@ -5,7 +5,7 @@ import conector.Conector;
 public class GestorConexion {
 	
 	private static Conector planetas = null;
-	private static String file = "universos/GabiFinal.txt"; // Archivo de carga del universo
+	private static String file = ""; // Archivo de carga del universo
 	
     /**
      * 
@@ -33,8 +33,7 @@ public class GestorConexion {
      */
     
     public static Conector getInstancia(String file) {
-        if (planetas == null)
-            planetas = new Conector(file);
+        planetas = new Conector(file);
         return planetas;
     }
 

@@ -8,7 +8,9 @@ import org.jdesktop.application.Action;
 
 public class IAICbuenoAboutBox extends javax.swing.JDialog {
 
-    public IAICbuenoAboutBox(java.awt.Frame parent) {
+	private static final long serialVersionUID = 657069528877801545L;
+
+	public IAICbuenoAboutBox(java.awt.Frame parent) {
         super(parent);
         initComponents();
         getRootPane().setDefaultButton(closeButton);

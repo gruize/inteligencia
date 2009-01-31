@@ -1,8 +1,8 @@
 package universo.util;
 
-import universo.*;
-import java.util.Enumeration;
 import java.util.Hashtable;
+
+import universo.GestorConexion;
 
 
 public class Nodo {

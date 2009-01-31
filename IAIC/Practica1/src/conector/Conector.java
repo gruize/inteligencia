@@ -10,6 +10,8 @@ import java.util.Hashtable;
 import java.util.Properties;
 import java.util.Vector;
 
+import conector.util.exceptions.BadUniFileException;
+
 import universo.util.Enlace;
 import universo.util.Nodo;
 import universo.util.Tipo;
@@ -137,36 +139,34 @@ public class Conector {
 						this.nodosH.put(nodotmp.getId(), nodotmp);			
 				    }
 				    //Cargamos el fichero de configuracion
-				    try {
-				    	FileInputStream prop = new FileInputStream("conf/propiedades.conf");
-				  
-				        propiedades = new Properties();
-				        propiedades.load(prop);
-				        prop.close();	     
-				        Integer numplanetas = Integer.valueOf( propiedades.getProperty("numPlanetas"));
-				        Integer numdestinos = Integer.valueOf( propiedades.getProperty("numDestinos"));
-					    if ( origen == null ){
-					    	errores.add("No hay planeta origen.");
-					    }
-					    if ( destinos.size() < numdestinos ){
-					    	errores.add("No hay al menos 4 planetas destino.");
-					    }
-					    if ( this.nodosH.size() < numplanetas ) {
-					    	errores.add("No hay suficientes planetas.");
-					    }
-				    
-					} catch (Exception e) {
-						System.out.print(e);
-					}
+
+			    	FileInputStream prop = new FileInputStream("conf/propiedades.conf");
+			  
+			        propiedades = new Properties();
+			        propiedades.load(prop);
+			        prop.close();	     
+			        Integer numplanetas = Integer.valueOf( propiedades.getProperty("planetas"));
+			        Integer numdestinos = Integer.valueOf( propiedades.getProperty("destinos"));
+				    if ( origen == null ){
+				    	throw new BadUniFileException();
+				    }
+				    if ( destinos.size() < numdestinos ){
+				    	throw new BadUniFileException();
+				    }
+				    if ( this.nodosH.size() < numplanetas ) {
+				    	throw new BadUniFileException();
+				    }
 			    }else{
 			    	throw new BadFormattedFile();
 			    }
-			} catch (FileNotFoundException e1) {
+			} catch (FileNotFoundException e) {
 				System.out.println("No se encuentra el archivo especificado.");
 			} catch (IOException e) {
 				System.out.println("No se encuentra el archivo especificado.");
 			} catch (BadFormattedFile e) {
 				System.out.println("El fichero de entrada es de un formato desconocido.");
+			} catch (BadUniFileException e) {
+				System.out.println("Error en el archivo de universo, no cumple las normas.");
 			}           
 	}
 	public String getArchivo() {

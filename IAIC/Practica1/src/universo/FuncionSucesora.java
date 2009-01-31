@@ -1,16 +1,15 @@
 package universo;
 
-import aima.search.framework.Successor;
-import aima.search.framework.SuccessorFunction;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Hashtable;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import juegos.Juego;
-import universo.util.Enlace;
 import universo.util.Nodo;
+import aima.search.framework.Successor;
+import aima.search.framework.SuccessorFunction;
 
 /**
  * 

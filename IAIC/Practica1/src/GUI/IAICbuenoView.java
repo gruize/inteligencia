@@ -25,8 +25,6 @@ import conector.GeneraUniverso;
  * The application's main frame.
  */
 public class IAICbuenoView extends FrameView {
-    
-    private String fichUniverso;
 
     public IAICbuenoView(SingleFrameApplication app) {
         super(app);
@@ -206,7 +204,6 @@ public class IAICbuenoView extends FrameView {
 
         System.out.print("Generacion de universos: \n");
         System.out.print("\t Se guarda con el nombre: " + fich + "\n\n");
-        this.fichUniverso = fich;
 
         try {
             GeneraUniverso uni = new GeneraUniverso(fich);
@@ -222,9 +219,22 @@ public class IAICbuenoView extends FrameView {
         Integer busqueda1 = Integer.valueOf(jComboBox1.getSelectedIndex());
         Integer busqueda2 = Integer.valueOf(jComboBox2.getSelectedIndex());
         Integer busqueda3 = Integer.valueOf(jComboBox3.getSelectedIndex());
-
-        System.out.println(busqueda1);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        
+        if ( GestorConexion.getInstancia(GestorConexion.getFile()).getNodosH().size() > 0 ){
+        	// Se ha cargado correctamente asi que procedemos a ejecutar la busqueda
+        	// a traves de universo.
+        	
+        	Universo uni = new Universo();
+        	if (uni.ejecutar()){
+        		System.out.println("Se encontro el camino.");
+        	}else{
+        		System.out.println("Algo no fue bien del todo.");
+        	}
+        }else{
+        	JFrame parent = new JFrame();
+            JOptionPane.showMessageDialog(parent, "No se ha cargado ningun universo.");
+        }
+    }
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         JFileChooser chooser = new JFileChooser();
@@ -236,14 +246,6 @@ public class IAICbuenoView extends FrameView {
                 chooser.getSelectedFile().getName());
            
         	GestorConexion.setFile(chooser.getSelectedFile().getPath());
-
-           	Hashtable<Integer, Nodo> nodosUniverso = GestorConexion.getInstancia().getNodosH();
-           	Hashtable<Integer, Nodo> nodosDestino = GestorConexion.getInstancia().getDestinos();
-		   	Nodo nodoOrigen = GestorConexion.getInstancia().getOrigen();
-		   	
-	   		System.out.println(nodosUniverso.getClass());
-	   		System.out.println(nodosDestino.getClass());
-	   		System.out.println(nodoOrigen.getClass());
         }
     }
 

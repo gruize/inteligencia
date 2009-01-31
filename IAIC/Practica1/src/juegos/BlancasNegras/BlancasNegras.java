@@ -1,21 +1,14 @@
 package juegos.BlancasNegras;
 
-import aima.search.framework.GraphSearch;
-import aima.search.framework.Problem;
-import aima.search.framework.Search;
-import aima.search.framework.SearchAgent;
-import aima.search.framework.TreeSearch;
-import aima.search.informed.AStarSearch;
-import aima.search.informed.HillClimbingSearch;
-import aima.search.informed.SimulatedAnnealingSearch;
-import aima.search.uninformed.BreadthFirstSearch;
-import aima.search.uninformed.DepthFirstSearch;
-import aima.search.uninformed.DepthLimitedSearch;
-import aima.search.uninformed.UniformCostSearch;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
+
 import juegos.Juego;
+import aima.search.framework.Problem;
+import aima.search.framework.Search;
+import aima.search.framework.SearchAgent;
+import aima.search.uninformed.DepthLimitedSearch;
 
 /**
  *

@@ -1,23 +1,16 @@
 package universo;
 
-import aima.search.framework.GraphSearch;
-import aima.search.framework.Problem;
-import aima.search.framework.Search;
-import aima.search.framework.SearchAgent;
-import aima.search.framework.TreeSearch;
-import aima.search.informed.AStarSearch;
-import aima.search.informed.GreedyBestFirstSearch;
-import aima.search.uninformed.BreadthFirstSearch;
-import aima.search.uninformed.DepthFirstSearch;
-import aima.search.uninformed.DepthLimitedSearch;
-import aima.search.uninformed.UniformCostSearch;
-import conector.Conector;
-
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import aima.search.framework.Problem;
+import aima.search.framework.Search;
+import aima.search.framework.SearchAgent;
+import aima.search.framework.TreeSearch;
+import aima.search.informed.AStarSearch;
 
 /**
  * Clase Universo, establece los objetos necesarios para realizar los recorridos 

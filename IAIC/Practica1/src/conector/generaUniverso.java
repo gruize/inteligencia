@@ -6,23 +6,26 @@ import universo.util.Tipo;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.Properties;
 import java.util.Set;
 
 public class GeneraUniverso {
 	
 	private Hashtable<Integer, Nodo> universo = null;
 	private boolean primero = false;
-	private final Integer planetas = 250;    // Numero de planetas en el Universo
-	private final Integer destinos = 4;     // Numero de planetas destino
-	private final Integer rangoDest = 15;    // Rango para asignar enalces
-	private final Integer probJuegos = 46;  // Probailidad de que haya juego en un enlace
-	private final Integer topeInicio = 5;   // Numero de enlaces para el primer nodo.
-	private final Integer topeDelante = 3;  // Numero de enlaces hacia delante como minimo 
-	private final Integer topeDetras = 2;   // Numero de enlaces hacia detras como minimo
+	private Integer planetas = null;    // Numero de planetas en el Universo
+	private Integer destinos = null;     // Numero de planetas destino
+	private Integer rangoDest = null;    // Rango para asignar enalces
+	private Integer probJuegos = null;  // Probailidad de que haya juego en un enlace
+	private Integer topeInicio = null;   // Numero de enlaces para el primer nodo.
+	private Integer topeDelante = null;  // Numero de enlaces hacia delante como minimo 
+	private Integer topeDetras = null;   // Numero de enlaces hacia detras como minimo
     private String fich = null;
 	
 	private Integer dameJuego(){
@@ -71,8 +74,30 @@ public class GeneraUniverso {
 	}
 	
 	public GeneraUniverso(String fichero){
-		universo = new Hashtable<Integer, Nodo>();
-                this.fich = fichero;
+
+		try {
+			this.universo = new Hashtable<Integer, Nodo>();
+	        this.fich = fichero;
+	        Properties propiedades = new Properties();
+	        FileInputStream prop;
+			prop = new FileInputStream("conf/propiedades.conf");
+			propiedades.load(prop);
+	        prop.close();	     
+	        planetas = Integer.valueOf( propiedades.getProperty("planetas"));
+	    	destinos = Integer.valueOf( propiedades.getProperty("destinos"));
+	    	rangoDest = Integer.valueOf( propiedades.getProperty("rangoDest"));
+	    	probJuegos = Integer.valueOf( propiedades.getProperty("probJuegos"));
+	    	topeInicio = Integer.valueOf( propiedades.getProperty("topeInicio"));
+	    	topeDelante = Integer.valueOf( propiedades.getProperty("topeDelante"));
+	    	topeDetras = Integer.valueOf( propiedades.getProperty("topeDetras"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
 	}
 	public void generar() throws IOException{
 		

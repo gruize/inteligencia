@@ -8,15 +8,9 @@ import java.util.logging.Logger;
 
 import com.sun.jmx.snmp.Timestamp;
 
-import juegos.Juego;
-
 import aima.search.framework.Problem;
 import aima.search.framework.Search;
 import aima.search.framework.SearchAgent;
-import aima.search.framework.TreeSearch;
-import aima.search.informed.AStarSearch;
-import aima.search.informed.GreedyBestFirstSearch;
-import aima.search.uninformed.BreadthFirstSearch;
 
 /**
  * Clase Universo, establece los objetos necesarios para realizar los recorridos 
@@ -116,7 +110,7 @@ public class Universo {
     public Properties ejecutar(Search b) {
         this.busqueda = b;
         Properties prop = null;
-        Long tiempo = new Timestamp().getDateTime();
+        Long inicio = new Timestamp().getDateTime();
         try{
             this.agente = new SearchAgent(this.problema,this.busqueda);
             this.imprimir(this.agente.getActions());
@@ -131,7 +125,8 @@ public class Universo {
             	prop.setProperty("resultado", "false");
                 System.out.println("No es solucion");
             }
-            prop.setProperty("tiempo", String.valueOf(((new Timestamp().getDateTime())-tiempo)/(1000*60)));
+            Long fin = new Timestamp().getDateTime();
+            prop.setProperty("tiempo", String.valueOf(Long.valueOf((fin-inicio)/(1000*60))));
         }catch(Exception e){
             System.out.println(e);
         }

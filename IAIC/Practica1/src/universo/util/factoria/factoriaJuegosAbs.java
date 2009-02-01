@@ -1,12 +1,12 @@
 package universo.util.factoria;
 
-public class factoriaJuegosAbs {
+public class FactoriaJuegosAbs {
 	
-	private static factoriaJuegos factoria = null;
+	private static FactoriaJuegos factoria = null;
 
-	public static factoriaJuegos getInstancia(){
+	public static FactoriaJuegos getInstancia(){
 		if ( factoria == null ){
-			factoria = new factoriaJuegos();
+			factoria = new FactoriaJuegos();
 		}
 		return factoria;
 	}	

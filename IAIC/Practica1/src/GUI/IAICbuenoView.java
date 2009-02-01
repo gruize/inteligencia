@@ -5,7 +5,6 @@
 package GUI;
 
 import java.io.IOException;
-import java.util.Hashtable;
 import java.util.Properties;
 
 import javax.swing.JDialog;
@@ -17,20 +16,22 @@ import org.jdesktop.application.Action;
 import org.jdesktop.application.FrameView;
 import org.jdesktop.application.SingleFrameApplication;
 
+import universo.GestorConexion;
+import universo.Universo;
 import aima.search.framework.GraphSearch;
 import aima.search.framework.Search;
 import aima.search.framework.TreeSearch;
+
 import aima.search.informed.AStarSearch;
 import aima.search.informed.GreedyBestFirstSearch;
+import aima.search.informed.HillClimbingSearch;
+import aima.search.informed.SimulatedAnnealingSearch;
+import aima.search.uninformed.BidirectionalSearch;
 import aima.search.uninformed.BreadthFirstSearch;
 import aima.search.uninformed.DepthFirstSearch;
 import aima.search.uninformed.DepthLimitedSearch;
 import aima.search.uninformed.IterativeDeepeningSearch;
 import aima.search.uninformed.UniformCostSearch;
-
-import universo.GestorConexion;
-import universo.Universo;
-import universo.util.Nodo;
 import conector.GeneraUniverso;
 
 /**
@@ -120,7 +121,7 @@ public class IAICbuenoView extends FrameView {
         jTable1.getColumnModel().getColumn(2).setHeaderValue(resourceMap.getString("jTable1.columnModel.title1")); // NOI18N
         jTable1.getColumnModel().getColumn(3).setHeaderValue(resourceMap.getString("jTable1.columnModel.title2")); // NOI18N
         
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige...", "Primero en anchura","Coste uniforme","A*(arbol)","Voraz","A*Grafo","Primero en profundidad","Profundidad limitada","Profundidad iterativa", "A*" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige...", "A*","Voraz","Escalada simple","Enfriamiento simulado","Bidireccional","Primero en anchura","Primero en profundidad","Profundidad limitada","Profundizacion iterativa","Coste uniforme" }));
         jComboBox1.setName("jComboBox1"); // NOI18N
 
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
@@ -139,13 +140,13 @@ public class IAICbuenoView extends FrameView {
         jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
         jLabel2.setName("jLabel2"); // NOI18N
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige...", "Primero en anchura","Coste uniforme","A*(arbol)","Voraz","A*Grafo","Primero en profundidad","Profundidad limitada","Profundidad iterativa", "A*" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige...", "A*","Voraz","Escalada simple","Enfriamiento simulado","Bidireccional","Primero en anchura","Primero en profundidad","Profundidad limitada","Profundizacion iterativa","Coste uniforme" }));
         jComboBox2.setName("jComboBox2"); // NOI18N
 
         jLabel3.setText(resourceMap.getString("jLabel3.text")); // NOI18N
         jLabel3.setName("jLabel3"); // NOI18N
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige...", "Primero en anchura","Coste uniforme","A*(arbol)","Voraz","A*Grafo","Primero en profundidad","Profundidad limitada","Profundidad iterativa", "A*" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige...", "A*","Voraz","Escalada simple","Enfriamiento simulado","Bidireccional","Primero en anchura","Primero en profundidad","Profundidad limitada","Profundizacion iterativa","Coste uniforme" }));
         jComboBox3.setName("jComboBox3"); // NOI18N
 
         org.jdesktop.layout.GroupLayout mainPanelLayout = new org.jdesktop.layout.GroupLayout(mainPanel);
@@ -288,36 +289,42 @@ public class IAICbuenoView extends FrameView {
         	
         	Universo uni1 = new Universo();
         	Universo uni2 = new Universo();
-        	Universo uni3 = new Universo();
+        	Universo uni3 = new Universo();      	
         	
         	if (busqueda1 > 0){
         		switch(busqueda1){
         		case 1:
-        			search1 = new BreadthFirstSearch(new TreeSearch());
-        			break;
-        		case 2:
-        			search1 = new UniformCostSearch(new TreeSearch());
-        			break;
-        		case 3:
         			search1 = new AStarSearch(new TreeSearch());
         			break;
-        		case 4:
+        		case 2:
         			search1 = new GreedyBestFirstSearch(new TreeSearch());
         			break;
+        		case 3:
+        			search1 = new HillClimbingSearch();
+        			break;
+        		case 4:
+        			search1 = new SimulatedAnnealingSearch();
+        			break;
         		case 5:
-        			search1 = new AStarSearch(new GraphSearch());
-        			break;
-        		case 6:
-        			search1 = new DepthFirstSearch(new GraphSearch());
-        			break;
-        		case 7:
-        			search1 = new DepthLimitedSearch(50);
-        			break;
-        		case 8:
         			search1 = new IterativeDeepeningSearch();
         			break;
+        		case 6:
+        			search1 = new BreadthFirstSearch(new GraphSearch());
+        			break;
+        		case 7:
+        			search1 = new DepthFirstSearch(new TreeSearch());
+        			break;
+        		case 8:
+        			search1 = new DepthLimitedSearch(50);
+        			break;
+        		case 9:
+        			search1 = new BidirectionalSearch();
+        			break;
+        		case 10:
+        			search1 = new UniformCostSearch(new TreeSearch());
+        			break;
         		default:
-        			search1 = new AStarSearch(new TreeSearch());        			
+        			search1 = new AStarSearch(new TreeSearch());      			
         		}
         		prop1 = uni1.ejecutar(search1);
         	}
@@ -325,64 +332,76 @@ public class IAICbuenoView extends FrameView {
         	if ( busqueda2 > 0){
         		switch(busqueda2){
         		case 1:
-        			search2 = new BreadthFirstSearch(new TreeSearch());
-        			break;
-        		case 2:
-        			search2 = new UniformCostSearch(new TreeSearch());
-        			break;
-        		case 3:
         			search2 = new AStarSearch(new TreeSearch());
         			break;
-        		case 4:
+        		case 2:
         			search2 = new GreedyBestFirstSearch(new TreeSearch());
         			break;
+        		case 3:
+        			search2 = new HillClimbingSearch();
+        			break;
+        		case 4:
+        			search2 = new SimulatedAnnealingSearch();
+        			break;
         		case 5:
-        			search2 = new AStarSearch(new GraphSearch());
-        			break;
-        		case 6:
-        			search2 = new DepthFirstSearch(new GraphSearch());
-        			break;
-        		case 7:
-        			search2 = new DepthLimitedSearch(50);
-        			break;
-        		case 8:
         			search2 = new IterativeDeepeningSearch();
         			break;
+        		case 6:
+        			search2 = new BreadthFirstSearch(new GraphSearch());
+        			break;
+        		case 7:
+        			search2 = new DepthFirstSearch(new TreeSearch());
+        			break;
+        		case 8:
+        			search2 = new DepthLimitedSearch(50);
+        			break;
+        		case 9:
+        			search2 = new BidirectionalSearch();
+        			break;
+        		case 10:
+        			search2 = new UniformCostSearch(new TreeSearch());
+        			break;
         		default:
-        			search2 = new AStarSearch(new TreeSearch());        			
-            	}
+        			search2 = new AStarSearch(new TreeSearch());      			
+        		}
         		prop2 = uni2.ejecutar(search2);
         	}
         	
         	if ( busqueda3 > 0){
         		switch(busqueda3){
         		case 1:
-        			search3 = new BreadthFirstSearch(new TreeSearch());
-        			break;
-        		case 2:
-        			search3 = new UniformCostSearch(new TreeSearch());
-        			break;
-        		case 3:
         			search3 = new AStarSearch(new TreeSearch());
         			break;
-        		case 4:
+        		case 2:
         			search3 = new GreedyBestFirstSearch(new TreeSearch());
         			break;
+        		case 3:
+        			search3 = new HillClimbingSearch();
+        			break;
+        		case 4:
+        			search3 = new SimulatedAnnealingSearch();
+        			break;
         		case 5:
-        			search3 = new AStarSearch(new GraphSearch());
-        			break;
-        		case 6:
-        			search3 = new DepthFirstSearch(new GraphSearch());
-        			break;
-        		case 7:
-        			search3 = new DepthLimitedSearch(50);
-        			break;
-        		case 8:
         			search3 = new IterativeDeepeningSearch();
         			break;
+        		case 6:
+        			search3 = new BreadthFirstSearch(new GraphSearch());
+        			break;
+        		case 7:
+        			search3 = new DepthFirstSearch(new TreeSearch());
+        			break;
+        		case 8:
+        			search3 = new DepthLimitedSearch(50);
+        			break;
+        		case 9:
+        			search3 = new BidirectionalSearch();
+        			break;
+        		case 10:
+        			search3 = new UniformCostSearch(new TreeSearch());
+        			break;
         		default:
-        			search3 = new AStarSearch(new TreeSearch());        			
-            	}
+        			search3 = new AStarSearch(new TreeSearch());      			
+        		}
         		prop3 = uni3.ejecutar(search3);
         	}
 

@@ -12,9 +12,9 @@ import juegos.Reinas.Reinas;
 import juegos.Reinas.ReinasSinHeuristica;
 import juegos.Robot.Robot;
 
-public class factoriaJuegos {
+public class FactoriaJuegos {
 	
-	public factoriaJuegos(){
+	public FactoriaJuegos(){
 		
 	}
 	

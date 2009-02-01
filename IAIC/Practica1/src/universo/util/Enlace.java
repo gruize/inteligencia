@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 import juegos.Juego;
-import universo.util.factoria.factoriaJuegosAbs;
+import universo.util.factoria.FactoriaJuegosAbs;
 
 public class Enlace {
     private Integer destino;
@@ -36,7 +36,7 @@ public class Enlace {
         propiedades.load(prop);
         prop.close();     
         String juego = String.valueOf( propiedades.getProperty(String.valueOf(this.juego)));
-        return factoriaJuegosAbs.getInstancia().dameJuego(juego);        
+        return FactoriaJuegosAbs.getInstancia().dameJuego(juego);        
     }
 }
 

@@ -6,6 +6,8 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import universo.util.UniversoLogger;
+
 import com.sun.jmx.snmp.Timestamp;
 
 import aima.search.framework.Problem;
@@ -107,27 +109,33 @@ public class Universo {
      * establecido para poder conseguir el mejor recorrido llegando a sus objetivos  
      * @return
      */
-    public Properties ejecutar(Search b) {
+    public Properties ejecutar(Search b, UniversoLogger log) {
         this.busqueda = b;
         Properties prop = null;
         Long inicio = new Timestamp().getDateTime();
         try{
             this.agente = new SearchAgent(this.problema,this.busqueda);
             this.imprimir(this.agente.getActions());
-            this.imprimirPropiedades(this.agente.getInstrumentation());
-            
             prop = this.agente.getInstrumentation();
+            this.imprimirPropiedades(prop);
             
             if(this.getSolucion()) {
                 System.out.println("Es solucion");
-            	prop.setProperty("resultado", "true");
+            	prop.setProperty("resultado", "Si");
             }else{
-            	prop.setProperty("resultado", "false");
+            	prop.setProperty("resultado", "No");
                 System.out.println("No es solucion");
             }
             Long fin = new Timestamp().getDateTime();
             Long tiempo = (fin-inicio)/(1000);
-            prop.setProperty("tiempo",String.valueOf(tiempo)+" segs.");
+            String propiedad = String.valueOf(tiempo);
+            prop.setProperty("tiempo", propiedad+ " segs.");
+            
+            log.printAcciones(this.agente.getActions());
+            log.printProperties(prop);
+            
+            log.closeLogger();
+            
         }catch(Exception e){
             System.out.println(e);
         }

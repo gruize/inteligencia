@@ -53,10 +53,6 @@ public class FuncionSucesora implements SuccessorFunction{
         
         Estado posible = null;        
         //Recorrido de los enlaces posible del nodo del estado actual
-        
-        
-        
-        
 		Set<Integer> set = actual.getActual().getEnlaces().keySet();
 	    Iterator<Integer> itr = set.iterator();
 	    Integer inte;

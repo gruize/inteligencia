@@ -18,6 +18,7 @@ import org.jdesktop.application.SingleFrameApplication;
 
 import universo.GestorConexion;
 import universo.Universo;
+import universo.util.UniversoLogger;
 import aima.search.framework.GraphSearch;
 import aima.search.framework.Search;
 import aima.search.framework.TreeSearch;
@@ -26,7 +27,6 @@ import aima.search.informed.AStarSearch;
 import aima.search.informed.GreedyBestFirstSearch;
 import aima.search.informed.HillClimbingSearch;
 import aima.search.informed.SimulatedAnnealingSearch;
-import aima.search.uninformed.BidirectionalSearch;
 import aima.search.uninformed.BreadthFirstSearch;
 import aima.search.uninformed.DepthFirstSearch;
 import aima.search.uninformed.DepthLimitedSearch;
@@ -121,7 +121,7 @@ public class IAICbuenoView extends FrameView {
         jTable1.getColumnModel().getColumn(2).setHeaderValue(resourceMap.getString("jTable1.columnModel.title1")); // NOI18N
         jTable1.getColumnModel().getColumn(3).setHeaderValue(resourceMap.getString("jTable1.columnModel.title2")); // NOI18N
         
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige...", "A*","Voraz","Escalada simple","Enfriamiento simulado","Bidireccional","Primero en anchura","Primero en profundidad","Profundidad limitada","Profundizacion iterativa","Coste uniforme" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige...", "A*","Voraz","Escalada simple","Enfriamiento simulado","Primero en anchura","Primero en profundidad","Profundidad limitada","Profundizacion iterativa","Coste uniforme" }));
         jComboBox1.setName("jComboBox1"); // NOI18N
 
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
@@ -140,13 +140,13 @@ public class IAICbuenoView extends FrameView {
         jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
         jLabel2.setName("jLabel2"); // NOI18N
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige...", "A*","Voraz","Escalada simple","Enfriamiento simulado","Bidireccional","Primero en anchura","Primero en profundidad","Profundidad limitada","Profundizacion iterativa","Coste uniforme" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige...", "A*","Voraz","Escalada simple","Enfriamiento simulado","Primero en anchura","Primero en profundidad","Profundidad limitada","Profundizacion iterativa","Coste uniforme" }));
         jComboBox2.setName("jComboBox2"); // NOI18N
 
         jLabel3.setText(resourceMap.getString("jLabel3.text")); // NOI18N
         jLabel3.setName("jLabel3"); // NOI18N
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige...", "A*","Voraz","Escalada simple","Enfriamiento simulado","Bidireccional","Primero en anchura","Primero en profundidad","Profundidad limitada","Profundizacion iterativa","Coste uniforme" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige...", "A*","Voraz","Escalada simple","Enfriamiento simulado","Primero en anchura","Primero en profundidad","Profundidad limitada","Profundizacion iterativa","Coste uniforme" }));
         jComboBox3.setName("jComboBox3"); // NOI18N
 
         org.jdesktop.layout.GroupLayout mainPanelLayout = new org.jdesktop.layout.GroupLayout(mainPanel);
@@ -318,15 +318,13 @@ public class IAICbuenoView extends FrameView {
         			search1 = new DepthLimitedSearch(50);
         			break;
         		case 9:
-        			search1 = new BidirectionalSearch();
-        			break;
-        		case 10:
         			search1 = new UniformCostSearch(new TreeSearch());
         			break;
         		default:
         			search1 = new AStarSearch(new TreeSearch());      			
         		}
-        		prop1 = uni1.ejecutar(search1);
+        		UniversoLogger logger1 = new UniversoLogger("Busqueda1 "+search1.getClass().toString()+".txt");
+        		prop1 = uni1.ejecutar(search1, logger1);
         	}
 
         	if ( busqueda2 > 0){
@@ -356,15 +354,13 @@ public class IAICbuenoView extends FrameView {
         			search2 = new DepthLimitedSearch(50);
         			break;
         		case 9:
-        			search2 = new BidirectionalSearch();
-        			break;
-        		case 10:
         			search2 = new UniformCostSearch(new TreeSearch());
         			break;
         		default:
         			search2 = new AStarSearch(new TreeSearch());      			
         		}
-        		prop2 = uni2.ejecutar(search2);
+        		UniversoLogger logger2 = new UniversoLogger("Busqueda2 "+search2.getClass().toString()+".txt");
+        		prop2 = uni2.ejecutar(search2, logger2);
         	}
         	
         	if ( busqueda3 > 0){
@@ -394,15 +390,13 @@ public class IAICbuenoView extends FrameView {
         			search3 = new DepthLimitedSearch(50);
         			break;
         		case 9:
-        			search3 = new BidirectionalSearch();
-        			break;
-        		case 10:
         			search3 = new UniformCostSearch(new TreeSearch());
         			break;
         		default:
         			search3 = new AStarSearch(new TreeSearch());      			
         		}
-        		prop3 = uni3.ejecutar(search3);
+        		UniversoLogger logger3 = new UniversoLogger("Busqueda3 "+search3.getClass().toString()+".txt");
+        		prop3 = uni3.ejecutar(search3, logger3);
         	}
 
         	jTable1.setVisible(true);
@@ -414,7 +408,7 @@ public class IAICbuenoView extends FrameView {
                         {"Coste", prop1.getProperty("pathCost"), prop2.getProperty("pathCost"), prop3.getProperty("pathCost")},
                         {"Tiempo", prop1.getProperty("tiempo"), prop2.getProperty("tiempo"), prop3.getProperty("tiempo")},
                         {"Nodos Expandidos", prop1.get("nodesExpanded"), prop2.getProperty("nodesExpanded"), prop3.getProperty("nodesExpanded")},
-                        {"Solcuion?", prop1.getProperty("resultado").toString(), prop2.getProperty("resultado").toString(), prop3.getProperty("resultado").toString()}
+                        {"Solucion?", prop1.getProperty("resultado").toString(), prop2.getProperty("resultado").toString(), prop3.getProperty("resultado").toString()}
                     },
                     new String [] {
                         "Atributos", search1.getClass().toString(), search2.getClass().toString(), search3.getClass().toString()

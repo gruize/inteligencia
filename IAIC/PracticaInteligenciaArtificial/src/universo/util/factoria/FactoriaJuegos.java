@@ -9,7 +9,6 @@ import juegos.LoboCabraCol.LCC;
 import juegos.Pollos.Pollos;
 import juegos.Puzzle.Puzzle;
 import juegos.Reinas.Reinas;
-import juegos.Reinas.ReinasSinHeuristica;
 import juegos.Robot.Robot;
 
 public class FactoriaJuegos {
@@ -49,8 +48,6 @@ public class FactoriaJuegos {
 			return new Puzzle();
 		}else if (juego.equals("Problema de las N Reinas")){
 			return new Reinas();
-		}else if (juego.equals("Problema de las N Reinas Sin Heuristica")){
-			return new ReinasSinHeuristica();
 		}else if (juego.equals("Problema del Robot")){
 			return new Robot();
 		}else {

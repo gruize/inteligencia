@@ -1,4 +1,4 @@
-package juegos.BlancasNegras;
+	package juegos.BlancasNegras;
 
 import java.util.Iterator;
 import java.util.List;

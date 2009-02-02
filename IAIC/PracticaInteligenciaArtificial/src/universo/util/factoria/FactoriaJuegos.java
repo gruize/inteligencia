@@ -2,10 +2,13 @@ package universo.util.factoria;
 
 import juegos.*;
 import juegos.BlancasNegras.BlancasNegras;
+import juegos.Bloques.Bloques;
 import juegos.CajaColores.CajaDeColores;
 import juegos.Canibal.Misionero;
 import juegos.Garrafas.Garrafas;
 import juegos.LoboCabraCol.LCC;
+import juegos.Mono.Mono;
+import juegos.Palillos.Palillos;
 import juegos.Pollos.Pollos;
 import juegos.Puzzle.Puzzle;
 import juegos.Reinas.Reinas;
@@ -50,9 +53,13 @@ public class FactoriaJuegos {
 			return new Reinas();
 		}else if (juego.equals("Problema del Robot")){
 			return new Robot();
+		}else if (juego.equals("Problema del Mono")){
+			return new Mono();
+		}else if (juego.equals("Palillos")){
+			return new Palillos();
+		}else if (juego.equals("Problema de los bloques")){
+			return new Bloques();
 		}else {
-			// No se ha pasado un String valido
-			// Esto implica devolver null.
 			return null;
 		}
 		

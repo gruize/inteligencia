@@ -43,7 +43,7 @@ public class UniversoLogger {
             	String juego = String.valueOf( propiedades.getProperty(String.valueOf(numJuego)));
             	output.write("\t\t Consiguiendo superar el juego: " + juego + "\n");
             }   
-        }
+         }
 		output.write("\n\n");
 	}
 	

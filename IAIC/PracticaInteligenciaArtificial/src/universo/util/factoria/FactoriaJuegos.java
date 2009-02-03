@@ -35,29 +35,29 @@ public class FactoriaJuegos {
 	
 	public Juego dameJuego(String juego){
 		
-		if (juego.equals("Blancas vs. Negras")){
+		if (juego.equals("Blancas vs Negras")){
 			return new BlancasNegras();
-		}else if (juego.equals("Caja de Colores Rojo vs Azul")){
+		}else if (juego.equals("Rojo vs Azul")){
 			return new CajaDeColores();
-		}else if (juego.equals("Misioneros vs. Canibales")){
+		}else if (juego.equals("Misi vs Cani")){
 			return new Misionero();
-		}else if (juego.equals("Garrafas de capacidades diferentes")){
+		}else if (juego.equals("Garrafas")){
 			return new Garrafas();
-		}else if (juego.equals("Problema del Lobo la Cabra y la Col")){
+		}else if (juego.equals("Lobo Cabra Col")){
 			return new LCC();
-		}else if (juego.equals("Problema de los Pollos")) {
+		}else if (juego.equals("Pollos")) {
 			return new Pollos();
 		}else if (juego.equals("8-Puzzle")){
 			return new Puzzle();
-		}else if (juego.equals("Problema de las N Reinas")){
+		}else if (juego.equals("N Reinas")){
 			return new Reinas();
-		}else if (juego.equals("Problema del Robot")){
+		}else if (juego.equals("Robot")){
 			return new Robot();
-		}else if (juego.equals("Problema del Mono")){
+		}else if (juego.equals("Mono")){
 			return new Mono();
 		}else if (juego.equals("Palillos")){
 			return new Palillos();
-		}else if (juego.equals("Problema de los bloques")){
+		}else if (juego.equals("Bloques")){
 			return new Bloques();
 		}else {
 			return null;

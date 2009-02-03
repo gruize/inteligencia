@@ -19,6 +19,7 @@ import org.jdesktop.application.SingleFrameApplication;
 import universo.GestorConexion;
 import universo.Universo;
 import universo.util.UniversoLogger;
+import universo.util.UniversoMovie;
 import aima.search.framework.GraphSearch;
 import aima.search.framework.Search;
 import aima.search.framework.TreeSearch;
@@ -268,7 +269,7 @@ public class IAICbuenoView extends FrameView {
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         //Aqui se lanza la busqueda.
 
         Integer busqueda1 = Integer.valueOf(jComboBox1.getSelectedIndex());
@@ -291,113 +292,111 @@ public class IAICbuenoView extends FrameView {
         	Universo uni2 = new Universo();
         	Universo uni3 = new Universo();      	
         	
-        	if (busqueda1 > 0){
-        		switch(busqueda1){
-        		case 1:
-        			search1 = new AStarSearch(new TreeSearch());
-        			break;
-        		case 2:
-        			search1 = new GreedyBestFirstSearch(new TreeSearch());
-        			break;
-        		case 3:
-        			search1 = new HillClimbingSearch();
-        			break;
-        		case 4:
-        			search1 = new SimulatedAnnealingSearch();
-        			break;
-        		case 5:
-        			search1 = new IterativeDeepeningSearch();
-        			break;
-        		case 6:
-        			search1 = new BreadthFirstSearch(new GraphSearch());
-        			break;
-        		case 7:
-        			search1 = new DepthFirstSearch(new TreeSearch());
-        			break;
-        		case 8:
-        			search1 = new DepthLimitedSearch(50);
-        			break;
-        		case 9:
-        			search1 = new UniformCostSearch(new TreeSearch());
-        			break;
-        		default:
-        			search1 = new AStarSearch(new TreeSearch());      			
-        		}
-        		UniversoLogger logger1 = new UniversoLogger("Busqueda1 "+search1.getClass().toString()+".txt");
-        		prop1 = uni1.ejecutar(search1, logger1);
-        	}
+    		switch(busqueda1){
+    		case 1:
+    			search1 = new AStarSearch(new TreeSearch());
+    			break;
+    		case 2:
+    			search1 = new GreedyBestFirstSearch(new TreeSearch());
+    			break;
+    		case 3:
+    			search1 = new HillClimbingSearch();
+    			break;
+    		case 4:
+    			search1 = new SimulatedAnnealingSearch();
+    			break;
+    		case 5:
+    			search1 = new IterativeDeepeningSearch();
+    			break;
+    		case 6:
+    			search1 = new BreadthFirstSearch(new GraphSearch());
+    			break;
+    		case 7:
+    			search1 = new DepthFirstSearch(new TreeSearch());
+    			break;
+    		case 8:
+    			search1 = new DepthLimitedSearch(50);
+    			break;
+    		case 9:
+    			search1 = new UniformCostSearch(new TreeSearch());
+    			break;
+    		default:
+    			search1 = new AStarSearch(new TreeSearch());      			
+    		}
+    		UniversoLogger logger1 = new UniversoLogger("Busqueda1 "+search1.getClass().toString()+".txt");
+    		prop1 = uni1.ejecutar(search1, logger1);
 
-        	if ( busqueda2 > 0){
-        		switch(busqueda2){
-        		case 1:
-        			search2 = new AStarSearch(new TreeSearch());
-        			break;
-        		case 2:
-        			search2 = new GreedyBestFirstSearch(new TreeSearch());
-        			break;
-        		case 3:
-        			search2 = new HillClimbingSearch();
-        			break;
-        		case 4:
-        			search2 = new SimulatedAnnealingSearch();
-        			break;
-        		case 5:
-        			search2 = new IterativeDeepeningSearch();
-        			break;
-        		case 6:
-        			search2 = new BreadthFirstSearch(new GraphSearch());
-        			break;
-        		case 7:
-        			search2 = new DepthFirstSearch(new TreeSearch());
-        			break;
-        		case 8:
-        			search2 = new DepthLimitedSearch(50);
-        			break;
-        		case 9:
-        			search2 = new UniformCostSearch(new TreeSearch());
-        			break;
-        		default:
-        			search2 = new AStarSearch(new TreeSearch());      			
-        		}
-        		UniversoLogger logger2 = new UniversoLogger("Busqueda2 "+search2.getClass().toString()+".txt");
-        		prop2 = uni2.ejecutar(search2, logger2);
-        	}
-        	
-        	if ( busqueda3 > 0){
-        		switch(busqueda3){
-        		case 1:
-        			search3 = new AStarSearch(new TreeSearch());
-        			break;
-        		case 2:
-        			search3 = new GreedyBestFirstSearch(new TreeSearch());
-        			break;
-        		case 3:
-        			search3 = new HillClimbingSearch();
-        			break;
-        		case 4:
-        			search3 = new SimulatedAnnealingSearch();
-        			break;
-        		case 5:
-        			search3 = new IterativeDeepeningSearch();
-        			break;
-        		case 6:
-        			search3 = new BreadthFirstSearch(new GraphSearch());
-        			break;
-        		case 7:
-        			search3 = new DepthFirstSearch(new TreeSearch());
-        			break;
-        		case 8:
-        			search3 = new DepthLimitedSearch(50);
-        			break;
-        		case 9:
-        			search3 = new UniformCostSearch(new TreeSearch());
-        			break;
-        		default:
-        			search3 = new AStarSearch(new TreeSearch());      			
-        		}
-        		UniversoLogger logger3 = new UniversoLogger("Busqueda3 "+search3.getClass().toString()+".txt");
-        		prop3 = uni3.ejecutar(search3, logger3);
-        	}
+    		new UniversoMovie().representar(uni1.getAgente().getActions());
+
+    		switch(busqueda2){
+    		case 1:
+    			search2 = new AStarSearch(new TreeSearch());
+    			break;
+    		case 2:
+    			search2 = new GreedyBestFirstSearch(new TreeSearch());
+    			break;
+    		case 3:
+    			search2 = new HillClimbingSearch();
+    			break;
+    		case 4:
+    			search2 = new SimulatedAnnealingSearch();
+    			break;
+    		case 5:
+    			search2 = new IterativeDeepeningSearch();
+    			break;
+    		case 6:
+    			search2 = new BreadthFirstSearch(new GraphSearch());
+    			break;
+    		case 7:
+    			search2 = new DepthFirstSearch(new TreeSearch());
+    			break;
+    		case 8:
+    			search2 = new DepthLimitedSearch(50);
+    			break;
+    		case 9:
+    			search2 = new UniformCostSearch(new TreeSearch());
+    			break;
+    		default:
+    			search2 = new AStarSearch(new TreeSearch());      			
+    		}
+    //		UniversoLogger logger2 = new UniversoLogger("Busqueda2 "+search2.getClass().toString()+".txt");
+//    		prop2 = uni2.ejecutar(search2, logger2);
+
+    	
+    		switch(busqueda3){
+    		case 1:
+    			search3 = new AStarSearch(new TreeSearch());
+    			break;
+    		case 2:
+    			search3 = new GreedyBestFirstSearch(new TreeSearch());
+    			break;
+    		case 3:
+    			search3 = new HillClimbingSearch();
+    			break;
+    		case 4:
+    			search3 = new SimulatedAnnealingSearch();
+    			break;
+    		case 5:
+    			search3 = new IterativeDeepeningSearch();
+    			break;
+    		case 6:
+    			search3 = new BreadthFirstSearch(new GraphSearch());
+    			break;
+    		case 7:
+    			search3 = new DepthFirstSearch(new TreeSearch());
+    			break;
+    		case 8:
+    			search3 = new DepthLimitedSearch(50);
+    			break;
+    		case 9:
+    			search3 = new UniformCostSearch(new TreeSearch());
+    			break;
+    		default:
+    			search3 = new AStarSearch(new TreeSearch());      			
+    		}
+    	//	UniversoLogger logger3 = new UniversoLogger("Busqueda3 "+search3.getClass().toString()+".txt");
+       // 	prop3 = uni3.ejecutar(search3, logger3);
+  
 
         	jTable1.setVisible(true);
         	

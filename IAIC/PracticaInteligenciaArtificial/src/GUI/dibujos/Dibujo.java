@@ -57,7 +57,7 @@ dibujaImagen(xOrigen,yOrigen,nombreFichero) <p>
 <p>
 */
 
-public class Dibujo extends JFrame {
+public class Dibujo extends JFrame implements ActionListener {
 
     private static final long serialVersionUID=3918001L;
 
@@ -496,34 +496,21 @@ public class Dibujo extends JFrame {
         figs=new Vector<Figura>(50,50);
     }
    
-    
-    
     private void initializeGraph (String titulo, int width, int height) {
         windowWidth=width;
         windowHeight=height;
-        setSize (width,height);
+        setSize(width+25,height+25);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         super.setTitle (titulo);
-        addWindowListener (new WindowAdapter () {
-                public void windowClosing(WindowEvent e) {
-                }
-        });
     }
    
     /**
      *  Pinta el dibujo y espera a que se pulse el boton aceptar
-     * @param i 
      */
-    public void espera (int i) {
+    public void espera (int tiempo) {
         //-----------------
-        try {
-            this.repaint();
-			Thread.sleep(i);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-
+        repaint();
+        okWatcher.watch(tiempo);
     }
 
     /**
@@ -540,12 +527,6 @@ public class Dibujo extends JFrame {
      *  No usar directamente esta operacion interna de la clase
      */
     public void actionPerformed (ActionEvent e) {
-        if (e.getSource() == okButton) {
-            okWatcher.ready();
-        } else
-            if (e.getSource() == closeButton) {
-                System.exit(0);
-            }
     }
 
     class Watcher {
@@ -556,12 +537,10 @@ public class Dibujo extends JFrame {
             ok = false;
         }
 
-        synchronized void watch () {
-            while (!ok) {
-                try {wait(500); }
-                catch(InterruptedException e) {}
-            }
-            ok = false;
+        synchronized void watch (int nombre) {
+            try {wait(nombre); }
+            catch(InterruptedException e) {}
+            notifyAll();
         }
 
         synchronized void ready () {

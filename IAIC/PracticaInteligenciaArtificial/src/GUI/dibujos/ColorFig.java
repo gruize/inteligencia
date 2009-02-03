@@ -16,7 +16,7 @@ public class ColorFig {
         this.col= new Color(col.getRed(),col.getGreen(),col.getBlue());
     }
 
-    Color colorOf() {
+    public Color colorOf() {
         return col;
     }
 

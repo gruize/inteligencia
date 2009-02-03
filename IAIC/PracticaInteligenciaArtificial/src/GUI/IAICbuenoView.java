@@ -20,6 +20,7 @@ import universo.GestorConexion;
 import universo.Universo;
 import universo.util.UniversoLogger;
 import universo.util.UniversoMovie;
+import GUI.dibujos.Dibujo;
 import aima.search.framework.GraphSearch;
 import aima.search.framework.Search;
 import aima.search.framework.TreeSearch;
@@ -271,170 +272,172 @@ public class IAICbuenoView extends FrameView {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         //Aqui se lanza la busqueda.
+    	Runnable miRunnable = new Runnable()
+        {
+           public void run()
+           {
+		        Integer busqueda1 = Integer.valueOf(jComboBox1.getSelectedIndex());
+		        Integer busqueda2 = Integer.valueOf(jComboBox2.getSelectedIndex());
+		        Integer busqueda3 = Integer.valueOf(jComboBox3.getSelectedIndex());
+		        Search search1 = null;
+		        Search search2 = null;
+		        Search search3 = null;
+		        
+		        Properties prop1 = null;
+		        Properties prop2 = null;
+		        Properties prop3 = null;
+		        
+		        if ( GestorConexion.getInstancia(GestorConexion.getFile()) != null ){
+		        	
+		        	// Se ha cargado correctamente asi que procedemos a ejecutar la busqueda
+		        	// a traves de universo.
+		        	
+		        	Universo uni1 = new Universo();
+		        	Universo uni2 = new Universo();
+		        	Universo uni3 = new Universo();      	
+		        	
+		    		switch(busqueda1){
+		    		case 1:
+		    			search1 = new AStarSearch(new TreeSearch());
+		    			break;
+		    		case 2:
+		    			search1 = new GreedyBestFirstSearch(new TreeSearch());
+		    			break;
+		    		case 3:
+		    			search1 = new HillClimbingSearch();
+		    			break;
+		    		case 4:
+		    			search1 = new SimulatedAnnealingSearch();
+		    			break;
+		    		case 5:
+		    			search1 = new IterativeDeepeningSearch();
+		    			break;
+		    		case 6:
+		    			search1 = new BreadthFirstSearch(new GraphSearch());
+		    			break;
+		    		case 7:
+		    			search1 = new DepthFirstSearch(new TreeSearch());
+		    			break;
+		    		case 8:
+		    			search1 = new DepthLimitedSearch(50);
+		    			break;
+		    		case 9:
+		    			search1 = new UniformCostSearch(new TreeSearch());
+		    			break;
+		    		default:
+		    			search1 = new AStarSearch(new TreeSearch());      			
+		    		}
+		    		UniversoLogger logger1 = new UniversoLogger("Busqueda1 "+search1.getClass().toString()+".txt");
+		    		prop1 = uni1.ejecutar(search1, logger1);    		
 
-        Integer busqueda1 = Integer.valueOf(jComboBox1.getSelectedIndex());
-        Integer busqueda2 = Integer.valueOf(jComboBox2.getSelectedIndex());
-        Integer busqueda3 = Integer.valueOf(jComboBox3.getSelectedIndex());
-        Search search1 = null;
-        Search search2 = null;
-        Search search3 = null;
-        
-        Properties prop1 = null;
-        Properties prop2 = null;
-        Properties prop3 = null;
-        
-        if ( GestorConexion.getInstancia(GestorConexion.getFile()) != null ){
-        	
-        	// Se ha cargado correctamente asi que procedemos a ejecutar la busqueda
-        	// a traves de universo.
-        	
-        	Universo uni1 = new Universo();
-        	Universo uni2 = new Universo();
-        	Universo uni3 = new Universo();      	
-        	
-    		switch(busqueda1){
-    		case 1:
-    			search1 = new AStarSearch(new TreeSearch());
-    			break;
-    		case 2:
-    			search1 = new GreedyBestFirstSearch(new TreeSearch());
-    			break;
-    		case 3:
-    			search1 = new HillClimbingSearch();
-    			break;
-    		case 4:
-    			search1 = new SimulatedAnnealingSearch();
-    			break;
-    		case 5:
-    			search1 = new IterativeDeepeningSearch();
-    			break;
-    		case 6:
-    			search1 = new BreadthFirstSearch(new GraphSearch());
-    			break;
-    		case 7:
-    			search1 = new DepthFirstSearch(new TreeSearch());
-    			break;
-    		case 8:
-    			search1 = new DepthLimitedSearch(50);
-    			break;
-    		case 9:
-    			search1 = new UniformCostSearch(new TreeSearch());
-    			break;
-    		default:
-    			search1 = new AStarSearch(new TreeSearch());      			
-    		}
-    		UniversoLogger logger1 = new UniversoLogger("Busqueda1 "+search1.getClass().toString()+".txt");
-    		prop1 = uni1.ejecutar(search1, logger1);
-
-    		new UniversoMovie().representar(uni1.getAgente().getActions());
-
-    		switch(busqueda2){
-    		case 1:
-    			search2 = new AStarSearch(new TreeSearch());
-    			break;
-    		case 2:
-    			search2 = new GreedyBestFirstSearch(new TreeSearch());
-    			break;
-    		case 3:
-    			search2 = new HillClimbingSearch();
-    			break;
-    		case 4:
-    			search2 = new SimulatedAnnealingSearch();
-    			break;
-    		case 5:
-    			search2 = new IterativeDeepeningSearch();
-    			break;
-    		case 6:
-    			search2 = new BreadthFirstSearch(new GraphSearch());
-    			break;
-    		case 7:
-    			search2 = new DepthFirstSearch(new TreeSearch());
-    			break;
-    		case 8:
-    			search2 = new DepthLimitedSearch(50);
-    			break;
-    		case 9:
-    			search2 = new UniformCostSearch(new TreeSearch());
-    			break;
-    		default:
-    			search2 = new AStarSearch(new TreeSearch());      			
-    		}
-    //		UniversoLogger logger2 = new UniversoLogger("Busqueda2 "+search2.getClass().toString()+".txt");
-//    		prop2 = uni2.ejecutar(search2, logger2);
-
-    	
-    		switch(busqueda3){
-    		case 1:
-    			search3 = new AStarSearch(new TreeSearch());
-    			break;
-    		case 2:
-    			search3 = new GreedyBestFirstSearch(new TreeSearch());
-    			break;
-    		case 3:
-    			search3 = new HillClimbingSearch();
-    			break;
-    		case 4:
-    			search3 = new SimulatedAnnealingSearch();
-    			break;
-    		case 5:
-    			search3 = new IterativeDeepeningSearch();
-    			break;
-    		case 6:
-    			search3 = new BreadthFirstSearch(new GraphSearch());
-    			break;
-    		case 7:
-    			search3 = new DepthFirstSearch(new TreeSearch());
-    			break;
-    		case 8:
-    			search3 = new DepthLimitedSearch(50);
-    			break;
-    		case 9:
-    			search3 = new UniformCostSearch(new TreeSearch());
-    			break;
-    		default:
-    			search3 = new AStarSearch(new TreeSearch());      			
-    		}
-    	//	UniversoLogger logger3 = new UniversoLogger("Busqueda3 "+search3.getClass().toString()+".txt");
-       // 	prop3 = uni3.ejecutar(search3, logger3);
-  
-
-        	jTable1.setVisible(true);
-        	
-        	
-        	//Aqui va la comparacion:
-        	jTable1.setModel(new javax.swing.table.DefaultTableModel(
-                    new Object [][] {
-                        {"Coste", prop1.getProperty("pathCost"), prop2.getProperty("pathCost"), prop3.getProperty("pathCost")},
-                        {"Tiempo", prop1.getProperty("tiempo"), prop2.getProperty("tiempo"), prop3.getProperty("tiempo")},
-                        {"Nodos Expandidos", prop1.get("nodesExpanded"), prop2.getProperty("nodesExpanded"), prop3.getProperty("nodesExpanded")},
-                        {"Solucion?", prop1.getProperty("resultado").toString(), prop2.getProperty("resultado").toString(), prop3.getProperty("resultado").toString()}
-                    },
-                    new String [] {
-                        "Atributos", search1.getClass().toString(), search2.getClass().toString(), search3.getClass().toString()
-                    }
-                ){
-                   
-					Class[] types = new Class [] {
-                        java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-                    };
-                    boolean[] canEdit = new boolean [] {
-                        false, false, false, false
-                    };
-
-                    public Class getColumnClass(int columnIndex) {
-                        return types [columnIndex];
-                    }
-
-                    public boolean isCellEditable(int rowIndex, int columnIndex) {
-                        return canEdit [columnIndex];
-                    }
-                });
-        	
-        	
-        }else{
-        	JFrame parent = new JFrame();
-            JOptionPane.showMessageDialog(parent, "No se ha cargado ningun universo.");
-        }
+					switch(busqueda2){
+		    		case 1:
+		    			search2 = new AStarSearch(new TreeSearch());
+		    			break;
+		    		case 2:
+		    			search2 = new GreedyBestFirstSearch(new TreeSearch());
+		    			break;
+		    		case 3:
+		    			search2 = new HillClimbingSearch();
+		    			break;
+		    		case 4:
+		    			search2 = new SimulatedAnnealingSearch();
+		    			break;
+		    		case 5:
+		    			search2 = new IterativeDeepeningSearch();
+		    			break;
+		    		case 6:
+		    			search2 = new BreadthFirstSearch(new GraphSearch());
+		    			break;
+		    		case 7:
+		    			search2 = new DepthFirstSearch(new TreeSearch());
+		    			break;
+		    		case 8:
+		    			search2 = new DepthLimitedSearch(50);
+		    			break;
+		    		case 9:
+		    			search2 = new UniformCostSearch(new TreeSearch());
+		    			break;
+		    		default:
+		    			search2 = new AStarSearch(new TreeSearch());      			
+		    		}
+		    		UniversoLogger logger2 = new UniversoLogger("Busqueda2 "+search2.getClass().toString()+".txt");
+		    		prop2 = uni2.ejecutar(search2, logger2);
+					
+		    		switch(busqueda3){
+		    		case 1:
+		    			search3 = new AStarSearch(new TreeSearch());
+		    			break;
+		    		case 2:
+		    			search3 = new GreedyBestFirstSearch(new TreeSearch());
+		    			break;
+		    		case 3:
+		    			search3 = new HillClimbingSearch();
+		    			break;
+		    		case 4:
+		    			search3 = new SimulatedAnnealingSearch();
+		    			break;
+		    		case 5:
+		    			search3 = new IterativeDeepeningSearch();
+		    			break;
+		    		case 6:
+		    			search3 = new BreadthFirstSearch(new GraphSearch());
+		    			break;
+		    		case 7:
+		    			search3 = new DepthFirstSearch(new TreeSearch());
+		    			break;
+		    		case 8:
+		    			search3 = new DepthLimitedSearch(50);
+		    			break;
+		    		case 9:
+		    			search3 = new UniformCostSearch(new TreeSearch());
+		    			break;
+		    		default:
+		    			search3 = new AStarSearch(new TreeSearch());      			
+		    		}
+		    		UniversoLogger logger3 = new UniversoLogger("Busqueda3 "+search3.getClass().toString()+".txt");
+		        	prop3 = uni3.ejecutar(search3, logger3);
+		        	
+		        	jTable1.setVisible(true);
+		        	
+		        	
+		        	//Aqui va la comparacion:
+		        	jTable1.setModel(new javax.swing.table.DefaultTableModel(
+		                    new Object [][] {
+		                        {"Coste", prop1.getProperty("pathCost"), prop2.getProperty("pathCost"), prop3.getProperty("pathCost")},
+		                        {"Tiempo", prop1.getProperty("tiempo"), prop2.getProperty("tiempo"), prop3.getProperty("tiempo")},
+		                        {"Nodos Expandidos", prop1.get("nodesExpanded"), prop2.getProperty("nodesExpanded"), prop3.getProperty("nodesExpanded")},
+		                        {"Solucion?", prop1.getProperty("resultado").toString(), prop2.getProperty("resultado").toString(), prop3.getProperty("resultado").toString()}
+		                    },
+		                    new String [] {
+		                        "Atributos", search1.getClass().toString(), search2.getClass().toString(), search3.getClass().toString()
+		                    }
+		                ){
+		                   
+							Class[] types = new Class [] {
+		                        java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+		                    };
+		                    boolean[] canEdit = new boolean [] {
+		                        false, false, false, false
+		                    };
+		
+		                    public Class getColumnClass(int columnIndex) {
+		                        return types [columnIndex];
+		                    }
+		
+		                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+		                        return canEdit [columnIndex];
+		                    }
+		                });
+		    		
+		        }else{
+		        	JFrame parent = new JFrame();
+		            JOptionPane.showMessageDialog(parent, "No se ha cargado ningun universo.");
+		        }
+           }};
+           
+           Thread hilo = new Thread (miRunnable);
+           hilo.start();
     }
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -450,6 +453,7 @@ public class IAICbuenoView extends FrameView {
         }
     }
 
+  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox jComboBox1;
@@ -466,6 +470,6 @@ public class IAICbuenoView extends FrameView {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
-
+    
     private JDialog aboutBox;
 }

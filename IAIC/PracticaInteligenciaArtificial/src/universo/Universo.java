@@ -1,16 +1,22 @@
 package universo;
 
+import java.awt.BorderLayout;
+import java.awt.Component;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
 import universo.util.UniversoLogger;
 import universo.util.UniversoMovie;
 
 import com.sun.jmx.snmp.Timestamp;
 
+import GUI.dibujos.Dibujo;
 import aima.search.framework.Problem;
 import aima.search.framework.Search;
 import aima.search.framework.SearchAgent;
@@ -137,7 +143,11 @@ public class Universo {
             log.printProperties(prop);
             
             log.closeLogger();
-            
+           
+            if(this.getSolucion()) {
+            	new UniversoMovie(this.busqueda.getClass().getName()).representar(this.agente.getActions());
+            }
+
         }catch(Exception e){
             System.out.println(e);
         }

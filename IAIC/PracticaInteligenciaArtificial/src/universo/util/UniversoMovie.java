@@ -12,14 +12,14 @@ import universo.GestorConexion;
 import GUI.dibujos.ColorFig;
 import GUI.dibujos.Dibujo;
 
-public class UniversoMovie  {
+public class UniversoMovie {
 
 	private Dibujo dib= null;
 	private Properties propiedades = null;
 	
-	public UniversoMovie(){
-		this.dib = new Dibujo("Universo", 800,500);
-		this.dib.setVisible(true);
+	
+	public UniversoMovie(String nombre){
+		this.dib = new Dibujo(nombre, 800,500);
 		//Cargamos las propiedades para saber el nombre de los juegos.
 		FileInputStream prop;
 		try {
@@ -33,11 +33,14 @@ public class UniversoMovie  {
 			e.printStackTrace();
 		}
 	}
-	
-	public void representar(List acciones){
 
+	public void representar(List acciones){
+		
+		this.dib.setVisible(true);
+		
 		String[] enlaceFin = acciones.get(acciones.size()-1).toString().split(" ");
-		for (int i = 0; i < acciones.size()-1; i++) {     	
+		for (int i = 0; i < acciones.size()-1; i++) {     
+			this.dib.setVisible(true);
         	// Consiguiendo informacion del enlace.
         	String[] enlaces = acciones.get(i).toString().split(" ");
         	Nodo nodoTmp = GestorConexion.getInstancia().getNodosH().get(Integer.valueOf(enlaces[4]));
@@ -47,10 +50,11 @@ public class UniversoMovie  {
     		String[] enlaceTmp = acciones.get(i+1).toString().split(" ");
         	dibuja(nodoTmp, Integer.valueOf(enlaceTmp[4]), Integer.valueOf(enlaceFin[4]));
 	
-        	this.dib.espera(1500);
+        	this.dib.espera(1000);
         }
-		this.dib.espera(1500);
+		this.dib.espera(2000);
 		this.dib.setVisible(false);
+
 	}
 
 	public void dibuja(Nodo nodoTmp, Integer sig, Integer fin) {
@@ -81,7 +85,7 @@ public class UniversoMovie  {
         	Integer key = (Integer) keys.next();
             Enlace enlace = nodoTmp.getEnlaces().get(key);
             
-            if (key == sig){
+            if (key.equals(sig)){
             	//Ponemos otro color al lapiz
             	this.dib.ponColorLapiz(ColorFig.verde);
             }
@@ -110,9 +114,9 @@ public class UniversoMovie  {
             	i++;
             }
             
-    		x=x+70;
+            this.dib.espera(100);
             
-    		this.dib.espera(1000);
+    		x=x+70;
     		
             if (key.equals(sig)){
             	//Reestablecemos el color negro

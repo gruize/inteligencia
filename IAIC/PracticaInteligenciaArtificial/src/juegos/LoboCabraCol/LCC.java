@@ -5,10 +5,20 @@ import java.util.List;
 import java.util.Properties;
 
 import juegos.Juego;
+import aima.search.framework.GraphSearch;
 import aima.search.framework.Problem;
 import aima.search.framework.Search;
 import aima.search.framework.SearchAgent;
+import aima.search.framework.TreeSearch;
+import aima.search.informed.AStarSearch;
+import aima.search.informed.GreedyBestFirstSearch;
+import aima.search.informed.HillClimbingSearch;
+import aima.search.uninformed.BidirectionalSearch;
+import aima.search.uninformed.BreadthFirstSearch;
+import aima.search.uninformed.DepthFirstSearch;
 import aima.search.uninformed.DepthLimitedSearch;
+import aima.search.uninformed.IterativeDeepeningSearch;
+import aima.search.uninformed.UniformCostSearch;
 
 public class LCC implements Juego {
 	private Search busqueda = null;
@@ -43,13 +53,7 @@ public class LCC implements Juego {
 			this.nombre = "Problema del Lobo la Cabra y la Col";
 			//System.out.println("Comienza el problema del Lobo la Cabra y la Col");
 			this.problema = new Problem(new LCCEstado(),
-					new LCCFuncionSucesor(), new LCCObjetivo(this));
-			this.busqueda = new DepthLimitedSearch(19);
-			//this.busqueda = new DepthFirstSearch(new GraphSearch());
-			//this.busqueda = new BreadthFirstSearch(new TreeSearch());
-			//this.busqueda=new IterativeDeepeningSearch();
-			//this.busqueda=new UniformCostSearch(new TreeSearch());
-			
+					new LCCFuncionSucesor(), new LCCObjetivo(this));			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}		
@@ -92,9 +96,10 @@ public class LCC implements Juego {
 	}
 
 	public boolean ejecutar() {
+        this.busqueda = new IterativeDeepeningSearch();
 		try {
 			this.agente = new SearchAgent(this.problema, this.busqueda);
-                        System.out.println("Estado inicial: ( "+this.generarAccion(new LCCEstado()));
+            System.out.println("Estado inicial: ( "+this.generarAccion(new LCCEstado()));
 			imprimir(agente.getActions());
 			printInstrumentation(agente.getInstrumentation());
                         if(this.getSolucion())

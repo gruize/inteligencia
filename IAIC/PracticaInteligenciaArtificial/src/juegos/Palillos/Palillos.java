@@ -4,11 +4,20 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
+import aima.search.framework.GraphSearch;
 import aima.search.framework.Problem;
 import aima.search.framework.Search;
 import aima.search.framework.SearchAgent;
 import aima.search.framework.TreeSearch;
+import aima.search.informed.AStarSearch;
+import aima.search.informed.GreedyBestFirstSearch;
+import aima.search.informed.HillClimbingSearch;
+import aima.search.uninformed.BidirectionalSearch;
 import aima.search.uninformed.BreadthFirstSearch;
+import aima.search.uninformed.DepthFirstSearch;
+import aima.search.uninformed.DepthLimitedSearch;
+import aima.search.uninformed.IterativeDeepeningSearch;
+import aima.search.uninformed.UniformCostSearch;
 import juegos.Juego;
 
 public class Palillos implements Juego {
@@ -87,7 +96,7 @@ public class Palillos implements Juego {
 
 	@Override
 	public boolean ejecutar() {
-        this.busqueda = new BreadthFirstSearch(new TreeSearch());
+        this.busqueda = new IterativeDeepeningSearch();
 		try {
             this.agente = new SearchAgent(this.problema, this.busqueda);
             System.out.println("Estado inicial: 6 palillos Turno 0");

@@ -10,6 +10,9 @@ import aima.search.framework.Search;
 import aima.search.framework.SearchAgent;
 import aima.search.framework.TreeSearch;
 import aima.search.informed.AStarSearch;
+import aima.search.informed.GreedyBestFirstSearch;
+import aima.search.informed.HillClimbingSearch;
+import aima.search.uninformed.BidirectionalSearch;
 import aima.search.uninformed.BreadthFirstSearch;
 import aima.search.uninformed.DepthFirstSearch;
 import aima.search.uninformed.DepthLimitedSearch;
@@ -98,12 +101,7 @@ public class Bloques implements Juego {
 	@Override
 	public boolean ejecutar() {
 		System.out.println("Estado inicial:  El bloque A se encuentra sobre el bloque C " +"\n"+"El bloque B se encuentra sobre el bloque A." +"\n"+"El bloque C se encuentra sobre la mesa.");
-		//this.busqueda = new BreadthFirstSearch(new TreeSearch());
-		//this.busqueda = new AStarSearch(new TreeSearch());
-		//this.busqueda = new DepthFirstSearch(new TreeSearch());
-		//this.busqueda = new DepthLimitedSearch(20);
-		//this.busqueda = new IterativeDeepeningSearch();
-		this.busqueda = new UniformCostSearch(new GraphSearch());
+        this.busqueda = new DepthFirstSearch(new GraphSearch());
 		try {
 			this.agente = new SearchAgent(this.problema,this.busqueda);
 			this.imprimir(this.agente.getActions());

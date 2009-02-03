@@ -100,13 +100,7 @@ public class Reinas implements Juego{
     }        
     
     public boolean ejecutar() {
-        //this.busqueda = new AStarSearch(new TreeSearch());
-        this.busqueda = new GreedyBestFirstSearch(new TreeSearch());
-        //this.busqueda = new BreadthFirstSearch(new TreeSearch());
-        //this.busqueda = new DepthFirstSearch(new GraphSearch());
-        //this.busqueda = new DepthLimitedSearch(10);
-        //this.busqueda = new UniformCostSearch(new TreeSearch());
-        //this.busqueda=new IterativeDeepeningSearch();
+        this.busqueda = new UniformCostSearch(new TreeSearch());  
         try{
             this.agente = new SearchAgent(this.problema, this.busqueda);
             this.imprimir(this.agente.getActions());

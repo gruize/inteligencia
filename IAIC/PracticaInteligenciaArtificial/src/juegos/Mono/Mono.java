@@ -4,11 +4,20 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
+import aima.search.framework.GraphSearch;
 import aima.search.framework.Problem;
 import aima.search.framework.Search;
 import aima.search.framework.SearchAgent;
 import aima.search.framework.TreeSearch;
 import aima.search.informed.AStarSearch;
+import aima.search.informed.GreedyBestFirstSearch;
+import aima.search.informed.HillClimbingSearch;
+import aima.search.uninformed.BidirectionalSearch;
+import aima.search.uninformed.BreadthFirstSearch;
+import aima.search.uninformed.DepthFirstSearch;
+import aima.search.uninformed.DepthLimitedSearch;
+import aima.search.uninformed.IterativeDeepeningSearch;
+import aima.search.uninformed.UniformCostSearch;
 import juegos.Juego;
 
 public class Mono implements Juego {

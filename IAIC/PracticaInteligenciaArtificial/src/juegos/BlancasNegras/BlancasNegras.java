@@ -5,10 +5,21 @@ import java.util.List;
 import java.util.Properties;
 
 import juegos.Juego;
+import aima.search.framework.GraphSearch;
 import aima.search.framework.Problem;
 import aima.search.framework.Search;
 import aima.search.framework.SearchAgent;
+import aima.search.framework.TreeSearch;
+import aima.search.informed.AStarSearch;
+import aima.search.informed.GreedyBestFirstSearch;
+import aima.search.informed.HillClimbingSearch;
+import aima.search.informed.RecursiveBestFirstSearch;
+import aima.search.uninformed.BidirectionalSearch;
+import aima.search.uninformed.BreadthFirstSearch;
+import aima.search.uninformed.DepthFirstSearch;
 import aima.search.uninformed.DepthLimitedSearch;
+import aima.search.uninformed.IterativeDeepeningSearch;
+import aima.search.uninformed.UniformCostSearch;
 
 /**
  *
@@ -93,7 +104,7 @@ public class BlancasNegras implements Juego {
     }  
     
     public boolean ejecutar() {
-        this.busqueda = new DepthLimitedSearch(10);
+    	this.busqueda = new HillClimbingSearch();        
         try{
             this.agente = new SearchAgent(this.problema,this.busqueda);            
             this.imprimir(this.agente.getActions());

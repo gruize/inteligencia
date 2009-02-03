@@ -8,6 +8,7 @@ import aima.search.framework.SearchAgent;
 import aima.search.framework.TreeSearch;
 import aima.search.informed.AStarSearch;
 import aima.search.informed.GreedyBestFirstSearch;
+import aima.search.informed.HillClimbingSearch;
 import aima.search.uninformed.BreadthFirstSearch;
 import aima.search.uninformed.DepthFirstSearch;
 import aima.search.uninformed.DepthLimitedSearch;
@@ -104,12 +105,7 @@ public class Robot implements Juego{
     
     
     public boolean ejecutar() {
-        //this.busqueda = new AStarSearch(new TreeSearch());
-        this.busqueda = new GreedyBestFirstSearch(new TreeSearch());
-        //this.busqueda = new BreadthFirstSearch(new TreeSearch());
-        //this.busqueda = new DepthFirstSearch(new GraphSearch());
-        //this.busqueda = new DepthLimitedSearch(100);
-        //this.busqueda = new UniformCostSearch(new TreeSearch());        
+        this.busqueda = new BreadthFirstSearch(new TreeSearch()); 
         try{
             this.agente = new SearchAgent(this.problema,this.busqueda);
             this.imprimir(this.agente.getActions());

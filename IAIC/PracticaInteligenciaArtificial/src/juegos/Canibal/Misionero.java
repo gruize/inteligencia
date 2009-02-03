@@ -6,7 +6,13 @@ import aima.search.framework.Search;
 import aima.search.framework.SearchAgent;
 import aima.search.framework.TreeSearch;
 import aima.search.informed.AStarSearch;
+import aima.search.informed.GreedyBestFirstSearch;
+import aima.search.informed.HillClimbingSearch;
+import aima.search.uninformed.BidirectionalSearch;
 import aima.search.uninformed.BreadthFirstSearch;
+import aima.search.uninformed.DepthFirstSearch;
+import aima.search.uninformed.DepthLimitedSearch;
+import aima.search.uninformed.IterativeDeepeningSearch;
 import aima.search.uninformed.UniformCostSearch;
 import java.util.Iterator;
 import java.util.List;
@@ -30,9 +36,7 @@ public class Misionero implements Juego{
         try{
             this.nombre = "Misioneros vs. Canibales";
             this.solucion = false;
-            this.problema = new Problem(new Estado(this), new FuncionSucesora(), new EstadoObjetivo(this));
-            //this.busqueda = new BreadthFirstSearch(new TreeSearch());
-            this.busqueda = new UniformCostSearch(new TreeSearch());           
+            this.problema = new Problem(new Estado(this), new FuncionSucesora(), new EstadoObjetivo(this));        
         } catch (Exception e) {
                 e.printStackTrace();
         }
@@ -80,7 +84,8 @@ public class Misionero implements Juego{
 	}
 
     public boolean ejecutar(){
-        try{
+        this.busqueda = new DepthLimitedSearch(11);
+    	try{
             this.agente = new SearchAgent(this.problema,this.busqueda);
             System.out.println("Estado inicial: ( 3 , 3 , Izquierda )");
             this.printActions(this.agente.getActions());

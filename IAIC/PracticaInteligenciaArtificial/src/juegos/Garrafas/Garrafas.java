@@ -1,12 +1,22 @@
 package juegos.Garrafas;
 
 import aima.search.framework.GoalTest;
+import aima.search.framework.GraphSearch;
 import aima.search.framework.Problem;
 import aima.search.framework.Search;
 import aima.search.framework.SearchAgent;
 import aima.search.framework.SuccessorFunction;
 import aima.search.framework.TreeSearch;
+import aima.search.informed.AStarSearch;
+import aima.search.informed.GreedyBestFirstSearch;
+import aima.search.informed.HillClimbingSearch;
+import aima.search.uninformed.BidirectionalSearch;
 import aima.search.uninformed.BreadthFirstSearch;
+import aima.search.uninformed.DepthFirstSearch;
+import aima.search.uninformed.DepthLimitedSearch;
+import aima.search.uninformed.IterativeDeepeningSearch;
+import aima.search.uninformed.UniformCostSearch;
+
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
@@ -30,8 +40,7 @@ public class Garrafas implements Juego{
         this.solucion = false;
         this.estado = new GarrafaEstado();
         this.objetivo = new GarrafaObjetivo(this);
-        this.problema = new Problem(this.estado,(SuccessorFunction) new GarrafaFuncionSucesor(),(GoalTest) this.objetivo);
-        this.busqueda = new BreadthFirstSearch(new TreeSearch());
+        this.problema = new Problem(this.estado,(SuccessorFunction) new GarrafaFuncionSucesor(),(GoalTest) this.objetivo);        
     }
 
     public SearchAgent getAgente() {
@@ -87,7 +96,8 @@ public class Garrafas implements Juego{
     }
 
     public boolean ejecutar(){       
-        try {
+        this.busqueda = new BreadthFirstSearch(new TreeSearch());
+    	try {
             System.out.println("Garrafa 3 : " + this.estado.getGarrafa3());
             this.agente = new SearchAgent(this.problema, this.busqueda);
             this.imprimir(this.agente.getActions());

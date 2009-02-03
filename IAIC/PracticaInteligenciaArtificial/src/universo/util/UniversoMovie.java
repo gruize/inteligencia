@@ -15,6 +15,7 @@ import GUI.dibujos.Dibujo;
 public class UniversoMovie {
 
 	private Dibujo dib= null;
+	private Properties juegos = null;
 	private Properties propiedades = null;
 	
 	
@@ -23,7 +24,14 @@ public class UniversoMovie {
 		//Cargamos las propiedades para saber el nombre de los juegos.
 		FileInputStream prop;
 		try {
+			//Propiedades de los juegos
 			prop = new FileInputStream("conf/juegos.conf");
+	        this.juegos = new Properties();
+	        this.juegos.load(prop);
+	        prop.close();
+	        
+	        //Propiedades de configuracion
+	        prop = new FileInputStream("conf/propiedades.conf");
 	        this.propiedades = new Properties();
 	        this.propiedades.load(prop);
 	        prop.close();
@@ -50,9 +58,9 @@ public class UniversoMovie {
     		String[] enlaceTmp = acciones.get(i+1).toString().split(" ");
         	dibuja(nodoTmp, Integer.valueOf(enlaceTmp[4]), Integer.valueOf(enlaceFin[4]));
 	
-        	this.dib.espera(1000);
+        	this.dib.espera(Integer.valueOf(propiedades.getProperty("delayNivel")));
         }
-		this.dib.espera(2000);
+		this.dib.espera(Integer.valueOf(propiedades.getProperty("delayNivel"))*2);
 		this.dib.setVisible(false);
 
 	}
@@ -99,12 +107,13 @@ public class UniversoMovie {
     		this.dib.dibujaTexto(destino, x+20-destino.length()*3, y+25);
             
     		//Pintamos la linea que las une.
-    		dib.dibujaLinea(300, 60, x+20, y);
+    		dib.dibujaLinea(300, 60, x+20, y-75);
+    		dib.dibujaLinea(x+20, y-75, x+20, y);
     		//Pintamo el juego y la distancia
     		String distancia = String.valueOf(enlace.getDistancia());
     		this.dib.dibujaTexto(distancia, x+18-distancia.length()*3, y+60);
             if ( enlace.getJuego() != null ){
-            	String juego = String.valueOf( this.propiedades.getProperty(String.valueOf(enlace.getJuego())));
+            	String juego = String.valueOf( this.juegos.getProperty(String.valueOf(enlace.getJuego())));
             	if ( i % 2 == 1){
             		//Es un numero impar
             		this.dib.dibujaTexto(juego, x+20-(juego.length()*3), y+75);

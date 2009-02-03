@@ -254,21 +254,24 @@ public class IAICbuenoView extends FrameView {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         //Aqui realizaremos la creacion del universo
-        String fich = null;
-        do {
-            fich = JOptionPane.showInputDialog("Â¿Nombre del fichero donde se guardarÃ¡ el universo?");
-        }while ( fich.equals(null));
-
-        System.out.print("Generacion de universos: \n");
-        System.out.print("\t Se guarda con el nombre: " + fich + "\n\n");
-
-        try {
-            GeneraUniverso uni = new GeneraUniverso(fich);
-            uni.generar();
-        } catch (IOException ex) {
-            System.out.print(ex.toString());
+        String fich = JOptionPane.showInputDialog(null, "¿Nombre del fichero donde se guardará el universo?","Generador de universos", JOptionPane.QUESTION_MESSAGE);
+       
+        if ( (fich != null) && ( !fich.equals("")) ){
+	        System.out.print("Generacion de universos: \n");
+	        System.out.print("\t Se guarda con el nombre: " + fich + "\n\n");
+	
+	        try {
+	            GeneraUniverso uni = new GeneraUniverso(fich);
+	            uni.generar();
+	        } catch (IOException ex) {
+	            System.out.print(ex.toString());
+	        }
+        }else{
+            System.out.print("Generacion de universos: \n");
+	        System.out.print("\t Entrada inválida.\n\n");
+	
         }
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         //Aqui se lanza la busqueda.

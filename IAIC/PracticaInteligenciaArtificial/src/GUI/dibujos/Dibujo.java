@@ -1,11 +1,12 @@
 package GUI.dibujos;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.text.*;
-import java.util.*;
-import javax.swing.*;
-import java.io.*;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Vector;
+
+import javax.swing.JFrame;
 
 /**  Dibujo     por Michael Gonzalez. Version 2.2.3 octubre 2008 <p>
 
@@ -62,9 +63,7 @@ public class Dibujo extends JFrame implements ActionListener {
     private static final long serialVersionUID=3918001L;
 
     private int windowWidth, windowHeight;
-    private final int xborder=8, yBorder=20;
     private Vector<Figura> figs;
-    private Button okButton, closeButton;
     private Watcher okWatcher = new Watcher();
 
     private class Atributos {
@@ -251,10 +250,6 @@ public class Dibujo extends JFrame implements ActionListener {
         }
     }
 
-    private static double modulo(double x1,double y1,double x2,double y2) {
-        return Math.sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1));
-    }
-
     private class Poligono extends Lineas {
       
         Poligono (int x[], int y[]) {
@@ -326,29 +321,6 @@ public class Dibujo extends JFrame implements ActionListener {
                 g.fillOval(x-atr.grosorLapiz/2,y-atr.grosorLapiz/2,
                            atr.grosorLapiz,atr.grosorLapiz);
             }
-        }
-    }
-
-    private class Imagen extends Figura {
-
-        int x,y;
-        String filename;
-
-        Imagen (int x, int y, String filename) {
-            super();
-            this.x=x+xBorder;
-            this.y=y+yBorder;
-            this.filename=filename;
-            File f =new File(filename);
-            if (!f.exists()) {
-                Mensaje error=new Mensaje("Error");
-                error.escribe("Fichero de imagen "+filename+" no existe");
-            }
-        }
-
-        void dibuja(Graphics g) {
-            ImageIcon im=new ImageIcon(filename);
-            g.drawImage(im.getImage(),x,y,null);
         }
     }
 
@@ -470,14 +442,6 @@ public class Dibujo extends JFrame implements ActionListener {
     }
 
     /**
-     *  Dibuja la imagen contenida en el fichero cuyo nombre se indica,
-     *  dibujandola desde la posicion (x,y)
-     */
-    public void dibujaImagen(int x,int y, String filename) {
-        figs.add(new Imagen(x,y,filename));
-    }
-
-    /**
      * Constructor simple, que hace la ventana de tamano 640*480
      */
     public Dibujo (String titulo) {
@@ -497,9 +461,9 @@ public class Dibujo extends JFrame implements ActionListener {
     }
    
     private void initializeGraph (String titulo, int width, int height) {
-        windowWidth=width;
-        windowHeight=height;
-        setSize(width+25,height+25);
+        windowWidth=width+15;
+        windowHeight=height+15;
+        setSize(windowWidth,windowHeight);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         super.setTitle (titulo);
     }
@@ -531,10 +495,7 @@ public class Dibujo extends JFrame implements ActionListener {
 
     class Watcher {
 
-        private boolean ok;
-
         Watcher () {
-            ok = false;
         }
 
         synchronized void watch (int nombre) {
@@ -544,7 +505,6 @@ public class Dibujo extends JFrame implements ActionListener {
         }
 
         synchronized void ready () {
-            ok = true;
             notify();
         }
     }

@@ -4,16 +4,19 @@ import universo.util.Enlace;
 import universo.util.Nodo;
 import universo.util.Tipo;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Properties;
 import java.util.Set;
+import java.util.Vector;
 
 public class GeneraUniverso {
 	
@@ -27,6 +30,8 @@ public class GeneraUniverso {
 	private Integer topeDelante = null;  // Numero de enlaces hacia delante como minimo 
 	private Integer topeDetras = null;   // Numero de enlaces hacia detras como minimo
     private String fich = null;
+    private String fichNombres = null;
+    private Vector<String> nombres = null;
 	
 	private Integer dameJuego(){
 		Integer random;
@@ -90,6 +95,17 @@ public class GeneraUniverso {
 	    	topeInicio = Integer.valueOf( propiedades.getProperty("topeInicio"));
 	    	topeDelante = Integer.valueOf( propiedades.getProperty("topeDelante"));
 	    	topeDetras = Integer.valueOf( propiedades.getProperty("topeDetras"));
+	    	fichNombres = String.valueOf( propiedades.getProperty("fichNombres"));
+	    	
+	    	this.nombres = new Vector<String>();
+	    	
+	    	//Cargamos los nombres en el array
+			BufferedReader entrada = new BufferedReader( new FileReader( new File(this.fichNombres) ) );
+		    String linea;  
+			while (( linea = entrada.readLine() ) != null){
+				this.nombres.add(linea);
+			}
+	    	
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -102,9 +118,9 @@ public class GeneraUniverso {
 	public void generar() throws IOException{
 		
 		for(int i = 0; i<planetas;i++){
-			//TODO: Hacer un generador de nombres.
 			Nodo tmp = new Nodo();
 			tmp.setId(i);
+			tmp.setNombre(this.nombres.get(i));
 			if ( i == 0 )
 				tmp.setTipo(Tipo.ORIGEN);
 			else if ( i >= planetas - destinos)
@@ -211,7 +227,7 @@ public class GeneraUniverso {
 		    	}else if (nodoPrint.getTipo() == Tipo.DESTINO){
 		    		bw.write("[D]|");
 		    	}
-		    	bw.write("Nombre|");
+		    	bw.write(nodoPrint.getNombre() + "|");
 		    	bw.write(nodoPrint.getId() + "|");
 		    	
 		    	// Escribimos los enlaces.

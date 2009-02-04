@@ -57,7 +57,7 @@ public class Conector {
 					}			
 					//Eso es que es un campo tipo planeta 
 					String tipo = campos[0].substring(1, campos[0].length()-1);
-					if ( tipo.length() < 2 ) {				
+					if ( (tipo.length() < 2 ) && ( campos[0].indexOf("]") > 0 ) ) {				
 						String nombre = campos[1];
 						nodotmp.setNombre(nombre);				
 						Integer idtmp = Integer.valueOf(campos[2]);

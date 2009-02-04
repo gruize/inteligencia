@@ -1,0 +1,48 @@
+A continuación se detalla el camino:
+
+	Enlazar el planeta Nombre 0 con el planeta Nombre 14 cuya distancia es : 13
+	Enlazar el planeta Nombre 14 con el planeta Nombre 13 cuya distancia es : 61
+	Enlazar el planeta Nombre 13 con el planeta Nombre 23 cuya distancia es : 5
+	Enlazar el planeta Nombre 23 con el planeta Nombre 35 cuya distancia es : 15
+		 Consiguiendo superar el juego: N Reinas
+	Enlazar el planeta Nombre 35 con el planeta Nombre 45 cuya distancia es : 34
+		 Consiguiendo superar el juego: Mono
+	Enlazar el planeta Nombre 45 con el planeta Nombre 48 cuya distancia es : 1
+	Enlazar el planeta Nombre 48 con el planeta Nombre 52 cuya distancia es : 23
+		 Consiguiendo superar el juego: N Reinas
+	Enlazar el planeta Nombre 52 con el planeta Nombre 63 cuya distancia es : 9
+	Enlazar el planeta Nombre 63 con el planeta Nombre 75 cuya distancia es : 25
+		 Consiguiendo superar el juego: Lobo Cabra Col
+	Enlazar el planeta Nombre 75 con el planeta Nombre 89 cuya distancia es : 55
+	Enlazar el planeta Nombre 89 con el planeta Nombre 98 cuya distancia es : 0
+		 Consiguiendo superar el juego: Pollos
+	Enlazar el planeta Nombre 98 con el planeta Nombre 108 cuya distancia es : 56
+	Enlazar el planeta Nombre 108 con el planeta Nombre 118 cuya distancia es : 16
+	Enlazar el planeta Nombre 118 con el planeta Nombre 131 cuya distancia es : 1
+	Enlazar el planeta Nombre 131 con el planeta Nombre 144 cuya distancia es : 8
+	Enlazar el planeta Nombre 144 con el planeta Nombre 157 cuya distancia es : 69
+	Enlazar el planeta Nombre 157 con el planeta Nombre 160 cuya distancia es : 38
+	Enlazar el planeta Nombre 160 con el planeta Nombre 173 cuya distancia es : 54
+	Enlazar el planeta Nombre 173 con el planeta Nombre 185 cuya distancia es : 44
+	Enlazar el planeta Nombre 185 con el planeta Nombre 176 cuya distancia es : 8
+		 Consiguiendo superar el juego: Garrafas
+	Enlazar el planeta Nombre 176 con el planeta Nombre 190 cuya distancia es : 27
+	Enlazar el planeta Nombre 190 con el planeta Nombre 200 cuya distancia es : 25
+		 Consiguiendo superar el juego: Rojo vs Azul
+	Enlazar el planeta Nombre 200 con el planeta Nombre 203 cuya distancia es : 14
+		 Consiguiendo superar el juego: N Reinas
+	Enlazar el planeta Nombre 203 con el planeta Nombre 211 cuya distancia es : 18
+	Enlazar el planeta Nombre 211 con el planeta Nombre 217 cuya distancia es : 68
+	Enlazar el planeta Nombre 217 con el planeta Nombre 231 cuya distancia es : 15
+		 Consiguiendo superar el juego: Rojo vs Azul
+	Enlazar el planeta Nombre 231 con el planeta Nombre 235 cuya distancia es : 9
+		 Consiguiendo superar el juego: Mono
+	Enlazar el planeta Nombre 235 con el planeta Nombre 246 cuya distancia es : 8
+
+
+Informacion de costes:	pathCost: 719.0
+	resultado: Si
+	nodesExpanded: 220
+	queueSize: 18
+	maxQueueSize: 37
+	tiempo: 2 segs.

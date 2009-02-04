@@ -9,7 +9,11 @@ public class Momento {
     private int tamanno;
     private Colores[][] color;
     
-    Momento(int tamanno) {
+    /**
+     * Constructor parametrizado
+     * @param tamanno
+     */
+    public Momento(int tamanno) {
         this.tamanno = tamanno;
         this.color = new Colores[this.getTamanno()][this.getTamanno()];
         int aux = this.getTamanno()/2;
@@ -40,6 +44,13 @@ public class Momento {
         this.tamanno = tamanno;
     }
 
+    /**
+     * Constructor parametrizado
+     * @param tamanno
+     * @param padre
+     * @param a
+     * @param b
+     */
     public Momento(int tamanno, Momento padre, int a, int b){
         this.tamanno = tamanno;
         this.color = new Colores[tamanno][tamanno];
@@ -51,6 +62,7 @@ public class Momento {
         else
             this.color[a][b] = Colores.Azul;            
     }
+    
     
     String aString(){
         String salida = "";
@@ -65,6 +77,12 @@ public class Momento {
         }
         return salida;        
     }
+    
+    /**
+     * Compara el momento actual con otro objeto este tipo (Momento)
+     * @param nuevo Otro momento
+     * @return
+     */
     boolean equals(Momento nuevo){
         boolean igual = true;
         int a = 0, b = 0;
@@ -79,6 +97,11 @@ public class Momento {
         return igual;
     }
     
+    /**
+     * Genera el valor heuristico, el cual aumenta si y solo si, 2 casillas adyacentes
+     * tienen el mismo color.
+     * @return Valor heuristico
+     */
     double obtenerValorHeuristico(){
         double heuristica = 0.0;
         for(int i = 0; i < this.getTamanno(); i++)

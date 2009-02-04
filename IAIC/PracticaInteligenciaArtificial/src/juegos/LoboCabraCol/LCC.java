@@ -27,27 +27,35 @@ public class LCC implements Juego {
 	private String nombre = null;
 	private SearchAgent agente = null;
 
-        public String generarAccion(LCCEstado actual){
-            String accion = "";
-            if(actual.getEstado().isGranjero())
-                accion+="Granjero Izquierda, ";
-            else
-                accion+="Granjero Derecha, ";
-            if(actual.getEstado().isLobo())
-                accion+="Lobo Izquierda, ";
-            else
-                accion+="Lobo Derecha, ";
-            if(actual.getEstado().isCabra())
-                accion+="Cabra Izquierda, ";
-            else
-                accion+="Cabra Derecha, ";
-            if(actual.getEstado().isCol())
-                accion+="Col Izquierda )";
-            else
-                accion+="Col Derecha )";
-            return accion;
-        }
+	/**
+	 * Devuelve el String de la accion que se realiza
+	 * @param actual
+	 * @return String con la accion
+	 */
+    public String generarAccion(LCCEstado actual){
+        String accion = "";
+        if(actual.getEstado().getGranjero())
+            accion+="Granjero Izquierda, ";
+        else
+            accion+="Granjero Derecha, ";
+        if(actual.getEstado().getLobo())
+            accion+="Lobo Izquierda, ";
+        else
+            accion+="Lobo Derecha, ";
+        if(actual.getEstado().getCabra())
+            accion+="Cabra Izquierda, ";
+        else
+            accion+="Cabra Derecha, ";
+        if(actual.getEstado().getCol())
+            accion+="Col Izquierda )";
+        else
+            accion+="Col Derecha )";
+        return accion;
+    }
                 
+    /**
+     * Constructor por defecto
+     */
 	public LCC(){		
 		try {
 			this.nombre = "Problema del Lobo la Cabra y la Col";
@@ -58,20 +66,9 @@ public class LCC implements Juego {
 			e.printStackTrace();
 		}		
 	}
-	
-	//	 Para imprimir resultados
-	private String printInstrumentation(Properties properties) {
-		String ret = "";
-		Iterator keys = properties.keySet().iterator();
-		while (keys.hasNext()) {
-			String key = (String) keys.next();
-			String property = properties.getProperty(key);
-			System.out.println(key + " : " + property);
-			ret += key + " : " + property+"\n";
-		}
-		return ret;
-	}
 
+
+	@Override
 	public String imprimir(List actions) {
 		String ret = "";
 		for (int i = 0; i < actions.size(); i++) {
@@ -95,13 +92,14 @@ public class LCC implements Juego {
 		busqueda = s;
 	}
 
+	@Override
 	public boolean ejecutar() {
         this.busqueda = new IterativeDeepeningSearch();
 		try {
 			this.agente = new SearchAgent(this.problema, this.busqueda);
             System.out.println("Estado inicial: ( "+this.generarAccion(new LCCEstado()));
 			imprimir(agente.getActions());
-			printInstrumentation(agente.getInstrumentation());
+			imprimirPropiedades(agente.getInstrumentation());
                         if(this.getSolucion())
                             System.out.println("Es solucion");
                         else
@@ -115,16 +113,22 @@ public class LCC implements Juego {
 	public boolean getSolucion() {
 		return this.solucion;
 	}
-	public String getDatos(){
-		return imprimir(agente.getActions())+printInstrumentation(agente.getInstrumentation());
-	}
 	
     public SearchAgent getAgente() {
         return agente;
     }
 
+    @Override
     public String imprimirPropiedades(Properties propiedades) {
-        throw new UnsupportedOperationException("Not supported yet.");
+		String ret = "";
+		Iterator keys = propiedades.keySet().iterator();
+		while (keys.hasNext()) {
+			String key = (String) keys.next();
+			String property = propiedades.getProperty(key);
+			System.out.println(key + " : " + property);
+			ret += key + " : " + property+"\n";
+		}
+		return ret;
     }
 
 }

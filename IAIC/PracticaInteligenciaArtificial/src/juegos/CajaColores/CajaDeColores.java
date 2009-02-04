@@ -21,7 +21,7 @@ import juegos.Juego;
 
 /**
  *
- * @author usuario_local
+ * @author Grupo C15
  */
 public class CajaDeColores implements Juego{
 
@@ -33,6 +33,9 @@ public class CajaDeColores implements Juego{
     private Estado estado = null;
     private Objetivo objetivo = null;
     
+    /**
+     * Constructor por defecto
+     */
     public CajaDeColores() {
         try {
             this.nombre = "Caja de Colores Rojo vs Azul";
@@ -100,12 +103,13 @@ public class CajaDeColores implements Juego{
         this.solucion = solucion;
     }
 
+    @Override
     public boolean ejecutar(){
         this.busqueda = new GreedyBestFirstSearch(new TreeSearch());  	 
         try {
             this.agente = new SearchAgent(this.problema,this.busqueda);
             this.imprimir(this.agente.getActions());
-            this.printInstrumentation(this.agente.getInstrumentation());
+            this.imprimirPropiedades(this.agente.getInstrumentation());
             if(this.getSolucion())
                 System.out.println("ES solucion");
             else
@@ -116,6 +120,7 @@ public class CajaDeColores implements Juego{
         return this.getSolucion();
     }
 
+    @Override
     public String imprimir(List acciones){
         String ret = "";
         for (int i = 0; i < acciones.size(); i++) {
@@ -125,8 +130,9 @@ public class CajaDeColores implements Juego{
         }
         return ret;
     }
-    
-    public String printInstrumentation(Properties propiedades){
+
+    @Override
+    public String imprimirPropiedades(Properties propiedades) {
         String ret = "";
         Iterator keys = propiedades.keySet().iterator();
         while (keys.hasNext()) {
@@ -135,14 +141,6 @@ public class CajaDeColores implements Juego{
                 System.out.println(key + " : " + property);
                 ret += key + " : " + property+"\n";
         }
-        return ret;        
-    }
-
-    public String getDatos() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public String imprimirPropiedades(Properties propiedades) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return ret; 
     }
 }

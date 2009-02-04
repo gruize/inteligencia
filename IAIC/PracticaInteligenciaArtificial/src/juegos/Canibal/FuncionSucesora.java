@@ -14,10 +14,19 @@ public class FuncionSucesora implements SuccessorFunction{
 
     private EstadosProhibidos estadosProhibidos;
 
+    /**
+     * Constructor por defecto
+     */
     public FuncionSucesora() {
         this.estadosProhibidos = new EstadosProhibidos();
     }
-        
+
+	/**
+	 * Genera el siguiente estado, comprobando antes que sea valido y posible
+	 * @param padre Estado actual
+	 * @param datos Posible siguiente orilla
+	 * @return Nuevo estado
+	 */
     public Estado crearSiguienteEstado(Estado actual, Orilla datos){
         Estado siguiente = null;
         if(estadoNoProhibido(datos)){
@@ -38,8 +47,7 @@ public class FuncionSucesora implements SuccessorFunction{
         this.estadosProhibidos = estadosProhibidos;
     }
 
-
-    
+    @Override
     public List getSuccessors(Object estado){
         List<Successor> siguientes = new ArrayList<Successor>();
         Estado actual = (Estado) estado;

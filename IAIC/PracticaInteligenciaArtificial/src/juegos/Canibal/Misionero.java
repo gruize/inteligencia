@@ -21,7 +21,7 @@ import juegos.Juego;
 
 /**
  *
- * @author GabiPC
+ * @author Grupo C15
  */
 public class Misionero implements Juego{
 
@@ -83,13 +83,14 @@ public class Misionero implements Juego{
 		return !this.busqueda.getClass().getName().contains("IterativeDeepeningSearch");
 	}
 
+    @Override
     public boolean ejecutar(){
         this.busqueda = new DepthLimitedSearch(11);
     	try{
             this.agente = new SearchAgent(this.problema,this.busqueda);
             System.out.println("Estado inicial: ( 3 , 3 , Izquierda )");
-            this.printActions(this.agente.getActions());
-            this.printInstrumentation(this.agente.getInstrumentation());        
+            this.imprimir(this.agente.getActions());
+            this.imprimirPropiedades(this.agente.getInstrumentation());        
             if(this.getSolucion())
                 System.out.println("Es Solución");
             else
@@ -100,38 +101,28 @@ public class Misionero implements Juego{
         return this.getSolucion();
     }
 
-	private String printInstrumentation(Properties properties) {
+    @Override
+    public String imprimir(List eventos) {
 		String impresion = "";
-		Iterator keys = properties.keySet().iterator();
-		while (keys.hasNext()) {
-			String key = (String) keys.next();
-			String property = properties.getProperty(key);
-			System.out.println(key + " : " + property);
-			impresion += key + " : " + property+"\n";
-		}
-		return impresion;
-	}
-
-	private String printActions(List actions) {
-		String impresion = "";
-		for (int i = 0; i < actions.size(); i++) {
-			String action = (String) actions.get(i);
+		for (int i = 0; i < eventos.size(); i++) {
+			String action = (String) eventos.get(i);
 			System.out.println(action);
 			impresion+=action+"\n";
 		}
 		return impresion;
-	}
-
-    public String getDatos() {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
-
-    public String imprimir(List eventos) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
+    
+    @Override
     public String imprimirPropiedades(Properties propiedades) {
-        throw new UnsupportedOperationException("Not supported yet.");
+		String impresion = "";
+		Iterator keys = propiedades.keySet().iterator();
+		while (keys.hasNext()) {
+			String key = (String) keys.next();
+			String property = propiedades.getProperty(key);
+			System.out.println(key + " : " + property);
+			impresion += key + " : " + property+"\n";
+		}
+		return impresion;
     }
 
 }

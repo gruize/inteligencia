@@ -6,7 +6,7 @@ package juegos.Canibal;
 * se deben restar los elementos transportados a los datos existentes
 * y si se transportan elementos de derecha a izquierda (FALSE --> TRUE)
 * se deben sumar a los mismos (nmisioneros y ncanibales).
- * @author GabiPC
+ * @author Grupo C15
  */
 public class Orilla {
 
@@ -16,8 +16,9 @@ public class Orilla {
     int nmisioneros;
     int ncanibales;
     boolean canoa;
+
     /**
-     * FCO
+     * Constructor por defecto
      */
     public Orilla(){
         this.nmisioneros = NUM_MISIONEROS;
@@ -25,6 +26,12 @@ public class Orilla {
         this.canoa = true;
     }
 
+    /**
+     * Constructor parametrizado
+     * @param nmisioneros
+     * @param ncanibales
+     * @param canoa
+     */
     public Orilla(int nmisioneros, int ncanibales, boolean canoa) {
         this.nmisioneros = nmisioneros;
         this.ncanibales = ncanibales;
@@ -55,6 +62,7 @@ public class Orilla {
         this.nmisioneros = nmisioneros;
     }
 
+    @Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;

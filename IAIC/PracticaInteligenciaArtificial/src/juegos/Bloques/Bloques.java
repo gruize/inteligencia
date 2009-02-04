@@ -20,6 +20,9 @@ import aima.search.uninformed.IterativeDeepeningSearch;
 import aima.search.uninformed.UniformCostSearch;
 import juegos.Juego;
 
+/**
+ * @author Grupo C15
+ */
 public class Bloques implements Juego {
 	
     private String nombre;
@@ -30,6 +33,9 @@ public class Bloques implements Juego {
     private Estado estado = null;
     private Objetivo objetivo = null;
    
+    /**
+     * Constructor por defecto
+     */
     public Bloques(){                
 	    try {
 	    	this.nombre = "Problema de los bloques";

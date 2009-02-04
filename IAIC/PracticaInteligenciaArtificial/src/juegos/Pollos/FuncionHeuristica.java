@@ -8,6 +8,7 @@ import aima.search.framework.HeuristicFunction;
  */
 public class FuncionHeuristica implements HeuristicFunction{
 
+	@Override
     public double getHeuristicValue(Object estado) {
         return ((Estado)estado).generarHeuristica();
     }

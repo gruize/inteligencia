@@ -24,6 +24,9 @@ public class Momento {
 	 */
 	private boolean platano;
 	
+	/**
+	 * Constructor por defecto
+	 */
 	public Momento(){
 		this.mono = 0;
 		this.caja = 2;
@@ -31,6 +34,13 @@ public class Momento {
 		this.platano = false;
 	}
 	
+	/**
+	 * Constructor parametrizado
+	 * @param mono Posicion del mono
+	 * @param caja Posicion de la caja
+	 * @param sobreCaja True sii el mono esta encima de la caja
+	 * @param platano True sii el mono tiene el platano
+	 */
 	public Momento(int mono, int caja, boolean sobreCaja, boolean platano) {
 		super();
 		this.mono = mono;

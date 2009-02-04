@@ -2,7 +2,7 @@ package juegos.Puzzle;
 
 /**
  *
- * @author usuario_local
+ * @author Grupo C15
  */
 public class Momento {
 
@@ -10,10 +10,10 @@ public class Momento {
     private int[][] tablero;
     int xHueco, yHueco;
     
+    /**
+     * Genera el estado inicial el cual es modificable
+     */
     public Momento(){
-        /**
-         * Genera el estado inicial el cual es modificable
-         */
         this.tablero = new int[this.TAMANNO][this.TAMANNO];
         this.tablero[0][0] = 7;
         this.tablero[0][1] = 2;
@@ -27,7 +27,7 @@ public class Momento {
         this.xHueco = 1;
         this.yHueco = 1;
     }
-
+    
     public Momento(Momento momento, int xFin, int yFin){
         this.tablero = new int[this.TAMANNO][this.TAMANNO];
         for(int i = 0; i < this.TAMANNO; i++)

@@ -24,6 +24,7 @@ public class Objetivo implements GoalTest{
         }
     }
 
+    @Override
     public boolean isGoalState(Object estado) {
         boolean goal = false;
         Estado actual = (Estado)estado;

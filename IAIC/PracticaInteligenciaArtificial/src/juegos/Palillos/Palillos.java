@@ -29,7 +29,10 @@ public class Palillos implements Juego {
 	private Problem problema = null;
 	private Estado estado = null;
 	private Objetivo objetivo = null;
-		
+
+	/**
+	 * Constructor por defecto
+	 */
 	public Palillos() {
 		this.nombre = "Palillos";
 		this.solucion = false;

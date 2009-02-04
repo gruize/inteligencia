@@ -4,7 +4,7 @@ import java.util.Vector;
 
 /**
  *
- * @author GabiPC
+ * @author Grupo C15
  */
 public class Estado {
     
@@ -12,6 +12,10 @@ public class Estado {
     private Vector<Orilla> recorrido;
     private Misionero mision;
 
+    /**
+     * Constructor parametrizado
+     * @param mision
+     */
     public Estado(Misionero mision) {
         this.datos = new Orilla();
         this.recorrido = new Vector<Orilla>();
@@ -19,6 +23,12 @@ public class Estado {
         this.mision = mision;
     }
 
+    /**
+     * Constructor parametrizado
+     * @param datos
+     * @param recorrido
+     * @param mision
+     */
     public Estado(Orilla datos, Vector<Orilla> recorrido, Misionero mision) {
         this.datos = datos;
         this.recorrido = recorrido;
@@ -50,6 +60,12 @@ public class Estado {
         this.recorrido = recorrido;
     }
 
+    /**
+     * Indica si un estado ya ha sido creado en algun otro momento del recorrido.
+     * @param datos Siguiente posible orilla
+     * @return	True Si es posible
+     * 			False En cualquier otro caso
+     */
     public boolean transporteValido(Orilla datos){
         boolean valido = true;
         if( this.mision.permiteControlCiclos())

@@ -14,8 +14,7 @@ public class Estado {
     private Vector<Nodo> recorridos;
     
     /**
-     * Constructor parametrizado
-     * 
+     * Constructor parametrizado     * 
      * @param aThis Universo, que contiene los datos obtenidos desde el fichero
      */
     public Estado() {
@@ -29,7 +28,7 @@ public class Estado {
 
     /**
      * Constructor parametrizado
-     * El nodo actual se añade al recorrido despues de haber realizado con exito
+     * El nodo actual se a�ade al recorrido despues de haber realizado con exito
      * el juego de ese nodo si existiese. Si dicho nodo no supone como requisito,
      * para pasar por él, realizar ningun juego, suponemos la inexistencia de ese
      * requisito como un exito.

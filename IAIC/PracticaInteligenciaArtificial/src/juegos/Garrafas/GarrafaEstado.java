@@ -3,12 +3,11 @@ package juegos.Garrafas;
 import java.util.Vector;
 
 /**
- *
- * @author GabiPC
+ * @author Grupo C15
  */
 public class GarrafaEstado {
     /**
-     * Nº de litros que se desean obtener en la garrafa cuya capacidad son 4 litros
+     * Numero de litros que se desean obtener en la garrafa cuya capacidad son 4 litros
      */
     final int NLITROS = 2;
     /**

@@ -13,7 +13,14 @@ import java.util.List;
  */
 public class GarrafaFuncionSucesor implements SuccessorFunction {
  
-    public GarrafaEstado crearSiguienteEstado(GarrafaEstado actual, int g3, int g4){
+	/**
+	 * Genera el siguiente estado, comprobando antes que sea valido y posible
+	 * @param actual Estado actual
+	 * @param g3 Posible siguiente valor de la garrafa 3
+	 * @param g4 Posible siguiente valor de la garrafa 4
+	 * @return Posible siguiente estado
+	 */
+	public GarrafaEstado crearSiguienteEstado(GarrafaEstado actual, int g3, int g4){
         GarrafaEstado next = null;
         if(actual.cambioAunNoRealizado(g3, g4)){
             next = new GarrafaEstado(g3,g4,actual.getContenido());            
@@ -21,6 +28,7 @@ public class GarrafaFuncionSucesor implements SuccessorFunction {
         return next;
     }
 
+    @Override
     public List getSuccessors(Object state){
         List<Successor> siguientes = new ArrayList<Successor>() {};
         GarrafaEstado estado = (GarrafaEstado)state;

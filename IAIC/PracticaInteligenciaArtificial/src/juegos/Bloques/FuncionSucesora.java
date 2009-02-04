@@ -8,7 +8,7 @@ import aima.search.framework.SuccessorFunction;
 
 public class FuncionSucesora implements SuccessorFunction {
 
-
+	@Override
     public List getSuccessors(Object state) {
             List<Successor> siguientes = new ArrayList<Successor>();
             Estado actual = (Estado) state;
@@ -96,13 +96,19 @@ public class FuncionSucesora implements SuccessorFunction {
             return siguientes;
     }
     
+	/**
+	 * Genera el siguiente estado, comprobando antes que sea posible
+	 * @param padre Estado actual
+	 * @param posible Posible siguiente momento
+	 * @return Nuevo estado
+	 */
     private Estado siguienteMovimiento(Estado padre, Momento posible){
         Estado siguiente = null;
     	if(padre.permiteMovimiento(posible))
     		siguiente = new Estado(posible,padre.getRecorrido());      
     	return siguiente;
     }
-
+    
     private boolean libre(Posiciones pos,Estado b) {
         int i = 0;
         boolean free = true;

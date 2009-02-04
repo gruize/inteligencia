@@ -9,6 +9,7 @@ import aima.search.framework.GoalTest;
 public class GarrafaObjetivo implements GoalTest {
 
     private Garrafas garrafilla;
+    
     /**
      * Constructor parametrizado
      */
@@ -16,6 +17,7 @@ public class GarrafaObjetivo implements GoalTest {
         this.garrafilla = inicio;
     }
 
+    @Override
     public boolean isGoalState(Object state){
         if(((GarrafaEstado)state).esObjetivo())
             this.garrafilla.setSolucion(true);

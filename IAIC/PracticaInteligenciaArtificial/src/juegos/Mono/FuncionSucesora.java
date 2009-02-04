@@ -8,6 +8,12 @@ import aima.search.framework.SuccessorFunction;
 
 public class FuncionSucesora implements SuccessorFunction {
 
+	/**
+	 * Genera el siguiente estado, comprobando antes que sea posible
+	 * @param actual Estado actual
+	 * @param posible Siguiente momento posible
+	 * @return Nuevo estado
+	 */
 	public Estado crearSiguienteEstado(Estado actual, Momento posible){
 		Estado siguiente = null;
 		if(actual.permiteMovimiento(posible))

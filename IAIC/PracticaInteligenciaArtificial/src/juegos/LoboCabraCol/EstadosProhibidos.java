@@ -6,10 +6,11 @@ public class EstadosProhibidos {
 	
 	private Vector<Contenido>estadosPeligrosos = new Vector<Contenido> ();
 
-	public EstadosProhibidos(){
-		
-		// Estados peligrosos
-		
+	/**
+	 * Estados prohibidos y/o peligrosos
+	 * Constructor por defecto
+	 */
+	public EstadosProhibidos(){	
 		estadosPeligrosos.add(new Contenido(false,true,true,true));
 		estadosPeligrosos.add(new Contenido(false,false,true,true));
 		estadosPeligrosos.add(new Contenido(false,true,true,false));

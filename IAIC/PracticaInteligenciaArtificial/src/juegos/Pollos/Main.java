@@ -2,7 +2,7 @@ package juegos.Pollos;
 
 /**
  *
- * @author GabiPC
+ * @author Grupo C15
  */
 public class Main {
 

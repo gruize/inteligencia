@@ -6,8 +6,10 @@ public class Objetivo implements GoalTest{
 
 	private Mono jungla;
 	
-	
-	
+	/**
+	 * Constructor parametrizado
+	 * @param jungla
+	 */
 	public Objetivo(Mono jungla) {
 		this.jungla = jungla;
 	}

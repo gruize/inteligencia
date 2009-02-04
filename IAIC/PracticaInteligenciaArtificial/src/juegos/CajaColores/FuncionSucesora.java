@@ -7,10 +7,16 @@ import java.util.List;
 
 /**
  *
- * @author GabiPC
+ * @author Grupo C15
  */
 public class FuncionSucesora implements SuccessorFunction {
 
+	/**
+	 * Genera el siguiente estado, comprobando antes que sea posible
+	 * @param padre Estado actual
+	 * @param hijo Posible siguiente momento
+	 * @return Nuevo estado
+	 */
     public Estado crearSiguienteEstado(Estado padre, Momento hijo){
         Estado siguiente = null;
         if(padre.permiteMovimiento(hijo)){
@@ -19,6 +25,7 @@ public class FuncionSucesora implements SuccessorFunction {
         return siguiente;
     }
     
+    @Override
     public List getSuccessors(Object estado) {
         List<Successor> siguientes = new ArrayList<Successor>();
         Estado actual = (Estado)estado;

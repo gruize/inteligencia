@@ -9,12 +9,20 @@ public class Estado {
 	private Momento instante;
 	private Vector<Momento> recorrido;
 	
+	/**
+	 * Constructor por defecto
+	 */
 	public Estado() {
 		this.instante = new Momento();
 		this.recorrido = new Vector<Momento>();
 		this.recorrido.add(this.instante);
 	}
 
+	/**
+	 * Constructor parametrizado
+	 * @param padre Estado
+	 * @param nuevo Momento
+	 */
 	public Estado(Estado padre, Momento nuevo) {
 		this.instante = nuevo;
 		this.recorrido = padre.getRecorrido();
@@ -41,6 +49,12 @@ public class Estado {
 		return this.getInstante().generarHeuristica();
 	}
 	
+	/**
+     * Indica si un momento ya ha sido creado en algun otro punto del recorrido
+     * del arbol de busqueda.
+	 * @param posible
+	 * @return
+	 */
     public boolean permiteMovimiento(Momento posible){
         boolean resultado = true;
         int i = 0;

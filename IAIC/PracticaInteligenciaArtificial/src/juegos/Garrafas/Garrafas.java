@@ -35,6 +35,9 @@ public class Garrafas implements Juego{
     private GarrafaEstado estado = null;
     private GarrafaObjetivo objetivo = null;
 
+    /**
+     * Constructor por defecto
+     */
     public Garrafas(){
         this.nombre = "Garrafas de capacidades diferentes";
         this.solucion = false;
@@ -95,13 +98,14 @@ public class Garrafas implements Juego{
         this.solucion = solucion;
     }
 
+    @Override
     public boolean ejecutar(){       
         this.busqueda = new BreadthFirstSearch(new TreeSearch());
     	try {
             System.out.println("Garrafa 3 : " + this.estado.getGarrafa3());
             this.agente = new SearchAgent(this.problema, this.busqueda);
             this.imprimir(this.agente.getActions());
-            this.printInstrumentation(this.agente.getInstrumentation());
+            this.imprimirPropiedades(this.agente.getInstrumentation());
             if(this.getSolucion())
                 System.out.println("ES solucion");
             else
@@ -112,6 +116,7 @@ public class Garrafas implements Juego{
         return this.getSolucion();
     }
 
+    @Override
     public String imprimir(List eventos){
         String impresion = "";
         for(int i = 0; i < eventos.size(); i++){
@@ -120,37 +125,19 @@ public class Garrafas implements Juego{
             impresion = impresion + aux + "\n";
         }
         return impresion;
-        /**
-         * Ejemplo de uso
-         * printActions(agent.getActions())
-         */
     }
 
-    /**
-     * Para imprimir resultados
-     */
-	private String printInstrumentation(Properties properties) {
+    @Override
+    public String imprimirPropiedades(Properties propiedades) {
 		String ret = "";
-		Iterator keys = properties.keySet().iterator();
+		Iterator keys = propiedades.keySet().iterator();
 		while (keys.hasNext()) {
 			String key = (String) keys.next();
-			String property = properties.getProperty(key);
+			String property = propiedades.getProperty(key);
 			System.out.println(key + " : " + property);
 			ret += key + " : " + property+"\n";
 		}
 		return ret;
-        /**
-         * Ejemplo de uso
-         * printInstrumentation(agent.getInstrumentation())
-         */
-	}
-
-    public String getDatos() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public String imprimirPropiedades(Properties propiedades) {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }

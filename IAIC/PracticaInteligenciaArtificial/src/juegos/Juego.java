@@ -26,9 +26,10 @@ public interface Juego {
 	 */
 	public void setBusqueda(Search s);
 
-	/**
-	 * Devuelve el exito o fracaso del juego, y a su vez acciona los metodos de
-	 * ejecucion del juego y la obtencion de sus resultados
+    /**
+     * Establece el metodo de busqueda y hace las llamadas necesarias a las diferentes 
+     * clases, para obtener una lista de acciones que deben realizarse segun el algoritmo
+     * establecido para poder conseguir el mejor recorrido llegando a sus objetivos     
 	 * @return Solucion
 	 */
 	public boolean ejecutar();
@@ -39,20 +40,18 @@ public interface Juego {
 	 */
 	public String getNombre();
 	
-	/**
-	 * Genera un String con todas las acciones que se han realizado, siempre que el
-	 * resultado del juego haya sido un exito.
-	 * @param eventos Lista de acciones realizadas.
-	 * @return String con las acciones realizadas.
-	 */
+    /**
+     * Genera un String con todos las acciones que deben realizarse
+     * @param eventos Listado de acciones que deben realizarse
+     * @return String con el listado de acciones concatenados
+     */
     public String imprimir(List eventos);
     
     /**
-     * Genera un String con las propiedades resultantes de la ejecucion del juego,
-     * sin importar el resultado del mismo.
-     * @param propiedades Propiedades resultantes de la ejecucion del juego.
-     * @return String Propiedades.
-     */
+    * Genera un String con las propiedades resultantes del recorrido
+    * @param propiedades Propiedades obtenidas
+    * @return String con las propiedades concatenadas
+    */
     public String imprimirPropiedades(Properties propiedades);
         
 }

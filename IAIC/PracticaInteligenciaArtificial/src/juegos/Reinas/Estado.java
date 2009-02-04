@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author usuario_local
+ * @author Grupo C15
  */
 class Estado {
 
@@ -14,7 +13,7 @@ class Estado {
     private int tamanno;
     private int[][] tablero;
 
-    Estado(Reinas aThis, int i) {
+    public Estado(Reinas aThis, int i) {
         this.reino = aThis;
         this.tamanno = i;
         this.tablero = new int[i][i];

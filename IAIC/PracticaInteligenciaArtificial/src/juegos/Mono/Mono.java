@@ -30,6 +30,9 @@ public class Mono implements Juego {
 	private Estado estado = null;
 	private Objetivo objetivo = null;
 	
+	/**
+	 * Constructor por defecto
+	 */
 	public Mono(){
 		this.nombre = "Problema del Mono";
 		this.solucion = false;

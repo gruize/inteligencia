@@ -8,6 +8,7 @@ import aima.search.framework.StepCostFunction;
  */
 public class FuncionCoste implements StepCostFunction{
 
+	@Override
     public Double calculateStepCost(Object origen, Object destino, String accion) {
         Estado padre = (Estado)origen;
         Estado hijo = (Estado)destino;

@@ -21,7 +21,7 @@ import juegos.Juego;
 
 /**
  *
- * @author GabiPC
+ * @author Grupo C15
  */
 public class Pollos implements Juego{
 
@@ -33,6 +33,9 @@ public class Pollos implements Juego{
     private Objetivo objetivo = null;
     private Estado estado = null;
     
+    /**
+     * Constructor por defecto
+     */
     public Pollos(){
         this.nombre = "Problema de los Pollos";
         this.solucion = false;
@@ -97,6 +100,7 @@ public class Pollos implements Juego{
         this.solucion = solucion;
     }            
     
+    @Override
     public boolean ejecutar(){
         this.busqueda = new AStarSearch(new TreeSearch());   	       
         try{
@@ -113,6 +117,7 @@ public class Pollos implements Juego{
         return this.getSolucion();
     }
 
+    @Override
     public String imprimir(List eventos) {
         String ret = "";
         for (int i = 0; i < eventos.size(); i++) {
@@ -123,6 +128,7 @@ public class Pollos implements Juego{
         return ret;
     }
 
+    @Override
     public String imprimirPropiedades(Properties propiedades) {
         String ret = "";
         Iterator keys = propiedades.keySet().iterator();

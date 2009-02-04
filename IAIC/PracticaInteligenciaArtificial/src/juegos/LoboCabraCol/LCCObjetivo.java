@@ -7,6 +7,10 @@ public class LCCObjetivo implements GoalTest{
     
     private LCC source = null;
     
+    /**
+     * Constructor parametrizado
+     * @param source
+     */
     public LCCObjetivo(LCC source) {
             this.source = source;
     }

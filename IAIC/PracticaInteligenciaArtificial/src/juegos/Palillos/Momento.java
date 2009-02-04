@@ -4,12 +4,20 @@ public class Momento {
 
 	private int palillos;
 	private int turno;
-		
+
+	/**
+	 * Constructor por defecto
+	 */
 	public Momento() {
 		this.palillos = 6;
 		this.turno = 0;
 	}	
 
+	/**
+	 * Constructor parametrizado
+	 * @param palillos Numero de palillos que quedan por quitar
+	 * @param turno Jugador
+	 */
 	public Momento(int palillos, int turno) {
 		this.palillos = palillos;
 		this.turno = turno%2;
@@ -37,6 +45,10 @@ public class Momento {
 				(this.getTurno() == ((Momento)obj).getTurno()));
 	}
 
+	/**
+	 * Devuelve el valor heuristico
+	 * @return Valor heuristico
+	 */
 	public double generarHeuristica() {
 		return (this.getPalillos() + (this.getTurno()%2));
 	}

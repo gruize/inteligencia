@@ -11,6 +11,9 @@ public class Momento {
     
     private Valores [][] valor;
     
+    /**
+     * Constructor por defecto
+     */
     public Momento(){
         this.valor = new Valores[coordenadaX][coordenadaY];
         for(int i = 0; i < coordenadaX; i++)
@@ -18,6 +21,12 @@ public class Momento {
                 this.valor[i][j] = Valores.Blanco;
     }
     
+    /**
+     * Constructor parametrizado
+     * @param padre Momento anterior
+     * @param x Nuevo valor de la coordenada X
+     * @param y Nuevo valor de la coordenada Y
+     */
     public Momento(Momento padre, int x, int y){
         this.valor = new Valores[coordenadaX][coordenadaY];
         for(int i = 0; i < coordenadaX; i++)
@@ -62,6 +71,12 @@ public class Momento {
         return iguales;
     }  
     
+    /**
+     * Genera el coste de ir desde el momento actual a otro pasado por parametro.
+     * Se utiliza la distancia manhattan
+     * @param instante Momento destino
+     * @return
+     */
     public double generarCoste(Momento instante) {
         double coste = 0.0;
         for(int i = 0; i < coordenadaX; i++)
@@ -71,6 +86,12 @@ public class Momento {
         return coste;						
     }
 
+    /**
+     * Devuelve el valor heuristico, segun la evolucion del huevo la heuristica aumenta
+     * o disminuye. 
+     * El orden de mayor a menor es: Blanco --> Azul --> Rojo --> Pollito (0)
+     * @return
+     */
     public double generarHeuristica() {
         double heuristica = 0.0;
         for(int i = 0; i < coordenadaX; i++)

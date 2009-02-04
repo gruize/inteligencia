@@ -7,18 +7,26 @@ public class LCCEstado {
 	private Vector<Contenido> historia;
 	private Contenido estado;
 
-	LCCEstado(){
+	/**
+	 * Constructor por defecto
+	 */
+	public LCCEstado(){
 		estado=new Contenido(true,true,true,true);
 		 historia=new Vector<Contenido> ();
 		 historia.add(estado);
 	 }
 
-	LCCEstado (Contenido est,Vector<Contenido> his){
+	/**
+	 * Constructor parametrizado
+	 * @param est Estado
+	 * @param his Historia
+	 */
+	public LCCEstado (Contenido est,Vector<Contenido> his){
 		estado=est;
 		historia=his;
 		historia.add(estado);
 	}
-	
+		
 	public boolean isFinal(){
 		return estado.equals(new Contenido(false,false,false,false));
 	}

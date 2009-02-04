@@ -14,6 +14,12 @@ public class FuncionSucesora implements SuccessorFunction{
     final int coordenadaX = 2;
     final int coordenadaY = 5;
     
+	/**
+	 * Genera el siguiente estado, comprobando antes que sea posible
+	 * @param actual Estado actual
+	 * @param posible Posible siguiente momento
+	 * @return Nuevo estado
+	 */
     public Estado crearSiguienteEstado(Estado actual,Momento posible){
         Estado siguiente = null;
         if(actual.movimientoPosible(posible))
@@ -21,6 +27,7 @@ public class FuncionSucesora implements SuccessorFunction{
         return siguiente;
     }
     
+    @Override
     public List getSuccessors(Object estado) {
         List<Successor> siguientes = new ArrayList<Successor>();
         Estado actual = (Estado)estado;

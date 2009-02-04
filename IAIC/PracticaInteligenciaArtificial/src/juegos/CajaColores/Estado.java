@@ -3,8 +3,7 @@ package juegos.CajaColores;
 import java.util.Vector;
 
 /**
- *
- * @author usuario_local
+ * @author Grupo C15
  */
 public class Estado {
 
@@ -14,6 +13,10 @@ public class Estado {
     //Cube lo tiene como final    
     private Vector<Momento> contenido;
 
+    /**
+     * Constructor parametrizado
+     * @param tamanno
+     */
     public Estado(int tamanno) {
         this.tamanno = tamanno;
         this.instante = new Momento(tamanno);
@@ -21,6 +24,12 @@ public class Estado {
         this.contenido.add(this.instante);
     }
     
+    /**
+     * Constructor parametrizado
+     * @param tamanno
+     * @param momento
+     * @param estado
+     */
     public Estado(int tamanno, Momento momento, Estado estado){
         this.tamanno = tamanno;
         this.instante = momento;
@@ -54,6 +63,13 @@ public class Estado {
         this.tamanno = tamanno;
     }
     
+    /**
+     * Indica si un estado ya ha sido creado en algun otro momento del recorrido
+     * del arbol de busqueda.
+     * @param momento Siguiente posible momento
+     * @return	True Si es posible
+     * 			False En cualquier otro caso
+     */
     public boolean permiteMovimiento(Momento momento){
     	boolean resultado = true;
         int i = 0;
@@ -65,6 +81,10 @@ public class Estado {
         return resultado;        
     }
     
+    /**
+     * Obtiene el valor heuristico de este estado
+     * @return
+     */
     public double obtenerValorHeuristico(){
         return this.getInstante().obtenerValorHeuristico();
     }

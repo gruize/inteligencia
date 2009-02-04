@@ -6,12 +6,21 @@ public class Momento {
     
 	private Posiciones [] bloques = new Posiciones[3];
 
+	/**
+	 * Constructor por defecto
+	 */
     public Momento(){
 	    bloques[0]= Posiciones.C;
 	    bloques[1]= Posiciones.A;
 	    bloques[2]= Posiciones.mesa;    
     }
     
+    /**
+     * Constructor parametrizado
+     * @param a 
+     * @param b
+     * @param c
+     */
     public Momento(Posiciones a, Posiciones b, Posiciones c){       
 	    bloques[0]= a;
 	    bloques[1]= b;

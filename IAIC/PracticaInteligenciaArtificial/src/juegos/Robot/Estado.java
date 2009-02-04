@@ -12,7 +12,7 @@ class Estado {
     private Momento instante;
     private Vector<Momento> contenido;
     private XYLocation posFinal;
-    
+        
     public Estado(XYLocation origen, XYLocation destino){
         this.posFinal = destino;
         this.instante = new Momento(origen);

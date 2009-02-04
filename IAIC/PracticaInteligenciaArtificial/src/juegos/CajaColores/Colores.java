@@ -1,7 +1,7 @@
 package juegos.CajaColores;
 
 /**
- *
- * @author usuario_local
+ * Posibles colores
+ * @author Grupo C15
  */
 public enum Colores {Rojo,Azul}

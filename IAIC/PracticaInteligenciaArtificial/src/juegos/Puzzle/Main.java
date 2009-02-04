@@ -2,7 +2,7 @@ package juegos.Puzzle;
 
 /**
  *
- * @author usuario_local
+ * @author Grupo C15
  */
 public class Main {
 

@@ -8,8 +8,8 @@ package juegos.Canibal;
 import java.util.Vector;
 
 /**
- *
- * @author usuario_local
+ * Estados a los que nunca podra llegar.
+ * @author Grupo C15
  */
 public class EstadosProhibidos {
 
@@ -23,6 +23,9 @@ public class EstadosProhibidos {
         this.estadosProhibidos = estadosProhibidos;
     }
     
+    /**
+     * Constructor por defecto
+     */
     public EstadosProhibidos() {
         this.estadosProhibidos = new Vector<Orilla>();
         this.estadosProhibidos.add(new Orilla(1,0,true));

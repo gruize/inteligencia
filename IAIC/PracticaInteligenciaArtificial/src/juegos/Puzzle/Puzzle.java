@@ -21,7 +21,7 @@ import juegos.Juego;
 
 /**
  *
- * @author usuario_local
+ * @author Grupo C15
  */
 public class Puzzle implements Juego{
 
@@ -97,7 +97,7 @@ public class Puzzle implements Juego{
         this.solucion = solucion;
     }
     
-    
+    @Override
     public boolean ejecutar() {
         this.busqueda = new GreedyBestFirstSearch(new TreeSearch());           	           
         try{
@@ -114,6 +114,7 @@ public class Puzzle implements Juego{
         return this.getSolucion();
     }
 
+    @Override
     public String imprimir(List eventos) {
         String ret = "";
         for (int i = 0; i < eventos.size(); i++) {
@@ -124,6 +125,7 @@ public class Puzzle implements Juego{
         return ret;
     }
 
+    @Override
     public String imprimirPropiedades(Properties propiedades) {
         String ret = "";
         Iterator keys = propiedades.keySet().iterator();

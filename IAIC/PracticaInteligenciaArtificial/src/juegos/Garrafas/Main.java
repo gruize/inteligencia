@@ -2,7 +2,7 @@ package juegos.Garrafas;
 
 /**
  *
- * @author GabiPC
+ * @author Grupo C15
  */
 public class Main {
 

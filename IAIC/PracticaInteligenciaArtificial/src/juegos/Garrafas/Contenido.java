@@ -7,13 +7,18 @@ package juegos.Garrafas;
 
 /**
  *
- * @author usuario_local
+ * @author Grupo C15
  */
 public class Contenido {
 
     private int contG3;
     private int contG4;
 
+    /**
+     * Constructor parametrizado
+     * @param contG3
+     * @param contG4
+     */
     public Contenido(int contG3, int contG4) {
         this.contG3 = contG3;
         this.contG4 = contG4;

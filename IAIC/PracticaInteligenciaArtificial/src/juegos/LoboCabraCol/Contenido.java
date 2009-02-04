@@ -1,26 +1,37 @@
 package juegos.LoboCabraCol;
 
 public class Contenido {
+	
 	private boolean granjero;
 	private boolean lobo;
 	private boolean cabra;
 	private boolean col;
 	
-	Contenido() {
+	/**
+	 * Constructor por defecto
+	 */
+	public Contenido() {
 		granjero=true;
 		lobo=true;
 		cabra=true;
 		col=true;
 	}
 	
-	Contenido(boolean gran,boolean lob,boolean cab, boolean cl){
+	/**
+	 * Constructor parametrizado
+	 * @param gran
+	 * @param lob
+	 * @param cab
+	 * @param cl
+	 */
+	public Contenido(boolean gran,boolean lob,boolean cab, boolean cl){
 		granjero=gran;
 		lobo=lob;
 		cabra=cab;
 		col=cl;
 	}
 
-	public boolean isCabra() {
+	public boolean getCabra() {
 		return cabra;
 	}
 
@@ -28,7 +39,7 @@ public class Contenido {
 		this.cabra = cabra;
 	}
 
-	public boolean isCol() {
+	public boolean getCol() {
 		return col;
 	}
 
@@ -36,7 +47,7 @@ public class Contenido {
 		this.col = col;
 	}
 
-	public boolean isGranjero() {
+	public boolean getGranjero() {
 		return granjero;
 	}
 
@@ -44,7 +55,7 @@ public class Contenido {
 		this.granjero = granjero;
 	}
 
-	public boolean isLobo() {
+	public boolean getLobo() {
 		return lobo;
 	}
 

@@ -6,6 +6,10 @@ public class Objetivo implements GoalTest{
 
 	private Palillos palos;
 	
+	/**
+	 * Constructor parametrizado
+	 * @param palillos
+	 */
 	public Objetivo(Palillos palillos) {
 		this.palos = palillos;
 	}

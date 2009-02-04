@@ -3,13 +3,15 @@ package juegos.BlancasNegras;
 import java.util.Vector;
 
 /**
- *
- * @author usuario_local
+ * @author Grupo C15
  */
 public class MomentosObjetivo {
 
     private Vector<Momento> momentosObjetivo;
 
+    /**
+     * Constructor por defecto
+     */
     public MomentosObjetivo(){
         this.momentosObjetivo = new Vector<Momento>();
                 /**

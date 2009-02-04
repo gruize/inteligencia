@@ -11,11 +11,16 @@ public class Objetivo implements GoalTest {
     private BlancasNegras bn;
     private MomentosObjetivo objetivos;
     
-    Objetivo(BlancasNegras aThis) {
+    /**
+     * Constructor parametrizado
+     * @param aThis BlancasNegras
+     */
+    public Objetivo(BlancasNegras aThis) {
         this.bn = aThis;
         this.objetivos = new MomentosObjetivo();
     }
 
+    @Override
     public boolean isGoalState(Object estado) {
         boolean goal = false;
         int i = 0;

@@ -1,7 +1,7 @@
 package juegos.BlancasNegras;
 
 /**
- *
- * @author GabiPC
+ * Tipos de fichas
+ * @author Grupo C15
  */
 public enum Fichas {Blanca,Negra,Vacia}

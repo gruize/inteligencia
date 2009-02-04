@@ -1,17 +1,20 @@
 package juegos.BlancasNegras;
 
 /**
- *
- * @author GabiPC
+ * @author Grupo C15
  */
 public class Momento {
-    /**
+    
+	/**
      * Indica en que posicion del array está la ficha vacía
      */    
     private int hueco;
     private Fichas[] fichas;
     
-    Momento() {
+    /**
+     * Constructor por defecto
+     */
+    public Momento() {
         /**
          * Genera el Momento inicial (N,N,N, ,B,B,B)
          */
@@ -24,6 +27,11 @@ public class Momento {
         this.hueco = 3;
     }
 
+    /**
+     * Constructor parametrizado
+     * @param vacio Posicion del huevo o casilla vacia
+     * @param fichas
+     */
     public Momento(int vacio, Fichas[] fichas) {
         this.hueco = vacio;
         this.fichas = new Fichas[7];
@@ -64,6 +72,12 @@ public class Momento {
         this.hueco = hueco;
     }
 
+    /**
+     * Genera el coste que supone el pasar del momento actual al siguiente pasado
+     * por paramentro
+     * @param instante Posible siguiente momento
+     * @return Coste
+     */
     public Double generarCoste(Momento instante) {
         double coste = 0.0;
         int posIni = 0, posFin = 0;

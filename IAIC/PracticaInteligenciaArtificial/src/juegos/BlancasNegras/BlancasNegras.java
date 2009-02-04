@@ -11,8 +11,8 @@ import aima.search.framework.SearchAgent;
 import aima.search.informed.HillClimbingSearch;
 
 /**
- *
- * @author GabiPC
+ * Clase controladora del juego Blancas vs. Negras
+ * @author Grupo C15
  */
 public class BlancasNegras implements Juego {
 
@@ -24,6 +24,9 @@ public class BlancasNegras implements Juego {
     private Estado estado = null;
     private Objetivo objetivo = null;
 
+    /**
+     * Constructor por defecto
+     */
     public BlancasNegras() {
         try{
             this.nombre = "Blancas vs. Negras";
@@ -131,6 +134,11 @@ public class BlancasNegras implements Juego {
         return ret;
     }
     
+    /**
+     * Indica si el metodo de busqueda elegido es capaz de controlar los ciclos.
+     * @return 	True si es capaz
+     * 			False en cualquier otro caso
+     */
     public boolean controlaCiclos(){
         return !this.busqueda.getClass().getName().contains("IterativeDeepeningSearch");
     }

@@ -1,9 +1,13 @@
 package universo.util;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
@@ -14,11 +18,15 @@ public class UniversoLogger {
 	private BufferedWriter output;
 	private String fich = null;
 	
-	public UniversoLogger(String fichero){
-		this.fich = fichero;
+	public UniversoLogger(String fichero){  
+		String time = new Date().toGMTString();
+		time = time.substring(0, time.length()-7);
+		this.fich = "logs/"+fichero+" "+time.replace(":", "-")+".log";
 		try {
-			output = new BufferedWriter(new FileWriter(this.fich));
+			
+			output = new BufferedWriter(new FileWriter(new File(this.fich)));
 		} catch (IOException e) {
+			System.out.print("asdad");
 		}	
 	}
 	

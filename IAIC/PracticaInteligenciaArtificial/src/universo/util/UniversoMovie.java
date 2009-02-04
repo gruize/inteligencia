@@ -47,16 +47,14 @@ public class UniversoMovie {
 		this.dib.setVisible(true);
 		
 		String[] enlaceFin = acciones.get(acciones.size()-1).toString().split(" ");
-		for (int i = 0; i < acciones.size()-1; i++) {     
-			this.dib.setVisible(true);
+		for (int i = 0; i < acciones.size(); i++) {     
         	// Consiguiendo informacion del enlace.
         	String[] enlaces = acciones.get(i).toString().split(" ");
         	Nodo nodoTmp = GestorConexion.getInstancia().getNodosH().get(Integer.valueOf(enlaces[4]));
         	
         	//Pasamos el nodo final y el siguiente para colorearlos de 
         	//distinto color.
-    		String[] enlaceTmp = acciones.get(i+1).toString().split(" ");
-        	dibuja(nodoTmp, Integer.valueOf(enlaceTmp[4]), Integer.valueOf(enlaceFin[4]));
+        	dibuja(nodoTmp, Integer.valueOf(enlaces[9]), Integer.valueOf(enlaceFin[9]));
 	
         	this.dib.espera(Integer.valueOf(propiedades.getProperty("delayNivel")));
         }
@@ -104,21 +102,21 @@ public class UniversoMovie {
             
             this.dib.dibujaElipse(x,y,x+40,y+40);
             String destino = String.valueOf(enlace.getDestino());
-    		this.dib.dibujaTexto(destino, x+20-destino.length()*3, y+25);
+    		this.dib.dibujaTexto(destino, x+19-destino.length()*3, y+25);
             
     		//Pintamos la linea que las une.
     		dib.dibujaLinea(300, 60, x+20, y-75);
     		dib.dibujaLinea(x+20, y-75, x+20, y);
     		//Pintamo el juego y la distancia
     		String distancia = String.valueOf(enlace.getDistancia());
-    		this.dib.dibujaTexto(distancia, x+18-distancia.length()*3, y+60);
+    		this.dib.dibujaTexto(distancia, x+19-distancia.length()*3, y+60);
             if ( enlace.getJuego() != null ){
             	String juego = String.valueOf( this.juegos.getProperty(String.valueOf(enlace.getJuego())));
             	if ( i % 2 == 1){
             		//Es un numero impar
-            		this.dib.dibujaTexto(juego, x+20-(juego.length()*3), y+75);
+            		this.dib.dibujaTexto(juego, x+22-(juego.length()*3), y+75);
             	}else{
-            		this.dib.dibujaTexto(juego, x+20-(juego.length()*3), y+90);
+            		this.dib.dibujaTexto(juego, x+22-(juego.length()*3), y+90);
             	}
             	i++;
             }

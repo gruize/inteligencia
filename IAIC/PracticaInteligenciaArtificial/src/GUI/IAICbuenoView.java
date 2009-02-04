@@ -330,7 +330,11 @@ public class IAICbuenoView extends FrameView {
 		    		default:
 		    			search1 = new AStarSearch(new TreeSearch());      			
 		    		}
-		    		UniversoLogger logger1 = new UniversoLogger("Busqueda1 "+search1.getClass().toString()+".txt");
+		    		
+		    		String tmp;
+		    		tmp = ((String)search1.getClass().toString());
+		    		tmp = tmp.substring(tmp.lastIndexOf(".")+1,tmp.length());
+		    		UniversoLogger logger1 = new UniversoLogger(tmp);
 		    		prop1 = uni1.ejecutar(search1, logger1);    		
 
 					switch(busqueda2){
@@ -364,7 +368,10 @@ public class IAICbuenoView extends FrameView {
 		    		default:
 		    			search2 = new AStarSearch(new TreeSearch());      			
 		    		}
-		    		UniversoLogger logger2 = new UniversoLogger("Busqueda2 "+search2.getClass().toString()+".txt");
+					
+					tmp = ((String)search2.getClass().toString());
+		    		tmp = tmp.substring(tmp.lastIndexOf(".")+1,tmp.length());
+		    		UniversoLogger logger2 = new UniversoLogger(tmp);
 		    		prop2 = uni2.ejecutar(search2, logger2);
 					
 		    		switch(busqueda3){
@@ -398,7 +405,10 @@ public class IAICbuenoView extends FrameView {
 		    		default:
 		    			search3 = new AStarSearch(new TreeSearch());      			
 		    		}
-		    		UniversoLogger logger3 = new UniversoLogger("Busqueda3 "+search3.getClass().toString()+".txt");
+		    		
+		    		tmp = ((String)search3.getClass().toString());
+		    		tmp = tmp.substring(tmp.lastIndexOf(".")+1,tmp.length());
+		    		UniversoLogger logger3 = new UniversoLogger(tmp);
 		        	prop3 = uni3.ejecutar(search3, logger3);
 		        	
 		        	jTable1.setVisible(true);

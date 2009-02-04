@@ -13,6 +13,11 @@ class Estado {
     private int tamanno;
     private int[][] tablero;
 
+    /**
+     * Constructor parametrizado
+     * @param aThis Controlador del juego
+     * @param i Tamaño del tablero y numero de reinas
+     */
     public Estado(Reinas aThis, int i) {
         this.reino = aThis;
         this.tamanno = i;
@@ -46,20 +51,42 @@ class Estado {
         this.tamanno = tamanno;
     }
 
+    /**
+     * Modifica el tablero añadiendo una reina en la posicion especificada por 
+     * parametro 
+     * @param pos Posicion de la reina a agregar
+     */
     public void agregarReina(XYLocation pos){
         if(!hayReina(pos))
             this.tablero[pos.getXCoOrdinate()][pos.getYCoOrdinate()] = 1;
     }
 
+    /**
+     * Consulta si hay una reina en la posicion especificada por parametro
+     * @param pos Posible posicion de una reina
+     * @return	True si existe
+     * 			False En cualquier otro caso
+     */
     public boolean hayReina(XYLocation pos) {
         return (this.tablero[pos.getXCoOrdinate()][pos.getYCoOrdinate()] == 1);
     }
 
+    /**
+     * Quitar una reina del tablero, situada en la posicion especificada por parametro
+     * despues de haber comprobado su existencia.
+     * @param pos Posible posicion de una reina que debe quitarse
+     */
     public void quitarReina(XYLocation pos){
         if(hayReina(pos))
             this.tablero[pos.getXCoOrdinate()][pos.getYCoOrdinate()] = 0;
     }
 
+    /** 
+     * Quitar una reina de la posicion especificada por parametro y situarla en la otra
+     * posicion
+     * @param origen Posicion de origen de la reina
+     * @param destino Posicion de destino
+     */
     public void modificaReina(XYLocation origen, XYLocation destino){
         if(hayReina(origen) && (!hayReina(destino))){
             this.quitarReina(origen);
@@ -67,6 +94,9 @@ class Estado {
         }
     }
 
+    /**
+     *  Quitar todas las reinas existentes en el tablero
+     */
     public void quitarReinaTodas(){
         for(int i = 0; i < this.getTamanno(); i++)
             for(int j = 0; j < this.getTamanno(); j++){
@@ -74,6 +104,10 @@ class Estado {
             }
     }
 
+    /**
+     * Devuelve el numero de reinas existentes en el tablero
+     * @return numero de reinas
+     */
     public int numeroReinasEnTablero(){
         int contador = 0;
         XYLocation pos;
@@ -86,6 +120,10 @@ class Estado {
         return contador;
     }
 
+    /**
+     * Devuelve una lista de las posiciones del tablero en las que existe una reina
+     * @return Lista de posiciones
+     */
     public List<XYLocation> posicionReinas(){
         List<XYLocation> posiciones = new ArrayList<XYLocation>();
         for(int i = 0; i < this.getTamanno(); i++)
@@ -97,7 +135,7 @@ class Estado {
         }        
         return posiciones;
     }
-
+   
     public boolean casillaAtacadaPorVertical(XYLocation pos){
         return (this.numeroAtaquesVertical(pos) > 0);
     }
@@ -178,22 +216,6 @@ class Estado {
     }
 
     public void imprimir(){
-        /**
-        Puede generar problemas por el String, que podria ser StringBuffer        
-        StringBuffer buffer = new StringBuffer();
-        for (int row = 0; (row < size); row++) { // row
-            for (int col = 0; (col < size); col++) { // col
-                if (queenExistsAt(col, row)) {
-                    buffer.append(" Q ");
-                } else {
-                    buffer.append(" - ");
-                }
-            }
-            buffer.append("\n");
-        }
-        return buffer.toString();           
-        No utilizamos el metodo ToString() ya que no usamos el StringBuffer
-         */
 	String tabla = "";
         for(int i = 0; i < this.getTamanno(); i++){
             for(int j = 0; j < this.getTamanno(); j++){

@@ -21,7 +21,7 @@ import juegos.Juego;
 
 /**
  *
- * @author GabiPC
+ * @author Grupo C15
  */
 public class Robot implements Juego{
 
@@ -33,6 +33,9 @@ public class Robot implements Juego{
     private Estado estado = null;
     private Objetivo objetivo = null;
 
+    /**
+     * Constructor por defecto
+     */
     public Robot() {
         this.nombre = "Problema del Robot";
         this.solucion = false;
@@ -103,7 +106,7 @@ public class Robot implements Juego{
         this.solucion = solucion;
     }
     
-    
+    @Override
     public boolean ejecutar() {
         this.busqueda = new BreadthFirstSearch(new TreeSearch()); 
         try{
@@ -120,6 +123,7 @@ public class Robot implements Juego{
         return this.getSolucion();
     }
 
+    @Override
     public String imprimir(List eventos) {
         String ret = "";
         for (int i = 0; i < eventos.size(); i++) {
@@ -130,6 +134,7 @@ public class Robot implements Juego{
         return ret;
     }
 
+    @Override
     public String imprimirPropiedades(Properties propiedades) {
         String ret = "";
         Iterator keys = propiedades.keySet().iterator();

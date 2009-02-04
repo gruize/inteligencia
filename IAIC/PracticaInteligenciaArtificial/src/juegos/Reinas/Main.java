@@ -1,13 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package juegos.Reinas;
 
 /**
  *
- * @author usuario_local
+ * @author Grupo C15
  */
 public class Main {
     

@@ -5,7 +5,7 @@ import java.util.Vector;
 
 /**
  *
- * @author GabiPC
+ * @author Grupo C15
  */
 class Estado {
 
@@ -51,6 +51,13 @@ class Estado {
         this.posFinal = posFinal;
     }
 
+    /**
+     * Indica si un estado ya ha sido creado en algun otro momento del recorrido
+     * del arbol de busqueda.
+     * @param siguiente Siguiente posible momento
+     * @return	True Si es posible
+     * 			False En cualquier otro caso
+     */
     public boolean permiteMovimiento(Momento siguiente){
         boolean posible = true;
         int i = 0;
@@ -62,6 +69,11 @@ class Estado {
         return posible;
     }
     
+    /**
+     * Devuelve la heuristica correspondiente al estado actual.
+     * Heuristica = Media de las posicion origen y destino.
+     * @return Double Valor heuristico
+     */
     public double generarHeuristica(){
         return Math.abs(this.getInstante().posRobot().getXCoOrdinate() 
                         - this.getPosFinal().getXCoOrdinate())

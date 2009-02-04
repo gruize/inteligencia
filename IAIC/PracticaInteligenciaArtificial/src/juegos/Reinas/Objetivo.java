@@ -13,6 +13,10 @@ class Objetivo implements GoalTest{
     private Estado estado;
     private Reinas reino;
 
+    /**
+     * Constructor parametrizado
+     * @param reino Controlador del juego
+     */
     public Objetivo(Reinas reino) {
         this.reino = reino;
     }       
@@ -26,6 +30,8 @@ class Objetivo implements GoalTest{
         }
         return reinas;
     }
+    
+    @Override
     public boolean isGoalState(Object estado) {
         boolean goal = false;
         this.estado = (Estado)estado;

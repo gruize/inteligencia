@@ -1,18 +1,14 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package juegos.Reinas;
 
 import aima.search.framework.HeuristicFunction;
 
 /**
  *
- * @author usuario_local
+ * @author Grupo C15
  */
 public class FuncionHeuristica implements HeuristicFunction{
 
+	@Override
     public double getHeuristicValue(Object estado) {
         return ((Estado)estado).getTamanno() - ((Estado)estado).numeroReinasEnTablero();
     }

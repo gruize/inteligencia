@@ -4,7 +4,7 @@ import aima.basic.XYLocation;
 
 /**
  *
- * @author usuario_local
+ * @author Grupo C15
  */
 class Momento {
 
@@ -12,7 +12,11 @@ class Momento {
     
     private Recorrido[][] recorrido;
     
-    Momento(XYLocation origen) {
+    /**
+     * Construtor parametrizado e inicial
+     * @param origen Posicion inicial del robot
+     */
+    public Momento(XYLocation origen) {
         this.recorrido = new Recorrido[SIZE][SIZE];
         for(int i = 0; i < SIZE; i++){
             for(int j = 0; j < SIZE; j++){
@@ -32,6 +36,12 @@ class Momento {
         this.recorrido[1][0] = Recorrido.Muro;
     }
     
+    /**
+     * Constructor parametrizado
+     * @param padre Momento anterior
+     * @param posCamino Posicion en la que estaba situado el robot y que vuelve a ser camino     * 
+     * @param posRobot Posicion que ocupa actualmente el robot y que antes era camino
+     */
     public Momento(Momento padre, XYLocation posCamino, XYLocation posRobot){
         this.recorrido = new Recorrido[SIZE][SIZE];
         for(int i = 0; i < SIZE; i++)
@@ -56,7 +66,11 @@ class Momento {
     public void setRecorrido(Recorrido[][] recorrido) {
         this.recorrido = recorrido;
     }
-
+    
+    /**
+     * Devuelve la posicion en la que se encuentra el robor
+     * @return XYLocation Posicion de robot
+     */
     public XYLocation posRobot(){
 	int x = 0, y = 0;
         boolean robot = false;

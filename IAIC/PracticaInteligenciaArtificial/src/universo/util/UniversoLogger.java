@@ -57,7 +57,7 @@ public class UniversoLogger {
 	
 	public void printProperties(Properties prop) throws IOException{
 		
-		output.write("Informacion de costes:");
+		output.write("Informacion de costes:\n");
         Iterator keys = prop.keySet().iterator();
         while (keys.hasNext()) {
             String key = (String) keys.next();

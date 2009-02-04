@@ -15,19 +15,32 @@ import universo.util.Tipo;
 import universo.util.exceptions.BadFormattedFile;
 import conector.util.exceptions.BadUniFileException;
 
+/**
+ * 
+ * Esta clase es la encargada de leer el fichero de configuracion de universo
+ * para que la aplicacion pueda funcionar.
+ * 
+ * @author Kenzitron
+ *
+ */
+
 public class Conector {
 
-	/**
-	 * @param args
-	 * @throws IOException 
-	 */
-	
 	private Hashtable<Integer, Nodo> nodosH;
 	private String archivo;
 	private Nodo origen;
 	private Hashtable<Integer, Nodo> destinos;
 	private Vector<String> errores;
-	
+/**
+ * Constructor de la clase, recibe el fichero que debe cargar como parametro de entrada.
+ * Y lanza las siguientes excepciones
+ * 	
+ * @param archivo
+ * @throws NumberFormatException
+ * @throws IOException
+ * @throws BadUniFileException  No es un archivo de Universo
+ * @throws BadFormattedFile  El formato del archivo no es correcto
+ */
 	public Conector(String archivo) throws NumberFormatException, IOException, BadUniFileException, BadFormattedFile {
             this.setArchivo(archivo);
             origen = null;
@@ -156,27 +169,59 @@ public class Conector {
 		    	throw new BadFormattedFile();
 		    }        
 	}
+	/**
+	 * Accedente
+	 * @return archivo
+	 */
 	public String getArchivo() {
 		return archivo;
 	}
+	/**
+	 * Mutador
+	 * @param archivo
+	 */
 	public void setArchivo(String archivo) {
 		this.archivo = archivo;
 	}
+	/**
+	 * Accedente
+	 * @return nodosh
+	 */
 	public Hashtable<Integer, Nodo> getNodosH() {
 		return nodosH;
 	}
+	/**
+	 * Mutador
+	 * @param nodosH
+	 */
 	public void setNodosH(Hashtable<Integer, Nodo> nodosH) {
 		this.nodosH = nodosH;
 	}
+	/**
+	 * Accedente
+	 * @return Nodo Origen
+	 */
 	public Nodo getOrigen() {
 		return origen;
 	}
+	/**
+	 * Mutador
+	 * @param origen
+	 */
 	public void setOrigen(Nodo origen) {
 		this.origen = origen;
 	}
+	/**
+	 * Accedente
+	 * @return destinos
+	 */
 	public Hashtable<Integer, Nodo> getDestinos() {
 		return destinos;
 	}
+	/**
+	 * Mutador 
+	 * @param destinos
+	 */
 	public void setDestinos(Hashtable<Integer, Nodo> destinos) {
 		this.destinos = destinos;
 	}	

@@ -19,12 +19,9 @@ import org.jdesktop.application.SingleFrameApplication;
 import universo.GestorConexion;
 import universo.Universo;
 import universo.util.UniversoLogger;
-import universo.util.UniversoMovie;
-import GUI.dibujos.Dibujo;
 import aima.search.framework.GraphSearch;
 import aima.search.framework.Search;
 import aima.search.framework.TreeSearch;
-
 import aima.search.informed.AStarSearch;
 import aima.search.informed.GreedyBestFirstSearch;
 import aima.search.informed.HillClimbingSearch;
@@ -252,6 +249,10 @@ public class IAICbuenoView extends FrameView {
         setMenuBar(menuBar);
     }
 
+    /**
+     * Evento de generacion de unviersos
+     * @param evt
+     */
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         //Aqui realizaremos la creacion del universo
         String fich = JOptionPane.showInputDialog(null, "¿Nombre del fichero donde se guardará el universo?","Generador de universos", JOptionPane.QUESTION_MESSAGE);
@@ -273,6 +274,11 @@ public class IAICbuenoView extends FrameView {
         }
     }
 
+    /**
+     * En este evento se trata la informacion para realizar las busquedas previa carga del universo.
+     * @param evt
+     */
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         //Aqui se lanza la busqueda.
     	Runnable miRunnable = new Runnable()
@@ -453,6 +459,11 @@ public class IAICbuenoView extends FrameView {
            hilo.start();
     }
 
+    /**
+     * En este evento se elige el fichero que se va a cargar como universo.
+     * @param evt
+     */
+    
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         JFileChooser chooser = new JFileChooser();
         // Note: source for ExampleFileFilter can be found in FileChooserDemo,

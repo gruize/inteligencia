@@ -114,6 +114,9 @@ public class Universo {
      * Establece el metodo de busqueda y hace las llamadas necesarias a las diferentes 
      * clases, para obtener una lista de acciones que deben realizarse segun el algoritmo
      * establecido para poder conseguir el mejor recorrido llegando a sus objetivos  
+     * 
+     * A su vez es el metodo encargado de llamar a UniversoMovie para que se dibuje el recorrido 
+     * realiazdo por el algoritmo y es el encargado de guardar tambien el log de la ejecucion.
      * @return
      */
     

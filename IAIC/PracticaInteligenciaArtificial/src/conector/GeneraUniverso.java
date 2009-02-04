@@ -18,6 +18,17 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.Vector;
 
+/**
+ * Esta clase es una facilidad que se le da al usuario para realziar entornos de ejecucion.
+ * Crea un fichero de universo totalmente aleatorio listo para ejecutar por la aplicacion.
+ * 
+ * Los parametros de configuracion del GeneraUniverso se encuentran en el archivo: configuracion.conf
+ * que se añade en la aplicacion.
+ * 
+ * @author Kenzitron
+ *
+ */
+
 public class GeneraUniverso {
 	
 	private Hashtable<Integer, Nodo> universo = null;
@@ -33,6 +44,12 @@ public class GeneraUniverso {
     private String fichNombres = null;
     private Vector<String> nombres = null;
 	
+    /**
+     * Devuelve un juego aleatoriamente con una probabilidad definida por la variable
+     * probJuegos
+     * @return
+     */
+    
 	private Integer dameJuego(){
 		Integer random;
 		switch( (int)(Math.random()*probJuegos)){
@@ -77,6 +94,12 @@ public class GeneraUniverso {
 		}
 		return random;
 	}
+	/**
+	 * Metodo constructor de la clase.
+	 * Da valor a los parametros de configuracion asi como consulta la base de datos
+	 * de nombres de planetas y la almacena en un vector.
+	 * @param fichero
+	 */
 	
 	public GeneraUniverso(String fichero){
 
@@ -107,14 +130,27 @@ public class GeneraUniverso {
 			}
 	    	
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         
 	}
+	
+	/**
+	 * Funcion que genera el fichero propiamente dicho.
+	 * 
+	 * Esta funcion tiene las siguientes caracteristicas::
+	 * 		- Permite la creacion de ciclos.
+	 * 		- Los enlaces van como mucho a X planetas por delante o por detras. Este valor X viene definido por una de las variables de la clase.
+	 * 		- El nodo Origen debe tener al menos Y enlaces para garantizar que tenga varias salidas.
+	 * 		- Los nodos destinos no tienen enlaces.
+	 * 		- Todos los planetas debe tener al menos X enlaces ahcia delante e Y enlaces hacia atras donde X e Y son variables de configuacion
+	 * 		- Una vez establecidos los enalces minimos hay una probabilidad de 60% de que tenga otro enlace.
+	 * 
+	 * throws IOException
+	 */
+	
 	public void generar() throws IOException{
 		
 		for(int i = 0; i<planetas;i++){
@@ -176,8 +212,9 @@ public class GeneraUniverso {
 				newEnlace.setDistancia(distancia);
 				newEnlace.setJuego(juego);
 				
-				// Solo aï¿½adimos el enlace si no lo hemos aï¿½adido ya.
+				// Solo añadimos el enlace si no lo hemos añadido ya.
 				// Nos aseguramos que no se meta el mismo nodo, aunque probablemente no pasa nada.
+				
 				if ( ( enlacesHechos.indexOf(String.valueOf(destino)) < 0) && (i != destino) && (destino < planetas) && (destino > 0) ){
 					enlacesHechos += String.valueOf(destino)+" ";
 					nodoTemp.addEnlaces(newEnlace);

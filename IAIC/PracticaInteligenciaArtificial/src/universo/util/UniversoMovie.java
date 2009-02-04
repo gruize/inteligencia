@@ -12,12 +12,28 @@ import universo.GestorConexion;
 import GUI.dibujos.ColorFig;
 import GUI.dibujos.Dibujo;
 
+/**
+ * 
+ * Clase encargada de la representacion del universo a traves de dibujos.
+ * 
+ * @author Kenzitron
+ *
+ */
+
 public class UniversoMovie {
 
 	private Dibujo dib= null;
 	private Properties juegos = null;
 	private Properties propiedades = null;
 	
+	/**
+	 * Constructor de la clase
+	 * 
+	 * Inicializa los archivos de propiedades que necesita y crea el formulario donde
+	 * se van a mostrar los planetas.
+	 * 
+	 * @param nombre -> Titulo del frame
+	 */
 	
 	public UniversoMovie(String nombre){
 		this.dib = new Dibujo(nombre, 800,500);
@@ -42,6 +58,15 @@ public class UniversoMovie {
 		}
 	}
 
+	/**
+	 * 
+	 * Encargado de recorrer las acciones y pasar ciertos parametros de configuracion al metodo
+	 * dibuja que es el que realmente pinta sobre el formulario.
+	 * 
+	 * En este metodo se hace visible o invisible el formulario.
+	 * 
+	 * @param acciones -> Acciones a representar.
+	 */
 	public void representar(List acciones){
 		
 		this.dib.setVisible(true);
@@ -63,6 +88,22 @@ public class UniversoMovie {
 
 	}
 
+	/**
+	 * 
+	 * Escribe y colorea segun sea nodo, enlace siguiente, enlace normal o nodo destino.
+	 * 
+	 * Leyenda de colores:
+	 * 		- Rojo: Color para el nodo que estamos representando.
+	 * 		- Negro: Color para nodos normales.
+	 * 		- Verde: Color para el nodo siguiente.
+	 * 		- Naranja: Color para el nodo destino final del recorrido. 
+	 * 
+	 * @param nodoTmp Nodo que tiene que dibuja
+	 * @param sig Siguiente nodo
+	 * @param fin Nodo final
+	 * 
+	 */
+	
 	public void dibuja(Nodo nodoTmp, Integer sig, Integer fin) {
 		
 		//Borramos lo que hubiera antes.

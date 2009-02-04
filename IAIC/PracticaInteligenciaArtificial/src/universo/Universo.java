@@ -145,7 +145,9 @@ public class Universo {
             log.closeLogger();
            
             if(this.getSolucion()) {
-            	new UniversoMovie(this.busqueda.getClass().getName()).representar(this.agente.getActions());
+	    		String tmp = ((String)this.busqueda.getClass().toString());
+	    		tmp = tmp.substring(tmp.lastIndexOf(".")+1,tmp.length());
+            	new UniversoMovie(tmp).representar(this.agente.getActions());
             }
 
         }catch(Exception e){

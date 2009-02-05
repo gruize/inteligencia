@@ -12,7 +12,7 @@ import java.util.Vector;
 import universo.util.Enlace;
 import universo.util.Nodo;
 import universo.util.Tipo;
-import universo.util.exceptions.BadFormattedFile;
+import conector.util.exceptions.BadFormattedFile;
 import conector.util.exceptions.BadUniFileException;
 
 /**

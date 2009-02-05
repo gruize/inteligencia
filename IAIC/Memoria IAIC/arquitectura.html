@@ -53,23 +53,95 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
     <td width="40">&nbsp;</td>
     <td colspan="2" valign="top">&nbsp;<br>
     &nbsp;<br>
-    <table border="0" cellspacing="0" cellpadding="2" width="500">
+    <table border="0" cellspacing="0" cellpadding="2" width="633">
         <tr>
-          <td class="pageName">PAGE NAME HERE</td>
+          <td width="629" class="pageName">Introducción</td>
         </tr>
         <tr>
-          <td class="bodyText"><p>Rapiebant me spectacula theatrica, plena imaginibus miseriarum mearum
-            et fomitibus ignis mei. quis est, quod ibi homo vult dolere luctuosa
-            et tragica, quae tamen pati ipse nollet? et tamen pati vult ex eis!</p>
-
-			<p>Rapiebant me spectacula theatrica, plena imaginibus miseriarum mearum
-            et fomitibus ignis mei. quis est, quod ibi homo vult dolere luctuosa
-            et tragica, quae tamen pati ipse nollet? et tamen pati vult ex eis!</p>
-
-			<p>Rapiebant me spectacula theatrica, plena imaginibus miseriarum mearum
-            et fomitibus ignis mei. quis est, quod ibi homo vult dolere luctuosa
-            et tragica, quae tamen pati ipse nollet? et tamen pati vult ex eis!</p>			</td>
+          <td class="bodyText"><p>En esta pagina se van a detallar los detalles internos de la apliacion, que paquetes se encuentran porque esa clasificacion y demas entresijos de la arquitectura de la practica.</p>
+          <p>Indice de contenidos:</p>
+          <p><a href="arquitectura.html#descripcion">1. Descripcion general.</a></p>
+          <p><a href="arquitectura.html#fuentes">2. Descripcion del paquete src.</a></p>
+          </td>
 		</tr>
+        <tr>
+          <td class="pageName"><a name="descripcion">Descripcion general</a></td>
+        </tr>
+        <tr>
+          <td class="bodyText">
+            <p>En este apartado de muestra la organizacion de nuestra arquitectura. Con la siguiente imagen pretendemos dar una vision global que será ampliada con los comentarios que la sucedan.</p>
+          <p><center><img src="arquitectura-base.png" alt="Base de la arquitectura" width="192" height="232"></center></p>
+          <p>Como se puede apreciar a aprte del directorio de fuentes, tenemos diversas carpetas que nos ayudan a mantener una aplicacion limpia y ordenada.</p>
+          <ul>
+            <li>Conf: Esta carpeta contiene los diferentes archivos de configuracion necesarios. <em>Juegos.conf</em> que le asigna a cada juego una id, <em>Configuracion.conf</em> en este archivo podemos encontrar diversos parametros de configuracion principalmente para la generacion del universo, pero tambien por ejemplo la ruta del fichero de nombres de planetas y el delay que se quiere para la animacion del recorrido. Por ultimo en esta misma carpeta hemos guardado la base de datos de los nombres.</li>
+            <li>Doc: Esta carpeta tiene los archivos generados con javadoc para un mayor entendimiento de las clases que forman la aplicacion.</li>
+            <li>lib: Diversas librerias necesarias para la ejecucion de la aplicacion:
+              <ul>
+                <li>aima-java.jar es la libreria que nos facilita la labor de recorridos y busquedas.</li>
+                <li>appframework-1.0.3.jar, swing-layout-1.0.3.jar, swing-worker-1.1.jar son propias de las aplicaciones de escritorio.</li>
+                </ul>
+            </li>
+            <li>logs: En cada ejecucion de la busqueda se genera un archivo por tipo de busqeuda a realizar con la informacion de recorrido y ciertos valores para medir y comparar distintas opciones de busqueda.</li>
+            <li>universos: Por defecto aqui es donde se deberian guardar los ficheros que modelan el universo que se va a explorar con la aplicacion.</li>
+            <li>src: Obviamente contiene el codigo fuente de la aplicacion.</li>
+            </ul></td>
+        </tr>
+                <tr>
+          <td class="pageName"><a name="fuentes">Descripcion del paquete src</a></td>
+        </tr>
+        <tr>
+          <td class="bodyText"><p>Como venimos haciendo para facilitar la compresion de esta memoria vamos a empezar mostrando una imagen con su apariencia para posteriormente proceder a describir cada apartado mas detalladamente.</p>
+          <p><center><img src="arquitectura-src.png" alt="Descripcion del paquete src" width="221" height="832"></center></p>
+          <p>Descripcion detallada por paquetes:</p>
+          <ul>
+            <li>contector: Contiene el conector y el generador de universos. Estados clases son las encargadas de salvar la informacion de universos y de cargar informacion de universos.
+              <ul>
+                <li>Util: Paquete con utilidades
+                  <ul>
+                    <li>Excepciones: Paquete que contiene las excepciones atribuidas al conector y al generador de universos.</li>
+                    </ul>
+                </li>
+                </ul>
+            </li>
+            <li>GUI: En paquete se encuentran todas las clases necesarias para la visualizacion de la aplicacion. Ademas contiene el metodo main que ejecuta la aplicacion. Para el desarrollo de la interfaz de usuario nos hemos ayudado de NetBeans asi que en este paquete hay ciertos ficheros generados automaticamente por dicho entorno de programacion.
+              <ul>
+                <li>dibujos: diversas clases para el dibujado de la animacion. No son de nuestra autoria aunque las hemos modificado a nuestro antojo a fin de ajustarlas 100% a nuestras necesidades. <br>
+                Pagina de la libreria: <a href="http://www.ctr.unican.es/Fundamentos/">fundamentos</a></li>
+                </ul>
+            </li>
+            <li><name id="juegos">juegos</name>: En este paquete se encuentran todos los juegos de los que dispone la aplicacion:<br>
+              <a href="juegos/blancasnegras.html">Blancas y Negras</a><br>
+              <a href="juegos/bloques.html">Bloques</a><br>
+              <a href="juegos/cajascolores.html">Cajas de colores</a><br>
+              <a href="juegos/misioneros_y_canibales.html">Misioneros y canibales</a><br>
+              <a href="juegos/garrafas.html">Garrafas de 3 y 4 litros</a><br>
+              <a href="juegos/LCC.html">Lobo, cabra y col</a><br>
+              <a href="juegos/mono.html">El juego del mono</a><br>
+              <a href="juegos/palillos.html">El juego de los palillos</a><br>
+              <a href="juegos/pollos.html">El juego de los Pollos</a><br>
+              <a href="juegos/puzzle.html">8-Puzzle</a><br>
+              <a href="juegos/reinas.html">N-Reinas</a><br>
+            <a href="juegos/robot.html">El juego del Robot</a>
+            <ul>
+              <li>Juegos.java es la interfaz que todos los juegos deben implementar, sobretodo el metodo ejecutar que es el que nos devolverá el resultado de la ejecucion de un juego.</li>
+              </ul>
+            </li>
+            <li>Universo: Este paquete contiene otro juego pero este es a nivel global.
+              Tambien contiene la calse GestorConexion que es el que maneja el cargado de ficheros de universos y los deja publicos para que toda la aplicacion tenga acceso a ellos. Esta clase sigue el patron singleton para que solo haya una instancia del universo en toda la ejecucion de la aplicacion.
+              <ul>
+                <li>Util este paquete tiene las clases que modelan el universo asi como otras que realizan diversas tareas, depurar y pintar entre otras.
+                  <ul>
+                    <li>factoria: Este paquete contiene las clases de nuestra factoria de juegos, estas clases son utilizadas por el enlace para devolver un objeto que implemente la interfaz juego.java<br>
+                      Estas dos clases utilizan patrones singleton y factoria.</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul></td>
+        </tr>
+        <tr>
+          <td class="bodyText">&nbsp;</td>
+        </tr>  
       </table>
 	<td width="119">&nbsp;</td>
   </tr>

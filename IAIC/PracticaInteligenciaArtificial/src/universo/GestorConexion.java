@@ -3,8 +3,8 @@ package universo;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import universo.util.exceptions.BadFormattedFile;
 import conector.Conector;
+import conector.util.exceptions.BadFormattedFile;
 import conector.util.exceptions.BadUniFileException;
 
 public class GestorConexion {
@@ -53,7 +53,7 @@ public class GestorConexion {
     
     public static Conector getInstancia(String file) {
         try {
-			planetas = new Conector(file);
+		planetas = new Conector(file);
 		} catch (FileNotFoundException e) {
 			System.out.println("No se encuentra el archivo especificado.");
 			planetas = null;

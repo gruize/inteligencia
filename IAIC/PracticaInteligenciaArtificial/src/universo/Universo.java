@@ -116,7 +116,7 @@ public class Universo {
      * establecido para poder conseguir el mejor recorrido llegando a sus objetivos  
      * 
      * A su vez es el metodo encargado de llamar a UniversoMovie para que se dibuje el recorrido 
-     * realiazdo por el algoritmo y es el encargado de guardar tambien el log de la ejecucion.
+     * realizado por el algoritmo y es el encargado de guardar tambien el log de la ejecucion.
      * @return
      */
     

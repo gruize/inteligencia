@@ -38,7 +38,7 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
 
   <tr bgcolor="#99CC66">
   <td>&nbsp;</td>
-  	<td colspan="3" id="dateformat" height="20"><a href="../index.html">INDICE</a>&nbsp;&nbsp;::&nbsp;&nbsp;<a href="../arquitectura.html#juegos">Juegos</a>::&nbsp;&nbsp;<script language="javascript">
+  	<td colspan="3" id="dateformat" height="20"><a href="../index.htm">INDICE</a>&nbsp;&nbsp;::&nbsp;&nbsp;<a href="../arquitectura.html#juegos">Juegos</a>::&nbsp;&nbsp;<script language="javascript">
       document.write(TODAY);	</script>	</td>
   </tr>
 
@@ -55,20 +55,88 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
     &nbsp;<br>
     <table border="0" cellspacing="0" cellpadding="2" width="500">
         <tr>
-          <td class="pageName">PAGE NAME HERE</td>
+          <td class="pageName">Caja de colores o Rejilla</td>
         </tr>
         <tr>
-          <td class="bodyText"><p>Rapiebant me spectacula theatrica, plena imaginibus miseriarum mearum
-            et fomitibus ignis mei. quis est, quod ibi homo vult dolere luctuosa
-            et tragica, quae tamen pati ipse nollet? et tamen pati vult ex eis!</p>
-
-			<p>Rapiebant me spectacula theatrica, plena imaginibus miseriarum mearum
-            et fomitibus ignis mei. quis est, quod ibi homo vult dolere luctuosa
-            et tragica, quae tamen pati ipse nollet? et tamen pati vult ex eis!</p>
-
-			<p>Rapiebant me spectacula theatrica, plena imaginibus miseriarum mearum
-            et fomitibus ignis mei. quis est, quod ibi homo vult dolere luctuosa
-            et tragica, quae tamen pati ipse nollet? et tamen pati vult ex eis!</p>			</td>
+          <td class="bodyText">
+			<ul>
+				<li><font size="3">Descripción del juego:</font></li>
+			</ul>
+			<p align="justify">&nbsp;&nbsp;&nbsp; Disponemos de un tablero N x N 
+			en cuyas casillas pueden haber 2 tipos de valores, en este caso, los 
+			colores Rojo y Azul.</p>
+			<p align="center"><img border="0" src="cajasc6.gif"></p>
+			<p align="justify">El objetivo del juego consiste en modificar los 
+			colores de las casillas en las que sean necesarias para obtener un 
+			tablero cuyas casillas adyacentes sean diferentes.</p>
+			<p align="center"><img border="0" src="cajasc7.gif" align="left">&nbsp;&nbsp;&nbsp;&nbsp;
+			<img border="0" src="cajasc8.gif" align="right">&nbsp;&nbsp;&nbsp; </p>
+			<p align="center">Objetivos</p>
+			<p align="justify">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+			<p align="justify">&nbsp;</p>
+			<p align="justify">&nbsp;</p>
+			<p align="justify">&nbsp;</p>
+			<ul>
+				<li>
+				<p align="justify"><font size="3">Heurística:</font></p></li>
+			</ul>
+			<p align="justify">El objetivo del juego consiste en conseguir que 
+			las casillas adyacentes tengan valores diferentes, por lo que la 
+			medida heurística disminuye según disminuye el número de parejas de 
+			casillas adyacentes con valores iguales.</p>
+			<p align="center">h&#39;(n) = Número de parejas de casillas adyacentes 
+			con el mismo valor (vertical, horizontal y/o diagonal)</p>
+			<ul>
+				<li>
+				<p align="justify"><font size="3">Operadores</font></p></li>
+			</ul>
+			<p align="justify">Los operadores solo pueden aplicarse una vez.</p>
+			<ol>
+				<li>
+				<p align="justify">Modifica el valor de la casilla [0,0]</p>
+				</li>
+				<li>
+				<p align="justify">Modifica el valor de la casilla [0,1]</p>
+				</li>
+				<li>
+				<p align="justify">Modifica el valor de la casilla [0,2]</p>
+				</li>
+				<li>
+				<p align="justify">Modifica el valor de la casilla [1,0]</p>
+				</li>
+				<li>
+				<p align="justify">Modifica el valor de la casilla [1,1]</p>
+				</li>
+				<li>
+				<p align="justify">Modifica el valor de la casilla [1,2]</p>
+				</li>
+				<li>
+				<p align="justify">Modifica el valor de la casilla [2,0]</p>
+				</li>
+				<li>
+				<p align="justify">Modifica el valor de la casilla [2,1]</p>
+				</li>
+				<li>
+				<p align="justify">Modifica el valor de la casilla [2,2]</p>
+				</li>
+			</ol>
+			<ul>
+				<li>
+				<p align="justify"><font size="3">Algoritmo</font></p></li>
+			</ul>
+			<p align="justify">Algoritmo GreedyBestFirstSearch o Voraz: Técnica 
+			que en cada paso trata de situarse lo más cerca posible del 
+			objetivo. </p>
+			<p align="justify">f&#39;(n) = h&#39;(n): Representa el coste mínimo para 
+			llegar desde n hasta un nodo objetivo por el camino más corto, 
+			siendo h&#39;(n) = 0, para los nodos objetivos.</p>
+			<p align="center"><img border="0" src="cajasc5.jpg"></p>
+			<ul>
+				<li>
+				<p align="justify"><font size="3">Espacio de estados</font></p>
+				</li>
+			</ul>
+			</td>
 		</tr>
       </table>
 	<td width="103">&nbsp;</td>

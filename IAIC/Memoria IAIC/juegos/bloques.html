@@ -38,7 +38,7 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
 
   <tr bgcolor="#99CC66">
   <td>&nbsp;</td>
-  	<td colspan="3" id="dateformat" height="20"><a href="../index.html">INDICE</a>&nbsp;&nbsp;::&nbsp;&nbsp;<a href="../arquitectura.html#juegos">Juegos</a>::&nbsp;&nbsp;<script language="javascript">
+  	<td colspan="3" id="dateformat" height="20"><a href="../index.htm">INDICE</a>&nbsp;&nbsp;::&nbsp;&nbsp;<a href="../arquitectura.html#juegos">Juegos</a>::&nbsp;&nbsp;<script language="javascript">
       document.write(TODAY);	</script>	</td>
   </tr>
 
@@ -55,20 +55,80 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
     &nbsp;<br>
     <table border="0" cellspacing="0" cellpadding="2" width="500">
         <tr>
-          <td class="pageName">PAGE NAME HERE</td>
+          <td class="pageName">Bloques</td>
         </tr>
         <tr>
-          <td class="bodyText"><p>Rapiebant me spectacula theatrica, plena imaginibus miseriarum mearum
-            et fomitibus ignis mei. quis est, quod ibi homo vult dolere luctuosa
-            et tragica, quae tamen pati ipse nollet? et tamen pati vult ex eis!</p>
-
-			<p>Rapiebant me spectacula theatrica, plena imaginibus miseriarum mearum
-            et fomitibus ignis mei. quis est, quod ibi homo vult dolere luctuosa
-            et tragica, quae tamen pati ipse nollet? et tamen pati vult ex eis!</p>
-
-			<p>Rapiebant me spectacula theatrica, plena imaginibus miseriarum mearum
-            et fomitibus ignis mei. quis est, quod ibi homo vult dolere luctuosa
-            et tragica, quae tamen pati ipse nollet? et tamen pati vult ex eis!</p>			</td>
+          <td class="bodyText">
+			<ul>
+				<li><font size="3">Descripción del juego:</font></li>
+			</ul>
+			<p align="justify">Disponemos de 3 bloques situados sobre una mesa, 
+			el bloque C esta sobre el bloque A y el bloque B esta sobre la mesa.</p>
+			<p align="center"><img border="0" src="bloque3.gif"></p>
+			<p align="justify">El objetivo consiste en utilizar los operadores 
+			para conseguir el estado final.</p>
+			<p align="center"><img border="0" src="bloque4.gif"></p>
+			<ul>
+				<li>
+				<p align="justify"><font size="3">Heurística:</font></p></li>
+			</ul>
+			<p align="justify">El objetivo del juego consiste en conseguir que 
+			los 3 bloques estén superpuestos en orden alfabético siendo el 
+			bloque A el que este en la cima, por lo que su medida heurística 
+			consiste en sumar los bloques que estén situados en una posición 
+			incorrecta</p>
+			<p align="justify">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			h&#39;(x) = Número de bloques mal colocados.</p>
+			<ul>
+				<li>
+				<p align="justify"><font size="3">Operadores</font></p></li>
+			</ul>
+			<p align="justify">Los operadores se aplican sólo si cumplen sus 
+			precondiciones. </p>
+			<ol>
+				<li>
+				<p align="justify">Mover el bloque A sobre B: Ni el bloque A ni 
+				el bloque B deben tener ningún bloque encima.</p></li>
+				<li>
+				<p align="justify">Mover el bloque A sobre C: Ni el bloque A ni 
+				el bloque C deben tener ningún bloque encima.</p></li>
+				<li>
+				<p align="justify">Mover el bloque B sobre A: Ni el bloque B ni 
+				el bloque A deben tener ningún bloque encima.</p></li>
+				<li>
+				<p align="justify">Mover el bloque B sobre C: Ni el bloque B ni 
+				el bloque C deben tener ningún bloque encima.</p></li>
+				<li>
+				<p align="justify">Mover el bloque C sobre A: Ni el bloque C ni 
+				el bloque A deben tener ningún bloque encima.</p></li>
+				<li>
+				<p align="justify">Mover el bloque C sobre B: Ni el bloque C ni 
+				el bloque B deben tener ningún bloque encima.</p></li>
+				<li>
+				<p align="justify">Mover el bloque A sobre la mesa: El bloque A 
+				no puede tener ningún bloque encima</p></li>
+				<li>
+				<p align="justify">Mover el bloque B sobre la mesa: El bloque B 
+				no puede tener ningún bloque encima</p></li>
+				<li>
+				<p align="justify">Mover el bloque C sobre la mesa: El bloque C 
+				no puede tener ningún bloque encima</p></li>
+			</ol>
+			<ul>
+				<li>
+				<p align="justify"><font size="3">Algoritmo</font></p></li>
+			</ul>
+			<p align="justify">Algoritmo DepthFirstSearch o Primero en 
+			profundidad: Técnica que visita un sucesor del nodo actual en cada 
+			paso, si éste no tiene sucesores se realiza Backtracking, La 
+			implementación se realiza como si se tratase de una pila.</p>
+			<p align="center"><img border="0" src="bloque2.jpg"></p>
+			<ul>
+				<li>
+				<p align="justify"><font size="3">Espacio de estados</font></p>
+				</li>
+			</ul>
+			<p align="justify">&nbsp;</p>			</td>
 		</tr>
       </table>
 	<td width="103">&nbsp;</td>

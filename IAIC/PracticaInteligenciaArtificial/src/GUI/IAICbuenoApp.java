@@ -4,6 +4,9 @@
 
 package GUI;
 
+import java.io.File;
+import java.io.PrintStream;
+
 import org.jdesktop.application.Application;
 import org.jdesktop.application.SingleFrameApplication;
 
@@ -39,6 +42,7 @@ public class IAICbuenoApp extends SingleFrameApplication {
      * Main method launching the application.
      */
     public static void main(String[] args) {
+    	//System.setOut(new PrintStream(new File("logs/logGlobal.og")));
         launch(IAICbuenoApp.class, args);
     }
 }

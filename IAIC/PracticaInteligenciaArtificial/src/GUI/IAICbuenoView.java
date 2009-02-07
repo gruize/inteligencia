@@ -319,16 +319,16 @@ public class IAICbuenoView extends FrameView {
 		    			search1 = new SimulatedAnnealingSearch();
 		    			break;
 		    		case 5:
-		    			search1 = new IterativeDeepeningSearch();
+		    			search1 = new BreadthFirstSearch(new TreeSearch());
 		    			break;
 		    		case 6:
-		    			search1 = new BreadthFirstSearch(new GraphSearch());
-		    			break;
-		    		case 7:
 		    			search1 = new DepthFirstSearch(new TreeSearch());
 		    			break;
-		    		case 8:
+		    		case 7:
 		    			search1 = new DepthLimitedSearch(50);
+		    			break;
+		    		case 8:
+		    			search1 = new IterativeDeepeningSearch();
 		    			break;
 		    		case 9:
 		    			search1 = new UniformCostSearch(new TreeSearch());
@@ -343,7 +343,7 @@ public class IAICbuenoView extends FrameView {
 		    		UniversoLogger logger1 = new UniversoLogger(tmp);
 		    		prop1 = uni1.ejecutar(search1, logger1);    		
 
-					switch(busqueda2){
+		    		switch(busqueda2){
 		    		case 1:
 		    			search2 = new AStarSearch(new TreeSearch());
 		    			break;
@@ -357,16 +357,16 @@ public class IAICbuenoView extends FrameView {
 		    			search2 = new SimulatedAnnealingSearch();
 		    			break;
 		    		case 5:
-		    			search2 = new IterativeDeepeningSearch();
+		    			search2 = new BreadthFirstSearch(new TreeSearch());
 		    			break;
 		    		case 6:
-		    			search2 = new BreadthFirstSearch(new GraphSearch());
-		    			break;
-		    		case 7:
 		    			search2 = new DepthFirstSearch(new TreeSearch());
 		    			break;
-		    		case 8:
+		    		case 7:
 		    			search2 = new DepthLimitedSearch(50);
+		    			break;
+		    		case 8:
+		    			search2 = new IterativeDeepeningSearch();
 		    			break;
 		    		case 9:
 		    			search2 = new UniformCostSearch(new TreeSearch());
@@ -394,16 +394,16 @@ public class IAICbuenoView extends FrameView {
 		    			search3 = new SimulatedAnnealingSearch();
 		    			break;
 		    		case 5:
-		    			search3 = new IterativeDeepeningSearch();
+		    			search3 = new BreadthFirstSearch(new TreeSearch());
 		    			break;
 		    		case 6:
-		    			search3 = new BreadthFirstSearch(new GraphSearch());
-		    			break;
-		    		case 7:
 		    			search3 = new DepthFirstSearch(new TreeSearch());
 		    			break;
-		    		case 8:
+		    		case 7:
 		    			search3 = new DepthLimitedSearch(50);
+		    			break;
+		    		case 8:
+		    			search3 = new IterativeDeepeningSearch();
 		    			break;
 		    		case 9:
 		    			search3 = new UniformCostSearch(new TreeSearch());

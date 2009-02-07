@@ -60,8 +60,9 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
         <tr>
           <td class="bodyText"><p>En esta pagina se van a detallar los detalles internos de la apliacion, que paquetes se encuentran porque esa clasificacion y demas entresijos de la arquitectura de la practica.</p>
           <p>Indice de contenidos:</p>
-          <p><a href="arquitectura.html#descripcion">1. Descripcion general.</a></p>
-          <p><a href="arquitectura.html#fuentes">2. Descripcion del paquete src.</a></p>
+          <p><a href="arquitectura.html#descripcion">1. Descripcion general</a></p>
+          <p><a href="arquitectura.html#fuentes">2. Descripcion del paquete src</a></p>
+          <p><a href="arquitectura.html#pintado">2. Descripcion del pintado</a></p><br>
           </td>
 		</tr>
         <tr>
@@ -82,9 +83,9 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
                 </ul>
             </li>
             <li>logs: En cada ejecucion de la busqueda se genera un archivo por tipo de busqeuda a realizar con la informacion de recorrido y ciertos valores para medir y comparar distintas opciones de busqueda.</li>
-            <li>universos: Por defecto aqui es donde se deberian guardar los ficheros que modelan el universo que se va a explorar con la aplicacion.</li>
+            <li>universos: Por defecto aqui es donde se  guardan los ficheros que modelan el universo que se va a explorar con la aplicacion.</li>
             <li>src: Obviamente contiene el codigo fuente de la aplicacion.</li>
-            </ul></td>
+            </ul><br></td>
         </tr>
                 <tr>
           <td class="pageName"><a name="fuentes">Descripcion del paquete src</a></td>
@@ -127,9 +128,9 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
               </ul>
             </li>
             <li>Universo: Este paquete contiene otro juego pero este es a nivel global.
-              Tambien contiene la calse GestorConexion que es el que maneja el cargado de ficheros de universos y los deja publicos para que toda la aplicacion tenga acceso a ellos. Esta clase sigue el patron singleton para que solo haya una instancia del universo en toda la ejecucion de la aplicacion.
+              Tambien contiene la calse GestorConexion que es el que maneja el cargado de ficheros de universos y los deja publicos, como atributo estatico) para que toda la aplicacion tenga acceso a ellos. Esta clase sigue el patron singleton para que solo haya una instancia del universo en toda la ejecucion de la aplicacion.
               <ul>
-                <li>Util este paquete tiene las clases que modelan el universo asi como otras que realizan diversas tareas, depurar y pintar entre otras.
+                <li>Util este paquete tiene las clases que modelan el universo asi como otras que realizan diversas tareas, depurar (UniversoLogger.java) y pintar(UniversoMovie.java) entre otras.
                   <ul>
                     <li>factoria: Este paquete contiene las clases de nuestra factoria de juegos, estas clases son utilizadas por el enlace para devolver un objeto que implemente la interfaz juego.java<br>
                       Estas dos clases utilizan patrones singleton y factoria.</li>
@@ -137,10 +138,28 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
                 </li>
               </ul>
             </li>
-          </ul></td>
+          </ul><br></td>
         </tr>
         <tr>
-          <td class="bodyText">&nbsp;</td>
+          <td class="pageName"><a name="pintado">Descripcion del pintado</a></td>
+        </tr>
+        <tr>
+          <td class="bodyText">
+            <p>La reconstruccion del camino elegido por la busqueda lo realiza la clase UniversoMovie.java que, trabajando en estrecha relaccion con la libreria fundamentos, dibuja el camino seguido como si fuera una "pelicula". Esta clase recibe como parametro las acciones llevadas a cabo por la busqueda y las representa siguiendo el siguiente esquema de colores: </p>
+            <ul>
+              <li>Nodo en rojo: Este nodo es el actual en el que nos encontramos y en nuestra representacion siempre va a ocupar el puesto de la raiz.</li>
+              <li>Nodo en verde: En este caso con el verde representamos el nodo sucesor que vamos a explorar a continuacion.</li>
+              <li>Nodo en naranja: Es el nodo destino que ha sido alcanzado.</li>
+              <li>El resto de nodos que aparecen en blanco son nodos que han sido expandidos pero no explorados.</li>
+            </ul>
+            <p>Cada nodo tiene asociada una información:</p>
+            <ul>
+              <li>El id que lo representa, que se dibuja en el centro del circulo.</li>
+              <li>El juego que hay que superar para llegar a el (en caso de que exista un juego que superar en ese enlace).</li>
+              <li>El coste en distancia de ir de un nodo a otro.</li>
+            </ul>
+          <p>Hemos obviado incluir mas informacion, como por ejemplo pueda ser el nombre de cada planeta por no recargar la &quot;pelicula&quot;.</p>
+          <br></td>
         </tr>  
       </table>
 	<td width="119">&nbsp;</td>

@@ -124,10 +124,13 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
               <a href="juegos/pollos.html">El juego de los Pollos</a><br>
               <a href="juegos/puzzle.html">8-Puzzle</a><br>
               <a href="juegos/reinas.html">N-Reinas</a><br>
-            <a href="juegos/robot.html">El juego del Robot</a>
+            <a href="juegos/robot.html">El juego del Robot</a></li>
+            <br>
+            Hemos procurado utilizar variedad de busqeudas en los juegos
+            y ademas utilizar alguna busqueda que no siempre tenga resultado para que no siempre podamos avanzar por el enlace donde este el juego, asi obligamos a la busqueda de alternativas en caso de encontrar determinados juegos.
             <ul>
-              <li>Juegos.java es la interfaz que todos los juegos deben implementar, sobretodo el metodo ejecutar que es el que nos devolverá el resultado de la ejecucion de un juego.</li>
-              </ul>
+                <li>Juegos.java es la interfaz que todos los juegos deben implementar, sobretodo el metodo ejecutar que es el que nos devolverá el resultado de la ejecucion de un juego.</li>
+                </ul>
             </li>
             <li>Universo: Este paquete contiene otro juego pero este es a nivel global.
               Tambien contiene la calse GestorConexion que es el que maneja el cargado de ficheros de universos y los deja publicos, como atributo estatico) para que toda la aplicacion tenga acceso a ellos. Esta clase sigue el patron singleton para que solo haya una instancia del universo en toda la ejecucion de la aplicacion.
@@ -140,7 +143,8 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
                 </li>
               </ul>
             </li>
-          </ul><br></td>
+          </ul>
+          <br></td>
         </tr>
         <tr>
           <td class="pageName"><a name="pintado">Descripcion del pintado</a></td>

@@ -53,9 +53,9 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
     <td width="40">&nbsp;</td>
     <td colspan="2" valign="top">&nbsp;<br>
     &nbsp;<br>
-    <table border="0" cellspacing="0" cellpadding="2" width="500">
+    <table border="0" cellspacing="0" cellpadding="2" width="778">
         <tr>
-          <td class="pageName">Bloques</td>
+          <td width="774" class="pageName">Bloques</td>
         </tr>
         <tr>
           <td class="bodyText">
@@ -64,11 +64,11 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
 			</ul>
 			<p align="justify">Disponemos de 3 bloques situados sobre una mesa, 
 			el bloque C esta sobre el bloque A y el bloque B esta sobre la mesa.</p>
-			<p align="center"><img border="0" src="bloque3.gif"></p>
+			<p align="center"><img border="0" src="images/bloque3.gif"></p>
 			<p align="justify">El objetivo consiste en utilizar los operadores 
 			para conseguir el estado final.</p>
-			<p align="center"><img border="0" src="bloque22.gif"></p>
-			<ul>
+			<p align="center"><img border="0" src="images/bloque22.gif"></p>
+		  <ul>
 				<li>
 				<p align="justify"><font size="3">Heurística:</font></p></li>
 			</ul>
@@ -76,7 +76,7 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
 			los 3 bloques estén superpuestos en orden alfabético siendo el 
 			bloque A el que este en la cima, por lo que su medida heurística 
 			consiste en sumar los bloques que estén situados en una posición 
-			incorrecta</p>
+			incorrecta. Cuanto mayor sera este valor peor ira la cosa, por lo que minimizando esta heuristica estariamos acercandonos mas a la solucion del problema.</p>
 			<p align="justify">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 			h&#39;(x) = Número de bloques mal colocados.</p>
 			<ul>
@@ -121,13 +121,14 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
 			<p align="justify">Algoritmo DepthFirstSearch o Primero en 
 			profundidad: Técnica que visita un sucesor del nodo actual en cada 
 			paso, si éste no tiene sucesores se realiza Backtracking, La 
-			implementación se realiza como si se tratase de una pila.</p>
-			<p align="center"><img border="0" src="bloque2.jpg"></p>
-			<ul>
+			implementación se realiza como si se tratase de una pila. Explorando todos los estados nos garantizamos que encuentre una solucion.</p>
+			<p align="center"><img border="0" src="images/bloque2.jpg"></p>
+		  <ul>
 				<li>
 				<p align="justify"><font size="3">Espacio de estados</font></p>
 				</li>
-			</ul>
+		    </ul>
+			<p>&nbsp;</p>
 			<p align="justify">Estado ( Posición 0, Posición 1, Posición 2 )<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Posición 0 = { Bloque A, Bloque B, 
 			Bloque C }<br>

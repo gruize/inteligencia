@@ -107,7 +107,7 @@ public class UniversoMovie {
 	public void dibuja(Nodo nodoTmp, Integer sig, Integer fin) {
 		
 		//Borramos lo que hubiera antes.
-		this.dib.borra(ColorFig.blanco);
+		this.dib.borra(ColorFig.negro);
 		
 		//Dibujamos el nodo padre
 		
@@ -116,9 +116,9 @@ public class UniversoMovie {
 		
 		this.dib.dibujaElipse(280,20,320,60);
 		String id = String.valueOf(nodoTmp.getId());
-		this.dib.dibujaTexto(id, 301-id.length()*3, 45);
+		this.dib.dibujaTexto(id, 300-id.length()*3, 45);
 		
-		this.dib.ponColorLapiz(ColorFig.negro);
+		this.dib.ponColorLapiz(ColorFig.blanco);
 		
 		//Recorremos todos los enlaces...
 		//Empezamos siempre en el mismo punto 30,60
@@ -132,19 +132,33 @@ public class UniversoMovie {
         	Integer key = (Integer) keys.next();
             Enlace enlace = nodoTmp.getEnlaces().get(key);
             
-            if (key.equals(sig)){
-            	//Ponemos otro color al lapiz
-            	this.dib.ponColorLapiz(ColorFig.verde);
-            }
+            
+            
             if ( key.equals(fin) ){
             	this.dib.ponGrosorLapiz(3);
             	this.dib.ponColorLapiz(ColorFig.naranja);
+            	this.dib.dibujaElipse(x,y,x+40,y+40);
+                String destino = String.valueOf(enlace.getDestino());
+                this.dib.ponColorLapiz(ColorFig.negro);
+        		this.dib.dibujaTexto(destino, x+19-destino.length()*3, y+25);
+        		this.dib.ponColorLapiz(ColorFig.blanco);
+        		this.dib.ponColorLapiz(ColorFig.naranja);
+            }else if ( key.equals(sig) ){
+            	this.dib.ponColorLapiz(ColorFig.verde);
+            	this.dib.dibujaElipse(x,y,x+40,y+40);
+                String destino = String.valueOf(enlace.getDestino());
+                this.dib.ponColorLapiz(ColorFig.negro);
+        		this.dib.dibujaTexto(destino, x+19-destino.length()*3, y+25);
+        		this.dib.ponColorLapiz(ColorFig.blanco);
+        		this.dib.ponColorLapiz(ColorFig.verde);
+            }else{
+            	this.dib.dibujaElipse(x,y,x+40,y+40);
+                String destino = String.valueOf(enlace.getDestino());
+                this.dib.ponColorLapiz(ColorFig.negro);
+        		this.dib.dibujaTexto(destino, x+19-destino.length()*3, y+25);
+        		this.dib.ponColorLapiz(ColorFig.blanco);
             }
-            
-            this.dib.dibujaElipse(x,y,x+40,y+40);
-            String destino = String.valueOf(enlace.getDestino());
-    		this.dib.dibujaTexto(destino, x+19-destino.length()*3, y+25);
-            
+	
     		//Pintamos la linea que las une.
     		dib.dibujaLinea(300, 60, x+20, y-75);
     		dib.dibujaLinea(x+20, y-75, x+20, y);
@@ -168,10 +182,10 @@ public class UniversoMovie {
     		
             if (key.equals(sig)){
             	//Reestablecemos el color negro
-            	this.dib.ponColorLapiz(ColorFig.negro);
+            	this.dib.ponColorLapiz(ColorFig.blanco);
             }
             if (key.equals(fin)){
-            	this.dib.ponColorLapiz(ColorFig.negro);
+            	this.dib.ponColorLapiz(ColorFig.blanco);
             	this.dib.ponGrosorLapiz(2);
             }  		
         }

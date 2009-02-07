@@ -87,11 +87,11 @@ public class Estado {
         double heuristica = 0.0;
         Fichas[] actual = this.instante.getFichas();
         int p = 0;
-        for(int i = 6; i == 0; i--){
+        for(int i = 6; i >= 0; i--){
             if(actual[i] == Fichas.Blanca)
-                p++;
+                p--;
             if(actual[i] == Fichas.Negra)
-                heuristica+= p;                
+                heuristica= p;                
         }        
         return heuristica;
     }

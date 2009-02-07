@@ -88,7 +88,7 @@ public class Nodo {
      * @throws Exception
      */
     
-    public double obtenerValorHeuristico() throws Exception{
+    public double obtenerValorHeuristico() throws Exception {
     	
         /**
          * Ya que trabajamos con valores enteros, los decimales resultan utiles para
@@ -96,16 +96,7 @@ public class Nodo {
          * el procedimiento.
          */
     	
-    	double valor = 0.1, aux = 0.0;
-    	for(int j = 0; j < GestorConexion.getInstancia().getNodosH().size(); j++){
-    		if(this.getEnlaces().containsKey(j)){
-    			aux = aux + this.getEnlaces().get(j).getDistancia();     			
-    			if(valor == 0.1)
-    				valor = aux;
-    			if(valor > aux)
-    				valor = aux;
-    		}
-    	}
+    	double valor = GestorConexion.getInstancia().getNodosH().size() - this.getId(); 
         return valor;        
     }            
 }

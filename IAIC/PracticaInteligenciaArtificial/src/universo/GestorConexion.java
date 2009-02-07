@@ -53,7 +53,7 @@ public class GestorConexion {
     
     public static Conector getInstancia(String file) {
         try {
-		planetas = new Conector(file);
+			planetas = new Conector(file);
 		} catch (FileNotFoundException e) {
 			System.out.println("No se encuentra el archivo especificado.");
 			planetas = null;

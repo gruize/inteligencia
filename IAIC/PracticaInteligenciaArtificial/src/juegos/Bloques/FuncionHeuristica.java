@@ -19,11 +19,11 @@ public class FuncionHeuristica implements HeuristicFunction {
                                 heuristica++;
                         break;
                 case 1:
-                        if (!bloques.getBloques().getBloques().equals(Posiciones.C))
+                        if (!bloques.getBloques().getBloques()[i].equals(Posiciones.C))
                                 heuristica++;
                         break;
                 case 2:
-                        if (!bloques.getBloques().getBloques().equals(Posiciones.mesa))
+                        if (!bloques.getBloques().getBloques()[i].equals(Posiciones.mesa))
                                 heuristica++;
                         break;
                 }

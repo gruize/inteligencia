@@ -8,9 +8,9 @@ public class Momento {
 	 */
 	private int mono;
 	/**
-	 * 0 si el ventana esta en la puerta de la habitacion
-	 * 1 si el ventana esta en el centro de la habitacion
-	 * 2 si el ventana esta en la ventana de la habitacion
+	 * 0 si el caja esta en la puerta de la habitacion
+	 * 1 si el caja esta en el centro de la habitacion
+	 * 2 si el caja esta en la ventana de la habitacion
 	 */
 	private int caja;
 	/**

@@ -26,7 +26,7 @@ public class FuncionSucesora implements SuccessorFunction {
 		List<Successor> siguientes = new ArrayList<Successor>();
 		Estado actual = (Estado)state;
 		Estado posible = null;
-		for(int i = 0; i < 3; i++){
+		for(int i = 1; i < 3; i++){
 			posible = crearSiguienteEstado(actual,new Momento(actual.getInstante().getPalillos() - i,actual.getInstante().getTurno() + 1));
 			if(posible != null)
 				siguientes.add(new Successor("El turno "+actual.getInstante().getTurno()+" quita "+i+" palillos.",posible));

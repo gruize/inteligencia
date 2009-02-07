@@ -91,12 +91,10 @@ public class Nodo {
     public double obtenerValorHeuristico() throws Exception {
     	
         /**
-         * Ya que trabajamos con valores enteros, los decimales resultan utiles para
-         * distinguir si es el valor de inicializacion o un valor obtenido mediante
-         * el procedimiento.
+         * Utilizamos el propio id del planeta ya que este simboliza cuan lejos estamos
+         * todavia del destino. si hay 240 planetas y podemos elegir entre el nodo 7 9 y 20
+         * elegiremos el 20 porque es el que mas nos acerca al ultimo planeta.
          */
-    	
-    	double valor = GestorConexion.getInstancia().getNodosH().size() - this.getId(); 
-        return valor;        
+    		return  -this.getId();  
     }            
 }

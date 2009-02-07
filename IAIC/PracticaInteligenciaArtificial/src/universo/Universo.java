@@ -146,7 +146,7 @@ public class Universo {
             log.printProperties(prop);
             
             log.closeLogger();
-           
+            
             if(this.getSolucion()) {
 	    		String tmp = ((String)this.busqueda.getClass().toString());
 	    		tmp = tmp.substring(tmp.lastIndexOf(".")+1,tmp.length());

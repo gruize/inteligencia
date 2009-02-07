@@ -32,7 +32,6 @@ public class FuncionSucesora implements SuccessorFunction{
             if(game != null){
             	
             	System.out.println(game.getNombre());
-            	
                 if(game.ejecutar())
                     siguiente = new Estado(posible,padre.getRecorridos());
             }else
@@ -67,7 +66,6 @@ public class FuncionSucesora implements SuccessorFunction{
 	            }
 	            posible = null;
         	} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 	    }  

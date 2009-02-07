@@ -38,7 +38,7 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
 
   <tr bgcolor="#99CC66">
   <td>&nbsp;</td>
-  	<td colspan="3" id="dateformat" height="20"><a href="../index.htm">INDICE</a>&nbsp;&nbsp;::&nbsp;&nbsp;<a href="../arquitectura.html#juegos">Juegos</a>::&nbsp;&nbsp;<script language="javascript">
+  	<td colspan="3" id="dateformat" height="20"><a href="../index.html">INDICE</a>&nbsp;&nbsp;::&nbsp;&nbsp;<a href="../arquitectura.html#juegos">JUEGOS&nbsp; </a>::&nbsp;&nbsp;<script language="javascript">
       document.write(TODAY);	</script>	</td>
   </tr>
 
@@ -55,20 +55,148 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
     &nbsp;<br>
     <table border="0" cellspacing="0" cellpadding="2" width="500">
         <tr>
-          <td class="pageName">PAGE NAME HERE</td>
+          <td class="pageName">El mono y el plátano</td>
         </tr>
         <tr>
-          <td class="bodyText"><p>Rapiebant me spectacula theatrica, plena imaginibus miseriarum mearum
-            et fomitibus ignis mei. quis est, quod ibi homo vult dolere luctuosa
-            et tragica, quae tamen pati ipse nollet? et tamen pati vult ex eis!</p>
-
-			<p>Rapiebant me spectacula theatrica, plena imaginibus miseriarum mearum
-            et fomitibus ignis mei. quis est, quod ibi homo vult dolere luctuosa
-            et tragica, quae tamen pati ipse nollet? et tamen pati vult ex eis!</p>
-
-			<p>Rapiebant me spectacula theatrica, plena imaginibus miseriarum mearum
-            et fomitibus ignis mei. quis est, quod ibi homo vult dolere luctuosa
-            et tragica, quae tamen pati ipse nollet? et tamen pati vult ex eis!</p>			</td>
+          <td class="bodyText">
+			<ul>
+				<li><font size="3">Descripción del juego:</font></li>
+			</ul>
+			<p>&nbsp;&nbsp;&nbsp; Un mono está en la puerta de la habitación. En 
+			el centro de la habitación hay un plátano colgado del techo, pero no 
+			puede alcanzarle desde el suelo. En la ventana de la habitación hay 
+			una caja que el mono puede mover y sobre la que puede subirse para 
+			alcanzar el plátano. </p>
+			<p align="center"><img border="0" src="mono.h1.jpg"></p>
+			<ul>
+				<li>
+				<p align="justify"><font size="3">Heurística</font></p></li>
+			</ul>
+			<p align="justify">En esta heurística necesitamos conocer la 
+			posición del mono, la posición de la caja y si el mono está situado 
+			sobre la caja, por lo que resulta necesario definir los valores que 
+			tendrían en cada caso. Una posible representación sería: </p>
+			<p align="center">Posición del mono:<br>
+			0 : Si el mono está en la puerta de la habitación<br>
+			1 : Si el mono está en el centro de la habitación<br>
+			2 : Si el mono está en la ventana de la habitación<br>					
+			</p>
+			<p align="center">Posición de la caja:<br>
+			0 : Si la caja está en la puerta de la habitación<br>
+			1 : Si la caja está en el centro de la habitación<br>
+			2 : Si la caja está en la ventana de la habitación<br>					
+			</p>
+			<p align="center">Posición del mono sobre la caja:<br>
+			True : Si el mono está sobre la caja<br>
+			False: En cualquier otro caso</p>
+			<p align="justify">Declaramos valores constantes que se le asignan a 
+			la heurística según la posición tanto del mono como de la caja.</p>
+			<ol>
+				<li>
+				<p align="left">Si el mono está en la puerta de la 
+			habitación, h&#39;(n) = 5</p></li>
+				<li>
+				<p align="left">Si el mono está en el centro de la habitación y 
+				está sobre la caja, por lo que la caja también está en el centro 
+				de la habitación y no ha conseguido el plátano, h&#39;(n) = 1</p>
+				</li>
+				<li>
+				<p align="left">Si el mono está en el centro de la habitación y 
+				está sobre la caja, por lo que la caja también está en el centro 
+				de la habitación y ha conseguido el plátano, termina el juego, 
+				h&#39;(n) = 1</p></li>
+				<li>
+				<p align="left">Si el mono está en el centro de la habitación y 
+				la caja está en una localización distinta, h&#39;(n) = 4</p></li>
+				<li>
+				<p align="left">Si el mono está en la ventana de la habitación, 
+				al igual que la caja pero no está sobre ella, h&#39;(n) = 3</p></li>
+				<li>
+				<p align="left">Si el mono está en la ventana de la habitación, 
+				al igual que la caja y está sobre ella, h&#39;(n) = 2</p></li>
+				<li>
+				<p align="left">Si el mono está en la ventana de la habitación y 
+				la caja está en una localización distinta, h&#39;(n) = 5</p></li>
+			</ol>
+			<ul>
+				<li>
+				<p align="justify"><font size="3">Operadores</font></p></li>
+			</ul>
+			<ol>
+				<li>El mono se mueve en dirección hacia la ventana (una 
+				posición): Si y sólo si, el mono no está sobre la caja ni en la 
+				ventana.</li>
+				<li>El mono se mueve en dirección hacia la puerta (una 
+				posición): Si y sólo si, el mono no está sobre la caja ni en la 
+				puerta.</li>
+				<li>El mono empuja la caja en dirección hacia la ventana (una 
+				posición): Si y sólo si, el mono y la caja están en la misma 
+				posición, no pudiendo ser ésta la ventana, y el mono no está 
+				sobre la caja.</li>
+				<li>El mono empuja la caja en dirección hacia la puerta (una 
+				posición): Si y sólo si, el mono y la caja están en la misma 
+				posición, no pudiendo ser ésta la puerta, y el mono no está 
+				sobre la caja.</li>
+				<li>El mono sube sobre la caja: Si y sólo si, el mono y la caja 
+				están en la misma posición y el mono no está previamente sobre 
+				la caja.</li>
+				<li>El mono baja de la caja: Si y sólo si, el mono está sobre la 
+				caja.</li>
+				<li>El mono coge el plátano: Si y sólo si, el mono y la caja 
+				están en el centro de la habitación y el mono está sobre la 
+				caja.</li>
+			</ol>
+			<ul>
+				<li>
+				<p align="justify"><font size="3">Algoritmo</font></p></li>
+			</ul>
+			<p align="justify">Algoritmo AStarSearch o A*: Combina los algoritmos de búsqueda primero en anchura y 
+			primero en profundidad, aplicándolos en la función:</p>
+			<p align="center">f&#39;(n) = g(n) + h&#39;(n) = Primero en Anchura + 
+			Primero en Profundidad = Coste real hasta el nodo n + Estimación del 
+			coste mínimo desde el nodo n hasta el objetivo</p>
+			<p align="center">&nbsp;<img border="0" src="mono.h2.jpg"></p>
+			<ul>
+				<li>
+				<p align="justify"><font size="3">Espacio de estados</font></p>
+				</li>
+			</ul>
+			<p align="justify">Estado ( Posición del mono en la habitación, 
+			Posición de la caja en la habitación, Mono sobre la caja, Mono coge 
+			el plátano )<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Posición del mono en la habitación = 
+			{0, 1, 2}<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Posición de la caja en la habitación = {0, 1, 2}<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mono sobre la caja = True <sup>v</sup> False<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mono coge el plátano = True <sup>v</sup> False<br>						
+			
+			<p align="justify">Estados inalcanzables:<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( 0, 0, True, True )<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( 0, 0, False, True )<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( 0, 1, True, True )<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( 0, 1, True, False )<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( 0, 1, False, True )<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( 0, 2, True, True )<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( 0, 2, True, False )<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( 0, 2, False, True )<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( 1, 0, True, True )<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( 1, 0, True, False )<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( 1, 0, False, True )<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( 1, 1, False, True )<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( 1, 2, True, True )<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( 1, 2, True, False )<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( 1, 2, False, True )<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( 2, 0, True, True )<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( 2, 0, True, False )<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( 2, 0, False, True )<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( 2, 1, True, True )<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( 2, 1, True, False )<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( 2, 1, False, True )<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( 2, 2, True, True )<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( 2, 2, False, True )<br>
+			<p align="justify">Estado inicial:<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( 0, 2, False, False)<p align="justify">Estado final:<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( 1, 1, True, True )</td>
 		</tr>
       </table>
 	<td width="103">&nbsp;</td>

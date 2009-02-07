@@ -38,7 +38,7 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
 
   <tr bgcolor="#99CC66">
   <td>&nbsp;</td>
-  	<td colspan="3" id="dateformat" height="20"><a href="../index.htm">INDICE</a>&nbsp;&nbsp;::&nbsp;&nbsp;<a href="../arquitectura.html#juegos">Juegos</a>::&nbsp;&nbsp;<script language="javascript">
+  	<td colspan="3" id="dateformat" height="20"><a href="../index.html">INDICE</a>&nbsp;&nbsp;::&nbsp;&nbsp;<a href="../arquitectura.html#juegos">JUEGOS&nbsp; </a>::&nbsp;&nbsp;<script language="javascript">
       document.write(TODAY);	</script>	</td>
   </tr>
 
@@ -55,20 +55,59 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
     &nbsp;<br>
     <table border="0" cellspacing="0" cellpadding="2" width="500">
         <tr>
-          <td class="pageName">PAGE NAME HERE</td>
+          <td class="pageName">8 - Reinas</td>
         </tr>
         <tr>
-          <td class="bodyText"><p>Rapiebant me spectacula theatrica, plena imaginibus miseriarum mearum
-            et fomitibus ignis mei. quis est, quod ibi homo vult dolere luctuosa
-            et tragica, quae tamen pati ipse nollet? et tamen pati vult ex eis!</p>
-
-			<p>Rapiebant me spectacula theatrica, plena imaginibus miseriarum mearum
-            et fomitibus ignis mei. quis est, quod ibi homo vult dolere luctuosa
-            et tragica, quae tamen pati ipse nollet? et tamen pati vult ex eis!</p>
-
-			<p>Rapiebant me spectacula theatrica, plena imaginibus miseriarum mearum
-            et fomitibus ignis mei. quis est, quod ibi homo vult dolere luctuosa
-            et tragica, quae tamen pati ipse nollet? et tamen pati vult ex eis!</p>			</td>
+          <td class="bodyText">
+			<ul>
+				<li><font size="3">Descripción del juego:</font></li>
+			</ul>
+			<p align="center"><img border="0" src="reinas15.jpg"></p>
+			<p>&nbsp;&nbsp;&nbsp; El problema de las N - Reinas consiste en 
+			poner n reinas de ajedrez en un tablero n x n, de tal manera que 
+			ninguna de ellas pueda atacar a otra usando las movidas estándar de 
+			una reina de ajedrez.</p>
+			<p align="center"><img border="0" src="reinas14.gif"></p>
+			<ul>
+				<li>
+				<p align="justify"><font size="3">Heurística</font></p></li>
+			</ul>
+			<p align="justify">El objetivo del juego consiste en rellenar el 
+			tablero n x n con n reinas, por lo que al ir aumentando el número de 
+			reinas en el tablero, disminuye la medida heurística</p>
+			<p align="center">h&#39;(n) = Dimensión del tablero - Número de reinas 
+			colocadas en el tablero</p>
+			<p align="center">h&#39;(n) = 8 - Número de reinas colocadas</p>
+			<ul>
+				<li>
+				<p align="justify"><font size="3">Operadores</font></p></li>
+			</ul>
+			<ol>
+				<li>Colocar reina en la posición [ i , j ] donde i = { 1, 2, 3 } 
+				y j = { 1, 2, 3 } </li>
+			</ol>
+			<ul>
+				<li>
+				<p align="justify"><font size="3">Algoritmo</font></p></li>
+			</ul>
+			<p align="justify">Algoritmo UniformCostSearch o Coste Uniforme: Los 
+			nodos se expanden por orden no decreciente de coste (camino de menor 
+			coste), implementándose con una cola de prioridad, donde los nodos 
+			con igual coste generan el uso del algoritmo de búsqueda en anchura.</p>
+			<p align="center">&nbsp;<img border="0" src="reinas13.jpg"></p>
+			<ul>
+				<li>
+				<p align="justify"><font size="3">Espacio de estados</font></p>
+				</li>
+			</ul>
+			<p align="justify">Estado ( Tablero [ ] [ ] )<p align="justify">Estados 
+			prohibidos:<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Los estados prohibidos son todos aquellos en que 2 o más reinas 
+			pueden atacarse.<br>
+			<p align="justify">Estado inicial:<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tablero vacío<p align="justify">Estado final:<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tablero conteniendo n reinas sin que ninguna de ellas sea 
+			amenazada por otra.</td>
 		</tr>
       </table>
 	<td width="103">&nbsp;</td>

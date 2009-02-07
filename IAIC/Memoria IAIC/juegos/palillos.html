@@ -38,7 +38,7 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
 
   <tr bgcolor="#99CC66">
   <td>&nbsp;</td>
-<td colspan="3" id="dateformat" height="20"><a href="../index.htm">INDICE</a>&nbsp;&nbsp;::&nbsp;&nbsp;<a href="../arquitectura.html#juegos">Juegos</a>::&nbsp;&nbsp;<script language="javascript">
+<td colspan="3" id="dateformat" height="20"><a href="../index.html">INDICE</a>&nbsp;&nbsp;::&nbsp;&nbsp;<a href="../arquitectura.html#juegos">JUEGOS&nbsp; </a>::&nbsp;&nbsp;<script language="javascript">
       document.write(TODAY);	</script>	</td>
   </tr>
 
@@ -55,20 +55,65 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
     &nbsp;<br>
     <table border="0" cellspacing="0" cellpadding="2" width="500">
         <tr>
-          <td class="pageName">PAGE NAME HERE</td>
+          <td class="pageName">Palillos</td>
         </tr>
         <tr>
-          <td class="bodyText"><p>Rapiebant me spectacula theatrica, plena imaginibus miseriarum mearum
-            et fomitibus ignis mei. quis est, quod ibi homo vult dolere luctuosa
-            et tragica, quae tamen pati ipse nollet? et tamen pati vult ex eis!</p>
-
-			<p>Rapiebant me spectacula theatrica, plena imaginibus miseriarum mearum
-            et fomitibus ignis mei. quis est, quod ibi homo vult dolere luctuosa
-            et tragica, quae tamen pati ipse nollet? et tamen pati vult ex eis!</p>
-
-			<p>Rapiebant me spectacula theatrica, plena imaginibus miseriarum mearum
-            et fomitibus ignis mei. quis est, quod ibi homo vult dolere luctuosa
-            et tragica, quae tamen pati ipse nollet? et tamen pati vult ex eis!</p>			</td>
+          <td class="bodyText">
+			<ul>
+				<li><font size="3">Descripción del juego:</font></li>
+			</ul>
+			<p>&nbsp;&nbsp;&nbsp; Disponemos de 6 palillos y 2 adversarios. El 
+			juego consiste en ir retirando en cada turno 1 o 2 palillos del 
+			montón, y ganará el adversario que consiga quitar todos los 
+			palillos. En esta implementación añadimos la condición de que gané 
+			el jugador inicial.</p>
+			<p align="center"><img border="0" src="palill3.jpg"></p>
+			<ul>
+				<li>
+				<p align="justify"><font size="3">Heurística</font></p></li>
+			</ul>
+			<p align="justify">Aplicamos un algoritmo no informado o ciego, pero 
+			el juego está preparado para realizar busquedas informadas.</p>
+			<p align="center">h&#39;(n) = Número de palillos restantes, si el 
+			jugador es el 0.</p>
+			<p align="center">h&#39;(n) = Número de palillos restantes + 1, si el 
+			jugador es el 1.</p>
+			<ul>
+				<li>
+				<p align="justify"><font size="3">Operadores</font></p></li>
+			</ul>
+			<ol>
+				<li>Quitar un palillo: Si y sólo si el numero de palillos 
+				restantes es mayor o igual que 1</li>
+				<li>Quitar dos palillos: Si y sólo si el numero de palillos 
+				restantes es mayor o igual que 2</li>
+			</ol>
+			<ul>
+				<li>
+				<p align="justify"><font size="3">Algoritmo</font></p></li>
+			</ul>
+			<p align="justify">Algoritmo IterativeDeepeningSearch o Profundidad 
+			Iterativa: Combina los algoritmos de Primero en Anchura y Primero en 
+			Profundidad, donde la profundidad se desconoce, ya que ésta varía de 
+			forma creciente.</p>
+			<p align="center">&nbsp;<img border="0" src="palill4.jpg"></p>
+			<ul>
+				<li>
+				<p align="justify"><font size="3">Espacio de estados</font></p>
+				</li>
+			</ul>
+			<p align="justify">Estado ( Palillos restantes, Jugador )<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Palillos restantes = 
+			{0, 1, 2, 3, 4, 5, 6}<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jugador = {0, 1}<p align="justify">Estados 
+			prohibidos:<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( 6, 1 )<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( 0, 1 )<p align="justify">Estos estados prohibidos se 
+			generan debido a las especificaciones añadidas al juego (Gana el 
+			jugador inicial y éste es el Jugador 0)<br>
+			<p align="justify">Estado inicial:<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( 6, 0 )<p align="justify">Estado final:<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( 0, 0 )</td>
 		</tr>
       </table>
 	<td width="103">&nbsp;</td>

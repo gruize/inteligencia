@@ -1,12 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-<!-- DW6 -->
-<head>
-<!-- Copyright 2005 Macromedia, Inc. All rights reserved. -->
-<title>Text</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" href="../mm_health_nutr.css" type="text/css">
-<script language="javascript">
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40">
+<!-- DW6 --><head><!-- Copyright 2005 Macromedia, Inc. All rights reserved. --><title>Text</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><link rel="stylesheet" href="../mm_health_nutr.css" type="text/css"><script language="javascript">
 //--------------- LOCALIZEABLE GLOBALS ---------------
 var d=new Date();
 var monthname=new Array("January","February","March","April","May","June","July","August","September","October","November","December");
@@ -38,7 +32,7 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
 
   <tr bgcolor="#99CC66">
   <td>&nbsp;</td>
-  	<td colspan="3" id="dateformat" height="20"><a href="../index.htm">INDICE</a>&nbsp;&nbsp;::&nbsp;&nbsp;<a href="../arquitectura.html#juegos">Juegos</a>::&nbsp;&nbsp;<script language="javascript">
+  	<td colspan="3" id="dateformat" height="20"><a href="../index.html">INDICE</a>&nbsp;&nbsp;::&nbsp;&nbsp;<a href="../arquitectura.html#juegos">JUEGOS&nbsp; </a>::&nbsp;&nbsp;<script language="javascript">
       document.write(TODAY);	</script>	</td>
   </tr>
 
@@ -55,20 +49,62 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
     &nbsp;<br>
     <table border="0" cellspacing="0" cellpadding="2" width="500">
         <tr>
-          <td class="pageName">PAGE NAME HERE</td>
+          <td class="pageName">Robot en un laberinto</td>
         </tr>
         <tr>
-          <td class="bodyText"><p>Rapiebant me spectacula theatrica, plena imaginibus miseriarum mearum
-            et fomitibus ignis mei. quis est, quod ibi homo vult dolere luctuosa
-            et tragica, quae tamen pati ipse nollet? et tamen pati vult ex eis!</p>
-
-			<p>Rapiebant me spectacula theatrica, plena imaginibus miseriarum mearum
-            et fomitibus ignis mei. quis est, quod ibi homo vult dolere luctuosa
-            et tragica, quae tamen pati ipse nollet? et tamen pati vult ex eis!</p>
-
-			<p>Rapiebant me spectacula theatrica, plena imaginibus miseriarum mearum
-            et fomitibus ignis mei. quis est, quod ibi homo vult dolere luctuosa
-            et tragica, quae tamen pati ipse nollet? et tamen pati vult ex eis!</p>			</td>
+          <td class="bodyText">
+			<ul>
+				<li><font size="3">Descripción del juego:</font></li>
+			</ul>
+			<p>&nbsp;&nbsp;&nbsp; El juego consiste en conseguir que un robot 
+			atraviese el laberinto hasta una posición destino (o salida). 
+			Implementamos un laberinto de 6 x 6.</p>
+			<p align="center"><img border="0" src="robot.17.gif"></p>
+			<ul>
+				<li>
+				<p align="justify"><font size="3">Heurística</font></p></li>
+			</ul>
+			<p>La medida heurística se basa en la distancia que hay entre la 
+			posición actual del robot en el laberinto a la posición final o 
+			salida.</p>
+			<p align="center">h&#39;(n) = Posición destino - Posición actual</p>
+			<ul>
+				<li>
+				<p align="justify"><font size="3">Operadores</font></p></li>
+			</ul>
+			<ol>
+				<li>Robot hacia arriba: Si y sólo si, no ha sido visitado, no es 
+				un Muro y no supera los limites del laberinto.</li>
+				<li>Robot hacia abajo: Si y sólo si, no ha sido visitado, no es 
+				un Muro y no supera los limites del laberinto.</li>
+				<li>Robot hacia la izquierda: Si y sólo si, no ha sido visitado, 
+				no es un Muro y no supera los limites del laberinto.</li>
+				<li>Robot hacia la derecha: Si y sólo si, no ha sido visitado, 
+				no es un Muro y no supera los limites del laberinto.</li>
+			</ol>
+			<ul>
+				<li>
+				<p align="justify"><font size="3">Algoritmo</font></p></li>
+			</ul>
+			<p align="justify">Algoritmo BreadthFirstSearch o Primero en Anchura: 
+			Los nodos se expanden por orden no decreciente de profundidad. Este 
+			algoritmo no implementa la vuelta atrás, ya que todos los nodos de 
+			profundidad p se expandes antes que cualquier nodo de profundidad 
+			p+1.</p>
+			<p align="center">&nbsp;<img border="0" src="robot.16.jpg"></p>
+			<ul>
+				<li>
+				<p align="justify"><font size="3">Espacio de estados</font></p>
+				</li>
+			</ul>
+			<p align="justify">Estado ( Tablero_Laberinto[][] )<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tablero_Laberinto[ i ] [ j ] = { Muro, Camino, Robot }<p align="justify">Estados 
+			inalcanzables:<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Los estados prohibidos se refieren a ocupar casillas imposibles 
+			como Muro o superar los límites del tablero (laberinto)<br>
+			<p align="justify">Estado inicial:<br>
+			<img border="0" src="robot.20.jpg"><p align="left">Estado final:<br>
+			<img border="0" src="robot.21.jpg"></td>
 		</tr>
       </table>
 	<td width="103">&nbsp;</td>

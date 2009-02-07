@@ -38,7 +38,7 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
 
   <tr bgcolor="#99CC66">
   <td>&nbsp;</td>
-  	<td colspan="3" id="dateformat" height="20"><a href="../index.htm">INDICE</a>&nbsp;&nbsp;::&nbsp;&nbsp;<a href="../arquitectura.html#juegos">Juegos</a>::&nbsp;&nbsp;<script language="javascript">
+  	<td colspan="3" id="dateformat" height="20"><a href="../index.html">INDICE</a>&nbsp;&nbsp;::&nbsp;&nbsp;<a href="../arquitectura.html#juegos">JUEGOS</a>::&nbsp;&nbsp;<script language="javascript">
       document.write(TODAY);	</script>	</td>
   </tr>
 
@@ -67,7 +67,7 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
 			<p align="center"><img border="0" src="bloque3.gif"></p>
 			<p align="justify">El objetivo consiste en utilizar los operadores 
 			para conseguir el estado final.</p>
-			<p align="center"><img border="0" src="bloque4.gif"></p>
+			<p align="center"><img border="0" src="bloque22.gif"></p>
 			<ul>
 				<li>
 				<p align="justify"><font size="3">Heurística:</font></p></li>
@@ -128,7 +128,18 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
 				<p align="justify"><font size="3">Espacio de estados</font></p>
 				</li>
 			</ul>
-			<p align="justify">&nbsp;</p>			</td>
+			<p align="justify">Estado ( Posición 0, Posición 1, Posición 2 )<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Posición 0 = { Bloque A, Bloque B, 
+			Bloque C }<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Posición 1 = { Bloque A, Bloque B, Bloque C }<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Posición 2 = { Mesa }<br><p align="justify">Estados inalcanzables:<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( Bloque A, Bloque A, Mesa)<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( Bloque B, Bloque B, Mesa)<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( Bloque C, Bloque C, Mesa)<p align="justify">Estado inicial:<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( Bloque C, Bloque A, Mesa )
+			
+			<p align="justify">Estado final:<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( Bloque C, Bloque B, Mesa )</td>
 		</tr>
       </table>
 	<td width="103">&nbsp;</td>

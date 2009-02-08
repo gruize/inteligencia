@@ -30,10 +30,12 @@ public class FuncionSucesora implements SuccessorFunction{
         if(padre.movimientoPosible(posible)){
             Juego game = padre.getActual().getEnlaces().get(posible.getId()).dameJuego();
             if(game != null){
-            	
+            	System.out.println();
             	System.out.println(game.getNombre());
-                if(game.ejecutar())
+                if(game.ejecutar()){
                     siguiente = new Estado(posible,padre.getRecorridos());
+                    System.out.println();
+                }
             }else
                 siguiente = new Estado(posible,padre.getRecorridos());
         }
@@ -55,14 +57,14 @@ public class FuncionSucesora implements SuccessorFunction{
 		Set<Integer> set = actual.getActual().getEnlaces().keySet();
 	    Iterator<Integer> itr = set.iterator();
 	    Integer inte;
+	    System.out.println("\tPlanetas sucesores:");
 	    while (itr.hasNext()) {
 	    	inte = itr.next();
         	try {
-        		System.out.println(inte);
 				posible = crearSiguienteEstado(actual, GestorConexion.getInstancia().getNodosH().get(inte));
 	            if(posible != null){
 	            	siguientes.add(new Successor("Enlazar el planeta " + actual.getActual().getNombre() + " " + actual.getActual().getId() + " con el planeta " + posible.getActual().getNombre() + " " + posible.getActual().getId() + " cuya distancia es : " + actual.getActual().getEnlaces().get(posible.getActual().getId()).getDistancia(), posible));
-	            	System.out.println("Estado: Planeta " + actual.getActual().getId() + " -> Planeta " + posible.getActual().getId() + " con coste " + actual.getActual().getEnlaces().get(posible.getActual().getId()).getDistancia() + " con el juego " + actual.getActual().getEnlaces().get(posible.getActual().getId()).getJuego());
+	            	System.out.println("\tEstado: Planeta " + actual.getActual().getId() + " -> Planeta " + posible.getActual().getId() + " con coste " + actual.getActual().getEnlaces().get(posible.getActual().getId()).getDistancia() + " con el juego " + actual.getActual().getEnlaces().get(posible.getActual().getId()).getJuego());
 	            }
 	            posible = null;
         	} catch (IOException e) {

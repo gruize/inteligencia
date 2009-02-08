@@ -141,6 +141,8 @@ public class Universo {
             Long tiempo = (fin-inicio)/(1000);
             String propiedad = String.valueOf(tiempo);
             prop.setProperty("tiempo", propiedad+ " segs.");
+            prop.setProperty("viajes", String.valueOf(this.agente.getActions().size()) );
+            
             
             log.printAcciones(this.agente.getActions());
             log.printProperties(prop);

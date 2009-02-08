@@ -24,7 +24,7 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
   </tr>
 
   <tr bgcolor="#D5EDB3">
-    <td height="51" id="tagline" valign="top" align="center">Grupo 10</td>
+    <td height="51" id="tagline" valign="top" align="center">Grupo 15</td>
 	<td width="103">&nbsp;</td>
   </tr>
 
@@ -53,25 +53,138 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
     <td width="40">&nbsp;</td>
     <td colspan="2" valign="top">&nbsp;<br />
     &nbsp;<br />
-    <table border="0" cellspacing="0" cellpadding="2" width="500">
+    <table border="0" cellspacing="0" cellpadding="2" width="844">
         <tr>
-          <td class="pageName">PAGE NAME HERE</td>
+          <td width="840" class="pageName"><div align="justify">Ejemplos de ejecucion</div></td>
         </tr>
         <tr>
-          <td class="bodyText"><p>Rapiebant me spectacula theatrica, plena imaginibus miseriarum mearum
-            et fomitibus ignis mei. quis est, quod ibi homo vult dolere luctuosa
-            et tragica, quae tamen pati ipse nollet? et tamen pati vult ex eis!</p>
-
-			<p>Rapiebant me spectacula theatrica, plena imaginibus miseriarum mearum
-            et fomitibus ignis mei. quis est, quod ibi homo vult dolere luctuosa
-            et tragica, quae tamen pati ipse nollet? et tamen pati vult ex eis!</p>
-
-			<p>Rapiebant me spectacula theatrica, plena imaginibus miseriarum mearum
-            et fomitibus ignis mei. quis est, quod ibi homo vult dolere luctuosa
-            et tragica, quae tamen pati ipse nollet? et tamen pati vult ex eis!</p>			</td>
+          <td class="bodyText"><p align="justify">En este apartado se van a exponer resultados empiricos obtenidos de la ejecucion de la aplicacion con 10 universos y los 8 algoritmos de busqueda que hemos implementado para la resolucion del problema general.</p>		  </td>
 		</tr>
+        <tr>
+          <td class="pageName"><div align="justify"><a href="universos/universo1.txt">Universo1</a></div></td>
+        </tr>
+        <tr>
+          <td class="bodyText">
+            <p align="center"><img src="juegos/images/tablaUni1.gif" alt="Cuadro resumen universo1" width="800" longdesc="universos/Universo1.txt" /></p>
+            <p align="justify">Como se aprecia en el cuadro resumen para el universo1 todos los algoritmos a excepcion de Escalada Simple y Enfriamiento Simulado (rara vez van a encontrar solucion) dan con una solucion al problema que se planteó. De este cuadro resumen podemos obtener los siguiente resultados:</p>
+            <div align="justify">
+              <ul>
+                <li>Camino mas corto (menor numero de planetas atravesados): Primero en anchura nos da la solucion que menos planetas atraviesa. Conociendo el funcionamiento de este algoritmo tiene bastante sentido. Expande nodos enteros por niveles y la primera solucion que encuentre tiene que estar en el nivel mas bajo posible (mas cercano a la raiz). Por el contrario el algoritmo primero en profundidad nos da el camino mas largo en cuanto a numero de planetas que hay que atravesar.</li>
+                <li>Camino mas corto (en coste): En esta ocasion el algoritmo de coste uniforme es el que ha obtenido el camino mas corto en coste. estando muy seguido de cerca por A*.</li>
+                <li>Mas lento en ejecucion: Este dato normalmente vendra dado por A* y por primero en anchura, ya que normalmente serán los algoritmos que mas nodos expandan y exploren. Escalada simple y enfriamiento simulado serian los que menos tardaran siempre ya que de llegar a una solucion habria sido sin replantearse las decisiones tomadas en el transcurso del recorrido.</li>
+                <li>Mayor numero de nodos abiertos: Primero en profundidad al recorrer a fondo un camino, se ira dejando nodos abiertos por detras para despues volver y recorrerlos en profundidad tambien. Precisamente por esto porque es en profundidad tendra la cola de nodos mas grande.</li>
+                <li>Resultado: Salvo Escalada simple, Enfriamiento simulado y dependiendo del tamaño del universo quizas Profundidad limitada el resto de algoritmos encontraran siempre la una solucion al problema.</li>
+              </ul>
+              <p>Otra forma de representar esta informacion podria ser de la siguiente forma:</p>
+              <p align="center"><img src="juegos/images/GraficoUni1.png" alt="Grafico Universo1" width="600" height="428" longdesc="universos/Universo1.txt" /></p>
+              <p>Notese que la medida del coste esta normalizada para poder apreciar el resto de valores en la misma grafica, de otro modo la escala seria demasiado elevada como para poder observar nada.</p>
+              <p>Este tipo de estudio se puede realizar de todos los universos que exploremos, en particular nosotros vamos a mostrar 9 universos mas.</p>
+              <p>Si se desea consultar el fichero que se utilizo en cada prueba, no hay mas que hacer click sobre el titulo.</p>
+            </div></td>
+            </tr>
+        <tr>
+          <td class="pageName"><div align="justify"><a href="universos/universo2.txt">Universo2</a></div></td>
+        </tr>
+        <tr>
+          <td class="bodyText">     <div align="center">
+            <p><img src="juegos/images/tablaUni2.gif" width="800">     </p>
+            <p>&nbsp;</p>
+          </div></td>
+        </tr> 
+        <tr>
+          <td class="pageName"><div align="justify"><a href="universos/universo3.txt">Universo3</a></div></td>
+        </tr>
+        <tr>
+          <td class="bodyText">  <div align="center">
+            <p><img src="juegos/images/tablaUni3.gif" width="800"></p>
+            <p>&nbsp;        </p>
+          </div></td>
+        </tr>     
+        <tr>
+          <td class="pageName"><div align="justify"><a href="universos/universo4.txt">Universo4</a></div></td>
+        </tr>
+        <tr>
+          <td class="bodyText"><div align="center">
+            <p><img src="juegos/images/tablaUni4.gif" width="800"></p>
+            <p>&nbsp;</p>
+          </div></td>
+        </tr> 
+        <tr>
+          <td class="pageName"><div align="justify"><a href="universos/universo5.txt">Universo5</a></div></td>
+        </tr>
+        <tr>
+          <td class="bodyText"> 
+            <div align="center">
+              <p><img src="juegos/images/tablaUni5.gif" width="800">          </p>
+              <p>&nbsp;</p>
+          </div></td>
+        </tr> 
+        <tr>
+          <td class="pageName"><div align="justify"><a href="universos/universo6.txt">Universo6</a></div></td>
+        </tr>
+        <tr>
+          <td class="bodyText">    <div align="center">
+            <p><img src="juegos/images/tablaUni6.gif" width="800">      </p>
+            <p>&nbsp;</p>
+          </div></td>
+        </tr> 
+        <tr>
+          <td class="pageName"><div align="justify"><a href="universos/universo7.txt">Universo7</a></div></td>
+        </tr>
+        <tr>
+          <td class="bodyText">        <div align="center">
+            <p><img src="juegos/images/tablaUni7.gif" width="800">  </p>
+            <p>&nbsp;</p>
+          </div></td>
+        </tr> 
+        <tr>
+          <td class="pageName"><div align="justify"><a href="universos/universo8.txt">Universo8</a></div></td>
+        </tr>
+        <tr>
+          <td class="bodyText">      <div align="center">
+            <p><img src="juegos/images/tablaUni8.gif" width="800">    </p>
+            <p>&nbsp;</p>
+          </div></td>
+        </tr> 
+        <tr>
+          <td class="pageName"><div align="justify"><a href="universos/universo9.txt">Universo9</a></div></td>
+        </tr>
+        <tr>
+          <td class="bodyText">   <div align="center">
+            <p><img src="juegos/images/tablaUni9.gif" width="800">       </p>
+            <p>&nbsp;</p>
+          </div></td>
+        </tr> 
+        <tr>
+          <td class="pageName"><div align="justify"><a href="universos/universo10.txt">Universo10</a></div></td>
+        </tr>
+        <tr>
+          <td class="bodyText">      <div align="center">
+            <p><img src="juegos/images/tablaUni10.gif" width="800"></p>
+            </div></td>
+        </tr>    
       </table>
-	</td>
+	<p>Como comentario general a todas las pruebas realizadas comentar lo siguiente:</p>
+	<ul>
+	  <li>No hemos encontrado nunca solucion con Esacalada simple ni con Enfriamiento simulado, obviamente por las caracteristicas del universo.</li>
+	  <li>A* y Coste uniforme siempre estan a la par en cuanto al coste en horas del viaje.</li>
+	  <li>Primero en anchura siempre expande mas nodos y obtiene la solucion en menos pasos, atravesando menos planetas.</li>
+	  <li>Los algoritmos en profundidad, tanto primero en prfundidad como profundidad limitida obtienen siempre el camino con mas pasos pasos para llegar al destino</li>
+	  <li>Primero en anchura al expandir el que mas nodos tambien tendera a ser el menos eficiente en tiempo de todos los algoritmos.</li>
+	  </ul>
+	<p>Con todo lo dicho anteriormente dependiendo de que qeuramos optimizar deberemos utilizar un algoritmo u otro:</p>
+	<ul>
+	  <li>Optimizar coste en horas: A! y Coste uniforme.</li>
+	  <li>Optimizar viajes entre planetas: Primero en anchura.</li>
+	  <li>Optimizar tiempo: Primero en profundidad, tanto limitada como primero en profundidad.</li>
+	  <li>Optimizar memoria: Primero en anchura, expande gran cantidad de nodos, pero no muchos a la vez.</li>
+	</ul>
+	<p>Si se quiere consultar los cuadros a traves de una hoja de calculo esta disponible a traves del siguiente enlace: </p>
+	<ul>
+	  <li><a href="archivos/Comparativa ejemplos.xlsx">Resumen Comparativa</a> para Microsoft Office 2007</li>
+      <li><a href="archivos/Comparativa ejemplos.xls">Resumen Comparativa</a> para Microsoft Office 2003</li>
+      </ul>
+	<p>&nbsp;</p></td>
     <td width="103">&nbsp;</td>
   </tr>
 

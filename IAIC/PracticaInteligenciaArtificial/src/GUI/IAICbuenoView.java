@@ -93,6 +93,7 @@ public class IAICbuenoView extends FrameView {
                         {"", "", "", ""},
                         {"", "", "", ""},
                         {"", "", "", ""},
+                        {"", "", "", ""},
                         {"", "", "", ""}
                     },
                     new String [] {
@@ -117,6 +118,7 @@ public class IAICbuenoView extends FrameView {
         jTable1.setName("jTable1"); // NOI18N
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setSize(350, 400);
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(GUI.IAICbuenoApp.class).getContext().getResourceMap(IAICbuenoView.class);
         jTable1.getColumnModel().getColumn(0).setHeaderValue(resourceMap.getString("jTable1.columnModel.title3")); // NOI18N
         jTable1.getColumnModel().getColumn(1).setHeaderValue(resourceMap.getString("jTable1.columnModel.title0")); // NOI18N
@@ -197,7 +199,7 @@ public class IAICbuenoView extends FrameView {
                     .add(jLabel3)
                     .add(jComboBox3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 88, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 110, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 53, Short.MAX_VALUE)
                 .add(jButton1)
                 .addContainerGap())
@@ -420,6 +422,7 @@ public class IAICbuenoView extends FrameView {
 		                        {"Coste", prop1.getProperty("pathCost"), prop2.getProperty("pathCost"), prop3.getProperty("pathCost")},
 		                        {"Tiempo", prop1.getProperty("tiempo"), prop2.getProperty("tiempo"), prop3.getProperty("tiempo")},
 		                        {"Nodos Expandidos", prop1.get("nodesExpanded"), prop2.getProperty("nodesExpanded"), prop3.getProperty("nodesExpanded")},
+		                        {"Viajes", prop1.getProperty("viajes").toString(), prop2.getProperty("viajes").toString(), prop3.getProperty("viajes").toString()},
 		                        {"Solucion?", prop1.getProperty("resultado").toString(), prop2.getProperty("resultado").toString(), prop3.getProperty("resultado").toString()}
 		                    },
 		                    new String [] {

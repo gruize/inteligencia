@@ -94,18 +94,40 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
 			nodos se expanden por orden no decreciente de coste (camino de menor 
 			coste), implementándose con una cola de prioridad, donde los nodos 
 			con igual coste generan el uso del algoritmo de búsqueda en anchura.</p>
+			<p align="justify">Pese a que el juego dispone de una función 
+			heurística, se utiliza un algoritmo de búsqueda ciega o desinformada 
+			aumentando así la diversidad de algoritmos de búsquedas utilizados 
+			en el Universo. Este algoritmo aun sin requerir el uso de una 
+			función heurística genera un camino de coste mínimo (siendo su 
+			principal objetivo) y utilizando coste uno para cada movimiento, por lo que considera como camino mínimo el menor número de 
+			operaciones posibles.</p>
 			<p align="center">&nbsp;<img border="0" src="images/reinas13.jpg"></p>
 		  <ul>
 				<li>
 				<p align="justify"><font size="3">Espacio de estados</font></p>
 				</li>
 			</ul>
-			<p align="justify">Estado ( Tablero [ ] [ ] )<p align="justify">Estados 
+			<p align="justify">Estado ( Tablero [ ] [ ] )<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ _ , _ , _ , _ , _ , _ , _ , _ ]<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ _ , _ , _ , _ , _ , _ , _ , _ ]<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ _ , _ , _ , _ , _ , _ , _ , _ ]<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ _ , _ , _ , _ , _ , _ , _ , _ ]<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ _ , _ , _ , _ , _ , _ , _ , _ ]<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ _ , _ , _ , _ , _ , _ , _ , _ ]<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ _ , _ , _ , _ , _ , _ , _ , _ ]<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ _ , _ , _ , _ , _ , _ , _ , _ ]<br>
+			Los valores que se pueden asignarse a cada posición del tablero son el vacío o una Reina.
+			<p align="justify">Representación intuitiva 
+			mediante la que se tiene pleno conocimiento del estado del juego, 
+			así como su proximidad a un estado objetivo evitando a su vez, 
+			sobrecargar el contenido que contiene el estado (únicamente los 
+			datos necesarios)<p align="justify">Estados 
 			prohibidos:<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Los estados prohibidos son todos aquellos en que 2 o más reinas 
 			pueden atacarse.<br>
 			<p align="justify">Estado inicial:<br>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tablero vacío<p align="justify">Estado final:<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tablero donde cada una de sus 
+			posiciones contiene como valor Vacío<p align="justify">Estado final:<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tablero conteniendo n reinas sin que ninguna de ellas sea 
 			amenazada por otra.</td>
 		</tr>

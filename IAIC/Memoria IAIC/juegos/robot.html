@@ -91,14 +91,28 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
 			algoritmo no implementa la vuelta atrás, ya que todos los nodos de 
 			profundidad p se expandes antes que cualquier nodo de profundidad 
 			p+1.</p>
+			<p align="justify">Aunque se esta en posesión de una función 
+			heurística válida, se utiliza este algoritmo garantizando aparición 
+			de la solución, si existe, demostrando así, pese a que se puede 
+			pensar que el tablero como representación del estado pueda resultar 
+			desfavorable debido a su tamaño, no lo es, ya que genera una 
+			solución con un grado de expansión lógico ya que el juego esta 
+			desarrollado de tal forma que evite la repetición de estados y 
+			generando estados imposibles, minimizando así las expansiones de 
+			nodos.</p>
 			<p align="center">&nbsp;<img border="0" src="images/robot.16.jpg"></p>
-		  <ul>
+    <ul>
 				<li>
 				<p align="justify"><font size="3">Espacio de estados</font></p>
 				</li>
 			</ul>
 			<p align="justify">Estado ( Tablero_Laberinto[][] )<br>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tablero_Laberinto[ i ] [ j ] = { Muro, Camino, Robot }<p align="justify">Estados 
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tablero_Laberinto[ i ] [ j ] = { Muro, Camino, Robot }<p align="justify">
+			Representación intuitiva 
+			mediante la que se tiene pleno conocimiento del estado del juego, 
+			así como su proximidad a un estado objetivo evitando a su vez, 
+			sobrecargar el contenido que contiene el estado (únicamente los 
+			datos necesarios)<p align="justify">Estados 
 			inalcanzables:<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Los estados prohibidos se refieren a ocupar casillas imposibles 
 			como Muro o superar los límites del tablero (laberinto)<br>

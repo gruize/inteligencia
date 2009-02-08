@@ -118,6 +118,12 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
 			<p align="center">f&#39;(n) = g(n) + h&#39;(n) = Primero en Anchura + 
 			Primero en Profundidad = Coste real hasta el nodo n + Estimación del 
 			coste mínimo desde el nodo n hasta el objetivo</p>
+			<p align="justify">Debido al tamaño del espacio de estados y la 
+			necesidad de encontrar un camino mínimo, hacia la solución resulta 
+			evidente que la búsqueda elegida es la más acertada. También añadir 
+			que en comparación a otras búsquedas (tanto informadas como ciegas) 
+			los mejores resultados (Nodos expandidos, coste y solución obtenida) 
+			se obtienen con este algoritmo.</p>
 			<p align="center">&nbsp;<img border="0" src="images/pollos6.jpg"></p>
 		  <ul>
 				<li>
@@ -127,7 +133,10 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
 			<p align="justify">Estado ( Colores del tablero de huevos [ ] [ ])<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Colore = { Blanco, Azul, Rojo, Pollito }<br>						
 			
-			<p align="justify">Estados inalcanzables:<br>
+			<p align="justify">La representación de estados más intuitiva es el 
+			propio tablero que muestre la evolución de todos y cada unos de los 
+			huevos, evitando así una representación de estados demasiado 
+			extensa.<p align="justify">Estados inalcanzables:<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Los estados inalcanzables son aquellos en los que los las 
 			casillas adyacentes a la casilla a la que se le aplica el operador 
 			poseen valores diferentes e inferiores con respecto a la sucesión. <br>

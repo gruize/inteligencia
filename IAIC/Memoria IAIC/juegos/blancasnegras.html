@@ -67,9 +67,9 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
 			siguiente posición inicial:</p>
 			<p align="center"><img src="images/blancasynegras.gif" alt="Blancas y negras" width="750" height="145"><br>
             Cada rana representa una ficha de un color.</p>
-			<p align="justify">El estado se representa por una tupla de 7 elementos donde cada elemento representa una posicion (piedras en la imagen).</p>
-			<p align="justify">El objetivo del puzzle consiste en colocar todas las fichas blancas(ranas verdes) 
-			  a la izquierda de las fichas negras(ranas marrones), independientemente de la 
+			<p align="justify">El estado se representa por una tupla de 7 elementos donde cada elemento representa una posición (piedras en la imagen).</p>
+			<p align="justify">El objetivo del puzzle consiste en colocar todas las fichas blancas (ranas verdes) 
+			  a la izquierda de las fichas negras (ranas marrones), independientemente de la 
 			  posición de la casilla vacía. Para ello, los movimientos permitidos 
 			  son los siguientes:<br>
 			  • Una ficha puede moverse a una celda adyacente vacía, con coste 1.<br>
@@ -83,10 +83,10 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
 			todas las fichas blancas se sitúen a la izquierda de las fichas 
 			negras, sin importar la posición de la casilla vacía, ya sea en el 
 			centro o en cualquiera de los extremos, por lo que cuanto menor sea 
-			el numero de fichas blancas a la derecha de la/s ficha/s negra/s 
-			menor debe ser el valor heurístico otorgado a ese estado y por lo tanto mas cerca estaremos de la solucion.</p>
-			<p align="justify">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-			h&#39;(x) = Numero de fichas Blancas a la derecha de una ficha Negra</p>
+			el número de fichas blancas a la derecha de la/s ficha/s negra/s 
+			menor debe ser el valor heurístico otorgado a ese estado y por lo tanto mas cerca estaremos de la 
+			solución.</p>
+			<p align="center">h&#39;(x) = Número de fichas Blancas a la derecha de una ficha Negra</p>
 			<ul>
 				<li>
 				<p align="justify"><font size="3">Operadores</font></p></li>
@@ -131,16 +131,15 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
 			baja que el nodo actual. Termina cuando encuentra la solución o no 
 			puede seguir. Técnica muy dependiente del orden de generación de los 
 			hijos.</p>
-			<p align="justify">Precisamente la generacion de los sucesores hace imposible que el algoritmo de una solucion, el primer nodo qeu genera no puede generar movimiento alguno, pero al tener el mismo valor heuristico que el resto es elegido como primera opcion para ser expandido. Al no tener descendientes el problema se queda bloqueado en ese punto.</p>
-			<p align="justify">Este es uno de los juegos que hemos puesto que no obtiene una solucion del problema.</p>
+			<p align="justify">Precisamente la generación de los sucesores hace imposible que el algoritmo de una solución, el primer nodo que genera no puede generar movimiento alguno, pero al tener el mismo valor heurístico que el resto es elegido como primera opción para ser expandido. Al no tener descendientes el problema se queda bloqueado en ese punto.</p>
+			<p align="justify">Este es uno de los juegos que hemos puesto que no obtiene una solución del problema.</p>
 			<p align="center"><img border="0" src="images/blanca1.jpg"></p>
 		  <ul>
 				<li>
 				<p align="justify"><font size="3">Espacio de estados</font></p>
 				</li>
             </ul>
-			<p>Estado ( _ , _ , _ , _ , _ , _ , _ ) :- Esta representacion nos parece la mas intuitiva ya que nos permite conocer el estado global del juego en cada momento, sin perjudicar en coste ni rendimiento a la busqueda.</p>
-			<p align="justify">Estado (Tablero [ 7 ])<p align="justify">Estado inicial:<br>
+			<p>Estado ( _ , _ , _ , _ , _ , _ , _ ) :- Esta representación nos parece la mas intuitiva ya que nos permite conocer el estado global del juego en cada momento, sin perjudicar en coste ni rendimiento a la búsqueda.</p><p align="justify">Estado inicial:<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( [ Negra, Negra, Negra, Vacía, 
 			Blanca, Blanca, Blanca ] )
 			

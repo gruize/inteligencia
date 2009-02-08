@@ -95,6 +95,12 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
 			cerca posible del objetivo. Aplica la función:</p>
 			<p align="center">f&#39;(n) = h&#39;(n) = Representa el coste mínimo 
 			para ir desde el nodo n hasta un nodo objetivo.</p>
+			<p align="justify">Debido al gran número de operaciones que deben 
+			realizarse para conseguir una solución y teniendo en cuenta que 
+			todas las operaciones suponen el mismo coste, ya que es el 
+			intercambio de contenido de dos casillas adyacentes, no resulta 
+			necesario incluir dicho coste en la función sucesora, lo que 
+			describe el algoritmo voraz.</p>
 			<p align="center">&nbsp;<img border="0" src="images/puzzle7.jpg"></p>
 			<p align="center"><img border="0" src="images/puzzle8.jpg"></p>
 			<p align="center"><img border="0" src="images/puzzle9.jpg"></p>
@@ -103,9 +109,16 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
 				<p align="justify"><font size="3">Espacio de estados</font></p>
 				</li>
 			</ul>
-			<p align="justify">Estado : Disponemos de un tablero 3 x 3 con una 
-			casilla vacía y 8 fichas.<br>
-			<p align="justify">Estado inicial:<br>
+			<p align="justify">Estado : Tablero <br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[  ,  ,  ]<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[  ,  ,  ]<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[  ,  ,  ]<br>
+			<p align="justify">Representación intuitiva 
+			mediante la que se tiene pleno conocimiento del estado del juego, 
+			así como su proximidad a un estado objetivo evitando a su vez, 
+			sobrecargar el contenido que contiene el estado (únicamente los 
+			datos necesarios)<p align="justify">
+			Estado inicial:<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img border="0" src="images/puzzle11.gif">
 			<p align="justify">Estado final:<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img border="0" src="images/puzzle12.gif"></td>

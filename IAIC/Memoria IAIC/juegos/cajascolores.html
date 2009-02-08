@@ -64,11 +64,13 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
 			</ul>
 			<p align="justify">&nbsp;&nbsp;&nbsp; Disponemos de un tablero N x N 
 			en cuyas casillas pueden haber 2 tipos de valores, en este caso, los 
-			colores Rojo y Azul.</p>
+			colores Rojo y Azul, quedando así representados los estados</p>
 			<p align="center"><img border="0" src="images/cajasc6.gif"></p>
 			<p align="justify">El objetivo del juego consiste en modificar los 
 			colores de las casillas en las que sean necesarias para obtener un 
-			tablero cuyas casillas adyacentes sean diferentes.</p>
+			tablero cuyas casillas adyacentes sean diferentes, a través de los 
+			diferentes operadores, cada uno referido a una casilla en concreto, 
+			que modifica el color que posea dicha casilla.</p>
 			<p align="center"><img border="0" src="images/cajasc7.gif" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="images/cajasc8.gif" align="right"></p>
 			<p align="center">Objetivos</p>
 			<p align="justify">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
@@ -129,14 +131,28 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
 			<p align="justify">f&#39;(n) = h&#39;(n): Representa el coste mínimo para 
 			llegar desde n hasta un nodo objetivo por el camino más corto, 
 			siendo h&#39;(n) = 0, para los nodos objetivos.</p>
+			<p align="justify">Utilizamos este algoritmo, ya que este juego 
+			genera un amplio espacio de estados por lo que una búsqueda 
+			desinformada conllevaría una eficiencia nula o cuestionable, por el 
+			contrario, el algoritmo de búsqueda voraz procura en cada paso 
+			acercarse lo mas posible al objetivo de forma efectiva, generando un 
+			mínimo número de expansiones.</p>
 			<p align="center"><img border="0" src="images/cajasc5.jpg"></p>
 			<ul>
 				<li>
 				<p align="justify"><font size="3">Espacio de estados</font></p>
 				</li>
 			</ul>
-			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado(tablero[3][3])<br>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tablero[x][y] = Rojo ˇ Azul</p>		  </td>
+			<p>Mediante la representación total del tablero, conseguimos estar 
+			informados de todos los datos del mismo, lo que resulta muy 
+			conveniente, sin suponer un coste elevado para el traspaso de 
+			información entre los estados.</p>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado ( tablero[ 3 ] [ 3 ] )</p>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;tablero[x][y] = Rojo ˇ Azul</p>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;[ Rojo/Azul Rojo/Azul Rojo/Azul ]<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;[ Rojo/Azul Rojo/Azul Rojo/Azul ]<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;[ Rojo/Azul Rojo/Azul Rojo/Azul ]<br>
+			</p>		  </td>
 		</tr>
       </table>
 	<td width="103">&nbsp;</td>

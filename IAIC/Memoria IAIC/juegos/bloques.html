@@ -66,19 +66,24 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
 			el bloque C esta sobre el bloque A y el bloque B esta sobre la mesa.</p>
 			<p align="center"><img border="0" src="images/bloque3.gif"></p>
 			<p align="justify">El objetivo consiste en utilizar los operadores 
-			para conseguir el estado final.</p>
+			para conseguir el estado final, teniendo como operadores los 
+			movimientos de un bloque sobre otro o sobre la mesa.</p>
 			<p align="center"><img border="0" src="images/bloque22.gif"></p>
+			<p align="justify">El estado se representa mediante una tupla de 3 
+			elementos donde cada posición representa una posición. Por defecto, 
+			la ultima posición representa la mesa o repositorio donde se sitúan 
+			el resto de elementos.</p>
 		  <ul>
 				<li>
 				<p align="justify"><font size="3">Heurística:</font></p></li>
 			</ul>
 			<p align="justify">El objetivo del juego consiste en conseguir que 
-			los 3 bloques estén superpuestos en orden alfabético siendo el 
-			bloque A el que este en la cima, por lo que su medida heurística 
+			dos de los bloques (B y C) estén superpuestos en orden alfabético siendo el 
+			bloque B el que este en la cima, por lo que su medida heurística 
 			consiste en sumar los bloques que estén situados en una posición 
-			incorrecta. Cuanto mayor sera este valor peor ira la cosa, por lo que minimizando esta heuristica estariamos acercandonos mas a la solucion del problema.</p>
-			<p align="justify">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-			h&#39;(x) = Número de bloques mal colocados.</p>
+			incorrecta. Cuanto mayor sea este valor más alejado estará el 
+			objetivo, por lo que minimizando esta medida heurística se acercaría la solución del problema.</p>
+			<p align="center">h&#39;(x) = Número de bloques mal colocados.</p>
 			<ul>
 				<li>
 				<p align="justify"><font size="3">Operadores</font></p></li>
@@ -121,19 +126,27 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
 			<p align="justify">Algoritmo DepthFirstSearch o Primero en 
 			profundidad: Técnica que visita un sucesor del nodo actual en cada 
 			paso, si éste no tiene sucesores se realiza Backtracking, La 
-			implementación se realiza como si se tratase de una pila. Explorando todos los estados nos garantizamos que encuentre una solucion.</p>
+			implementación se realiza como si se tratase de una pila. </p>
+			<p align="justify">Aunque existe una heurística valida, se&nbsp; 
+			utiliza un algoritmo de búsqueda ciega con el fin de aumentar la 
+			variedad de algoritmos, y aún siendo una búsqueda desinformada, 
+			debido al orden de generación de nodos, genera pocos nodos para la 
+			obtención de una solución.</p>
 			<p align="center"><img border="0" src="images/bloque2.jpg"></p>
 		  <ul>
 				<li>
 				<p align="justify"><font size="3">Espacio de estados</font></p>
 				</li>
 		    </ul>
-			<p>&nbsp;</p>
 			<p align="justify">Estado ( Posición 0, Posición 1, Posición 2 )<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Posición 0 = { Bloque A, Bloque B, 
 			Bloque C }<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Posición 1 = { Bloque A, Bloque B, Bloque C }<br>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Posición 2 = { Mesa }<br><p align="justify">Estados inalcanzables:<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Posición 2 = { Mesa }<br><p align="justify">
+			Se implementa el juego con la representación de estados con la 
+			intención de que ser versátil a futuras ampliaciones del juego, así 
+			como de ser consientes en todo momento de los elementos que se están 
+			utilizando.<p align="justify">Estados inalcanzables:<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( Bloque A, Bloque A, Mesa)<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( Bloque B, Bloque B, Mesa)<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( Bloque C, Bloque C, Mesa)<p align="justify">Estado inicial:<br>

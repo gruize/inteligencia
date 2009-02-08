@@ -64,10 +64,13 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
 			</ul>
 			<p align="center"><img border="0" src="images/LCC.ht3.jpg"></p>
 			<p>&nbsp;&nbsp;&nbsp; Un barquero quiere pasar de una orilla a otra del río a su 
-			lobo, su cabra y un saco de coles, y en la barca sólo caben él y una 
-			de las tres cosas. El barquero sabe que si deja solos al lobo y a la 
-			cabra, el lobo se comerá a la cabra. Si deja a la cabra junto al 
-			saco de coles, la cabra se comerá las coles. </p>
+			lobo, su cabra y un saco de coles, y en la barca sólo caben él y uno 
+			de los tres elementos. El barquero sabe que si deja solos al lobo y a la 
+			cabra, el lobo se comerá a la cabra y si deja a la cabra junto al 
+			saco de coles, la cabra se comerá las coles. El objetivo del juego 
+			consiste en encontrar un recorrido mediante el cual, manteniéndose 
+			la capacidad de la barca en 2 pasajeros de los cuales uno de ellos 
+			debe ser el granjero, transportar los 3 elementos a la otra orilla.</p>
 			<ul>
 				<li>
 				<p align="justify"><font size="3">Operadores</font></p></li>
@@ -103,6 +106,11 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
 			primero en profundidad. Resulta útil para espacio de estados grandes 
 			y cuando la profundidad de la solución se desconoce, ya que ésta 
 			varia de forma creciente.</p>
+			<p align="justify">Se usa un algoritmo de búsqueda ciega, lo que 
+			permite la ausencia de una medida heurística. Se elige este 
+			algoritmo, además de tener el objetivo de aportar variedad a los 
+			métodos de búsqueda, debido a que realiza una búsqueda completa&nbsp; 
+			y usa un espacio de estados extenso</p>
 			<p align="center"><img src="images/LCC.ht4.jpg" width="760" border="0"></p>
       <ul>
 				<li>
@@ -115,7 +123,12 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cabra = True <sup>v</sup> False<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Col = True <sup>v</sup> False<br>						
 			
-			<p align="justify">Estados inalcanzables:<br>
+			<p align="justify">Mediante esta representación de cada estado, se 
+			está en pleno conocimiento completo de la información en cada paso, 
+			ya que sus valores determinan la posición de cada elemento, siendo 
+			ineficiente añadir el valor de la barca ya que en cada movimiento el 
+			granjero debe estar en dicha barca, por lo cual, donde esté el 
+			granjero está la barca.<p align="justify">Estados inalcanzables:<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( Granjero derecha, Lobo izquierda, Cabra izquierda, Col izquierda )<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( Granjero derecha, Lobo derecha, Cabra izquierda, Col izquierda )<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( Granjero derecha, Lobo izquierda, Cabra izquierda, Col 

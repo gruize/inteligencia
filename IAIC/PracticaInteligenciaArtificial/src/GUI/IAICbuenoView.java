@@ -445,6 +445,9 @@ public class IAICbuenoView extends FrameView {
 		                        return canEdit [columnIndex];
 		                    }
 		                });
+		        	
+		        	JFrame parent = new JFrame();
+		            JOptionPane.showMessageDialog(parent, "Ejecucion finalizada. Para revisar los caminos consulte los logs.");
 		    		
 		        }else{
 		        	JFrame parent = new JFrame();

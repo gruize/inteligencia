@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<!-- DW6 -->
+<head>
+<!-- Copyright 2005 Macromedia, Inc. All rights reserved. -->
+<title>Text</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="mm_health_nutr.css" type="text/css">
+<script language="javascript">
+//--------------- LOCALIZEABLE GLOBALS ---------------
+var d=new Date();
+var monthname=new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+//Ensure correct for language. English is "January 1, 2004"
+var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
+//---------------   END LOCALIZEABLE   ---------------
+</script>
+</head>
+<body bgcolor="#F4FFE4">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr bgcolor="#D5EDB3">
+    <td colspan="2" rowspan="2">&nbsp;</td>
+    <td width="494" height="50" id="logo" valign="bottom" align="center" nowrap>Componentes</td>
+    <td width="103">&nbsp;</td>
+  </tr>
+
+  <tr bgcolor="#D5EDB3">
+    <td height="19" id="tagline" valign="top" align="center">Grupo 15</td>
+	<td width="103">&nbsp;</td>
+  </tr>
+
+  <tr>
+    <td colspan="4" bgcolor="#5C743D"><img src="mm_spacer.gif" alt="" width="1" height="2" border="0"></td>
+  </tr>
+
+  <tr>
+    <td colspan="4" bgcolor="#99CC66" background="mm_dashed_line.gif"><img src="mm_dashed_line.gif" alt="line decor" width="4" height="3" border="0"></td>
+  </tr>
+
+  <tr bgcolor="#99CC66">
+  <td>&nbsp;</td>
+  	<td colspan="3" id="dateformat" height="20"><a href="index.html">INDICE</a>&nbsp;&nbsp;::&nbsp;&nbsp;<script language="javascript">
+      document.write(TODAY);	</script>	</td>
+  </tr>
+
+  <tr>
+    <td colspan="4" bgcolor="#99CC66" background="mm_dashed_line.gif"><img src="mm_dashed_line.gif" alt="line decor" width="4" height="3" border="0"></td>
+  </tr>
+
+  <tr>
+    <td colspan="4" bgcolor="#5C743D"><img src="mm_spacer.gif" alt="" width="1" height="2" border="0"></td>
+  </tr>
+ <tr>
+    <td width="40">&nbsp;</td>
+    <td colspan="2" valign="top">&nbsp;<br>
+    &nbsp;<br>
+    <table border="0" cellspacing="0" cellpadding="2" width="775">
+        <tr>
+          <td width="771" class="pageName">Componentes</td>
+        </tr>
+        <tr>
+          <td class="bodyText"><p>El grupo lo formamos:</p>
+            <ul>
+              <li>Alejandro Asensio González</li>
+              <li>Francisco Huertas Ferrer</li>
+              <li>Gabriela de las Nieves Ruiz Escobar</li>
+            </ul>
+          <p>Podemos decir como grupo que la practica nos ha resultado interesante y nos ha enseñado bastantes cosas sobre el recorrido de espacios de estados y metodologias de resolucion de problemas basandonos en la Inteligencia Artificial.</p>
+          <p>Hemos entendido la practica como un estudio de diversos algoritmos de busqueda sobre un mismo entorno de ejecucion, es decir, las condiciones de ejecucion para un algoritmo y otro tenian que ser las mismas. Este hecho nos ha llevado a mantener fijos los tipos de busqueda de cada juego que hemos implementado para, de este modo, no ofrecer resultados engañosos al ejecutar la busqueda global. Si para el mismo universo unas veces pueder ir por un enlace y otras veces no, dependiendo de la busqueda y diversos factores, la busqueda global no se podria comparar, porque las condiciones internas del universo han cambiado de una busqueda a otra.</p>
+          <p>PAra simbolizar las naves de batalla entre enlaces hemos utilizado juego y no todos ellos con solucion ni utilizando el mismo algoritmo de busqueda, precisamente para abarcar un mayor numero de busquedas distintas y demostrar que sabemos utilizar todas.</p>
+          <p>Pese a partir con una buena idea de como queriamos hacer las cosas, no por ello hemos dejado de encontrar dificultades. Una de las mayores ha sido la interfaz grafica. En nuestro trabajo con java en diversas asignaturas y laboratorios nunca nos habiamos enfrentado a realizar una aplicacion de escritorio y el manejo de AWT y Swing nos ha resultado especialmente dificultoso. Como IDE se ha utilizado principalmente eclipse sobre jdk 1.6 pero debido a que no hemos encontrado unas librerias para editar formularios con paletas y seleccionando y arrastrando como se puede hacer en NetBeans, la interfaz se ha realizado con NetBeans.</p>
+          <p>Otro problema importante surgio a la hora de escenificar el recorrido de cada algoritmo ya que tampoco habiamos realizado dibujos en java. Encontramos una libreria que creaba un Frame y dibujaba sobre el de una manera simple e intuitiva. Pero al realizar el pintado en uno de los eventos del formulario principal, este no se refrescaba y no actualizaba el Form con la representacion del camino. Este problema viene dado a que AWT maneja en el mismo hilo los eventos y el repintado de la aplicacion, asi que tuvimos que crear un thread para el codigo del evento y liberar de este modo a AWT para que pudiera realizar el repintado como esperabamos.</p>
+          <p>Tambien cabe destacar que trabajar con librearias externas no siempre es comodo y facil, sobretodo si estas no estan suficientemente bien documentadas, como pueda ser el caso de AIMA. Nos llevo un perdiodo de tiempo considerable adaptarnos y entenderlas pero preferimos utilzarla antes que implementar nosotros todos los algoritmos ya que se supone estan suficientemente testadas como para garantizar su funcionamiento, cosa que si implementaramos todo nosotros desde el principio deberiamos asegurarnos y perder un valioso tiempo en ello.</p>
+          <p>Tan importante como obtener datos empiricos de los algoritmos lo es conseguir una gran bateria de pruebas, este pensamiento nos llevo a originar un generador de universos para asi poder realizar cuantas pruebas fueran necesarias bajo ciertas condiciones definibles en los archivos de configuracion.</p>
+          <p>Por todo lo mencionado anteriormente nos ha resultado especialmente enriquecedora esta practica ampliando nuestro campo de conocimiento en multitud de areas, mejorando nuestras habilidades como programadores aun mas si cabe, ampliando nuestra habilidad para el rapido entendimiento de librerias externas y por ultimo aumentando nuestra capacidad para depurar problemas complejos.</p></td>
+		</tr>
+      </table>
+	<td width="103">&nbsp;</td>
+  </tr>
+
+ <tr>
+    <td width="40">&nbsp;</td>
+    <td width="110">&nbsp;</td>
+    <td width="494">&nbsp;</td>
+	<td width="103">&nbsp;</td>
+  </tr>
+</table>
+</body>
+</html>

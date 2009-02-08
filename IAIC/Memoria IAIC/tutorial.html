@@ -53,27 +53,42 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
     <td width="24">&nbsp;</td>
     <td colspan="2" valign="top">&nbsp;<br>
     &nbsp;<br>
-    <table border="0" cellspacing="0" cellpadding="2" width="692">
+    <table border="0" cellspacing="0" cellpadding="2" width="793">
         <tr>
-          <td width="688" class="pageName">Maneja la interfaz en unos comodos pasos</td>
+          <td width="789" class="pageName">Maneja la interfaz en unos comodos pasos</td>
         </tr>
         <tr>
           <td class="bodyText"><p>El manejo de la aplicacion es totalmente intuitivo, se adivina exactamente que pasos se deben seguir, aun asi, para los menos &quot;avispados&quot; aqui se detalla un breve tutorial de manejo de la misma.</p>
             <p>A continuacion se presenta la ventana principal de la aplicacion:</p>
             <p><center><img src="../../../Mis documentos/Unnamed Site 2/pantalla1.png" alt="Pantalla Principal" width="428" height="323" align="absmiddle"></center></p>
           <p>Descripcion de cada elemento:</p>
-          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. File -&gt; Se desplegaran 3 opciones:<br>
-	      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Seleccionar universo: Se abre una ventana para seleccionar el fichero que contiene los datos del universo.<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Generar universo: Util herramienta para crear escenarios de trabajo de una manera comoda y facil. Te pide el nombre con el que deseas guardar el universo y lo guardará directamente en la carpeta universos.<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Salir: Cierra la aplicacion.
-          </p>
-          
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. File -&gt; Se desplegaran 3 opciones:<br><br>
+	      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Seleccionar universo: Se abre una ventana para seleccionar el fichero que contiene los datos del universo.<br><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Generar universo: Util herramienta para crear escenarios de trabajo de una manera comoda y facil. Te pide el nombre con el que deseas guardar el universo y lo guardará directamente en la carpeta universos. Esta carpeta se crea automaticamente al iniciarse la aplicacion si no existe. El universo que se genera depende de los siguientes parametros encontrados en el archivo de configuracion propiedades.conf:<br><br>
+          	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;planetas=250 :- Numero de planetas en el universo.<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;destinos=4 :- Numero de planetas destino.<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rangoDest=15 :- Para garantizar que no se llegue al destino de un paso obligamos a que los enlaces tenga que ir como mucho 15 planetas mas lejos.<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;probJuegos=30 :- este numero entre el numero de juegos da la probabilidad de que exista juego en un enlace.<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;topeInicio=5 :- Numero de enlaces obligatorios para el nodo Origen consiguiendo suficientes salidas desde el origen.<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;topeDelante=3 :- Numero minimo de enlaces hacia delante.<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;topeDetras=2 :- Numero minimo de enlaces hacia detras.<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delayNivel=1000 :- Este parametro es para ajustar la velocidad de la representacion.<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fichNombres=conf/nombres.txt :- Es la ruta(relativa) de donde se puede obtener un listado de nombres para planetas.<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Salir: Cierra la aplicacion. </p>
           <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Ayuda -&gt; Se despliega un panel informativo de la aplicacion.</p>
           
-          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Selectores de algoritmos de busqueda: Se debe seleccionar 3 algoritmos para realizar comparaciones entre ellos, si no se seleccionan 3 se tomara por defecto A*. Los diferentes algoritmos se encuentran descritos en su respectiva seccion.</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Selectores de algoritmos de busqueda: Se debe seleccionar 3 algoritmos para realizar comparaciones entre ellos, si no se seleccionan 3 se tomara por defecto A* para los desplegables que no tengan un algoritmo seleccionando. Los diferentes algoritmos se encuentran descritos en su respectiva seccion.</p>
                     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Empezar la simulacion: Algoritmo a algoritmo va recorriendo el universo seleccionado y ostrando al acabar la busqueda una animacion de cada recorrido. Finalmente se presenta un cuadro resumen con la informacion obtenida de la ejecucion de los distintos algoritmos.</p>
-          <p>Como colofon a la ejecucion del algoritmo, se generan unos ficheros para poder seguir la traza mas comodamente. Estos ficheros se encuentran en la carpeta logs y su nombre corresponde a la busqueda utilizada y a la fecha de ejecucion del algoritmo asi como tambien es generado un fichero log global de la ejecucion de la aplicacion. Este ultimo se llama logGlobal.log y se encuentra en la carpeta logs donde son almacenados todos los ficheros de log de la aplicacion.</p></td>
+          <p>Como colofon a la ejecucion del algoritmo, se generan unos ficheros para poder seguir la traza mas comodamente. Estos ficheros se encuentran en la carpeta logs y su nombre corresponde a la busqueda utilizada y a la fecha de ejecucion del algoritmo asi como tambien es generado un fichero log global de la ejecucion de la aplicacion. Este ultimo se llama logGlobal.log y se encuentra en la carpeta logs donde son almacenados todos los ficheros de log de la aplicacion.</p><br></td>
 		</tr>
+        <tr>
+          <td width="789" class="pageName">Reproduciendo nuestras pruebas</td>
+        </tr>
+        <tr>
+          <td class="bodyText">
+            <p>Junto al jar ejecutable se encuentra una carpeta llamada universos, esta carpeta contiene los ficheros de universo que se utilizaron para las pruebas que se muestran en el apartado <a href="comparativa.html">comparativa</a>.En la comparativa se muestra la comparativa de todos los algoritmos para los universos del 1 al 10, pero se incluyen otros 10 universos mas para realizar mas pruebas si no se desea generar ningun fichero de universo.</p>
+          <p>El metodo de ejecucion es el explicado en la seccion anterior, basta con cargar el fichero de univeso deseado y seleccionar diferentes algoritmos de busqueda e ir recogiendo la informacion obtenida. Por cuestiones de formato en la tabla solo aparecen los atributos comunes a todos los algoritmos de busqueda, por eso puede ser necesario ver el log para revisar toda la informacion recabada.</p></td>
+        </tr>
       </table>
 	<td width="30">&nbsp;</td>
   </tr>

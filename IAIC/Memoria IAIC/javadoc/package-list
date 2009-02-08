@@ -17,5 +17,4 @@ juegos.Reinas
 juegos.Robot
 universo
 universo.util
-universo.util.exceptions
 universo.util.factoria

@@ -77,7 +77,7 @@ public class UniversoLogger {
         	Nodo nodoTmp = GestorConexion.getInstancia().getNodosH().get(Integer.valueOf(enlaces[4]));
         	
             Integer numJuego = nodoTmp.getEnlaces().get(Integer.valueOf(enlaces[9])).getJuego();
-            if ( (numJuego != null ) && ( numJuego >= 1 ) && ( numJuego <= 12) ){
+            if ( (numJuego != null ) && ( numJuego >= 1 ) && ( numJuego <= propiedades.size()) ){
             	String juego = String.valueOf( propiedades.getProperty(String.valueOf(numJuego)));
             	output.write("\t\t Consiguiendo superar el juego: " + juego + "\n");
             }   

@@ -44,6 +44,13 @@ public class IAICbuenoApp extends SingleFrameApplication {
      */
     public static void main(String[] args) {
     	try {
+    		// Creamos tambien las carpetas necesarias para la ejecucion en caso
+    		// de que estas no existan.
+    		File dir = new File("logs");  
+    		dir.mkdir();
+    		dir = new File("universos");
+    		dir.mkdir();
+    		
 			System.setOut(new PrintStream(new File("logs/logGlobal.log")));
 			launch(IAICbuenoApp.class, args);
 		} catch (FileNotFoundException e) {

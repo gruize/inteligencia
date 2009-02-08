@@ -28,12 +28,12 @@ class Momento {
          * Las posiciones de los muros son modificables.
          */
         this.recorrido[0][2] = Recorrido.Muro;
-        this.recorrido[4][3] = Recorrido.Muro;
-        this.recorrido[5][1] = Recorrido.Muro;
-        this.recorrido[1][5] = Recorrido.Muro;
-        this.recorrido[4][4] = Recorrido.Muro;
-        this.recorrido[1][1] = Recorrido.Muro;
         this.recorrido[1][0] = Recorrido.Muro;
+        this.recorrido[1][5] = Recorrido.Muro;
+        this.recorrido[2][0] = Recorrido.Muro;
+        this.recorrido[4][3] = Recorrido.Muro;
+        this.recorrido[4][4] = Recorrido.Muro;
+        this.recorrido[5][1] = Recorrido.Muro;
     }
     
     /**

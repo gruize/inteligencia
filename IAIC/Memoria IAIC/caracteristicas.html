@@ -54,9 +54,9 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
     <td width="40">&nbsp;</td>
     <td colspan="2" valign="top">&nbsp;<br>
     &nbsp;<br>
-    <table border="0" cellspacing="0" cellpadding="2" width="500">
+    <table border="0" cellspacing="0" cellpadding="2" width="791">
         <tr>
-          <td class="pageName">El micromundo del sistema planetario</td>
+          <td width="787" class="pageName">El micromundo del sistema planetario</td>
         </tr>
         <tr>
           <td class="bodyText">
@@ -65,10 +65,10 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
 			trasladarse desde un planeta origen o inicial a un planeta destino, 
 			pudiendo existir varios planetas destinos. El objetivo del juego 
 			consiste en descubrir el mejor camino, según la búsqueda que se 
-			implemente, para que la nave realice el viaje.
-			</p>
+			implemente, para que la nave realice el viaje.			</p>
+			<p align="center"><img src="Universo.jpg" alt="Universo" width="540" height="326"></p>
 			<p align="justify">Las naves hostiles están representadas por 
-			diferentes juegos (descritos en la arquitectura) y suponen una lucha 
+			diferentes juegos (descritos en la <a href="arquitectura.html">arquitectura</a>) y suponen una lucha 
 			entre dicha nave y la nave principal, el resultado de esta lucha es 
 			igual al resultado del juego que se ejecute en dicho enlace (o 
 			conexión) por lo que están preestablecidos según el programador de 
@@ -77,7 +77,44 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
 			entre planetas en todo momento y sus requisitos para recorrerlos, 
 			por lo que resulta seguro que el camino que surja mediante el 
 			algoritmo que elija el usuario será el mejor con respecto a las 
-			características de dicho algoritmo</td>
+			características de dicho algoritmo.            
+		  <p align="justify">A continuacion se va a descripbir la representacion que se ha utilizado para modelar el universo.          
+		  <p align="justify">Un universo esta representado por una HashTable de Nodos, donde la clave es el id del nodo, y el valor es el propio nodo. La informacion contenida en el nodo es la siguiente:          
+		  <ul>
+		    <li>id :- numero identificadivo unico del planeta.</li>
+	        <li>nombre :- Nombre asignado al nodo, este atributo es simplemente para darle mayor realismo al planeta asignando nombres a los planetas.</li>
+		    <li>tipo :- es una clase que emula a un enumerado. Contiene los valores Origen, Normal y Destino, para diferenciar el tipo de nodo.</li>
+		    <li>enlaces :- es una HashTable que contiene todos los enlaces. Es decir contiene una lista de posibles destinos desde ese planeta. La clave de la HashTable es el id del planeta destino y el valor es el propio enlace.</li>
+		    </ul>
+		  <p>Los enlaces tienen la siguiente estructura:</p>
+		  <ul>
+		    <li>id :- Id del planeta al que conduce dicho enlace.</li>
+	        <li>juego :- Numero identificativo de un juego en caso de existir en dicho enlace.</li>
+		    <li>distancia :- Valor que representa el tiempo en horas que se tarda en recorrer dicho enlace.</li>
+		    </ul>
+		  <p>Con esta configuracion conseguimos tener toda la informacion necesaria para la representacion del estado.</p>
+		  <p>En cuanto a los algoritmos de busqueda utilizados para resolver el problema global son:</p>
+		  <ul>
+		    <li>Informados
+		      <ul>
+		        <li>A*</li>
+		        <li>Voraz</li>
+		        <li>Escalada simple</li>
+		        <li>Enfriamiento Simulado</li>
+		        </ul>
+		    La heuristica utilizada para los algoritmos de busqueda informados es la distancia hasta un planeta destino, esto lo modelamos con el propio ID del planeta, ya que cuanto mayor sea este numero, mas cerca se encuentra de un planeta destino.</li>
+	        </ul>
+		  <ul>
+		    <li>No informados
+		      <ul>
+		        <li>Primero en anchura</li>
+                  <li>Primero en profundidad</li>
+                  <li>Profundizacion limitada</li>
+                  <li>Coste uniforme</li>
+                </ul>
+              </li>
+		    </ul>
+		  <p>Estas son las opciones que se dan al usuario para encontrar una solucion al problema global, la comparativa de cada algoritmo se encuentra en otra seccion de la memoria.</p></td>
 		</tr>
       </table>
 	<td width="103">&nbsp;</td>

@@ -73,7 +73,8 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;topeDelante=3 :- Numero minimo de enlaces hacia delante.<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;topeDetras=2 :- Numero minimo de enlaces hacia detras.<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delayNivel=1000 :- Este parametro es para ajustar la velocidad de la representacion.<br>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fichNombres=conf/nombres.txt :- Es la ruta(relativa) de donde se puede obtener un listado de nombres para planetas.<br><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fichNombres=conf/nombres.txt :- Es la ruta(relativa) de donde se puede obtener un listado de nombres para planetas. Debe tener suficientes nombres para todos los planetas. El que se añade con la aplicacion tiene cerca de 6000 nombres por lo que se estima serán suficientes.<br>
+			<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Salir: Cierra la aplicacion. </p>
           <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Ayuda -&gt; Se despliega un panel informativo de la aplicacion.</p>
           
@@ -86,9 +87,10 @@ var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
         </tr>
         <tr>
           <td class="bodyText">
-          	<p>La compilacion de la aplicacion se realiza del modo norma, se abre el entorno de desarrollo y se crea un nuevo proyecto. Se copia la carpeta src que esta dentro de fuentes del zip entegado en la carpeta de fuentes que haya creado su entorno de desarrollo. acto seguido se copian el resto de las carpetas que hay en la carpeta fuentes, esto es, 
-       	  &quot;conf&quot;, &quot;librerias&quot; y de modo opcional &quot;logs&quot; y &quot;universos&quot; (opcional porque si no se crearan solas al ejecutar la aplicacion) aunque es recomendable ya que la carpeta universo contiene diferentes archivos de prueba.</p>
+          	<p>La compilacion de la aplicacion se realiza del modo norma, se abre el entorno de desarrollo y se crea un nuevo proyecto. Se copia la carpeta src que esta dentro de fuentes del zip entegado en la carpeta de fuentes que haya creado su entorno de desarrollo. acto seguido se copian el resto de las carpetas que hay en la carpeta fuentes en un nivel superior a la carpeta src que hemos copiado con anterioridad, esto es, 
+       	  &quot;conf&quot;, &quot;librerias&quot; y de modo opcional &quot;logs&quot; y &quot;universos&quot; (opcional porque si no se crearán solas al ejecutar la aplicacion) aunque es recomendable ya que la carpeta universo contiene diferentes archivos de prueba.</p>
        	  <p>Despues hay que configurar las librerias, en propiedades del proyecto añadir las librearias aima-java.jar, appframework-1.0.3.jar, swing-layout-1.0.3.jar y swing-worker-1.1.jar para una correcta compilacion del codigo.</p>
+       	  <p>Por ultimo hay que configurar la clase que ejecuta la aplicacion, normalmente los entornos de desarrollo buscan todos los main y dan a elegir entre las opciones encontradas. Nuestra aplicacion se lanza a traves de la clase IAICbuenoApp.java, esta clase tiene el main que configura el archivo de log y muestra el formulario principal de la aplicacion.</p>
        	  <p>Hecho esto se dispone de la aplicacion totalmente configurada para ejecutar, modificar codigo o lo que se estime oportuno.</p>
        	  <p>&nbsp;</p></td>
         </tr>

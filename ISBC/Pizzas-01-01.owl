@@ -1,0 +1,539 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns="http://www.owl-ontologies.com/Ontology1235738823.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xml:base="http://www.owl-ontologies.com/Ontology1235738823.owl">
+  <owl:Ontology rdf:about=""/>
+  <owl:Class rdf:ID="Prueba_ice_cream_topping">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="Pizza"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:SymmetricProperty rdf:ID="tiene_topping"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Ice_cream"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Tomate">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Champiñon"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Pimiento"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Cebolla"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Ingrediente_Vegetal"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Cebolla">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Champiñon"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Pimiento"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Tomate"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Ingrediente_Vegetal"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Concepto_Dominio"/>
+  <owl:Class rdf:ID="Cone">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Ice_cream"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Ice_cream_cone"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Pizza_topping"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Pizza_base"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Pizza"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Concepto_Dominio"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Parmesano">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Mozzarella"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Ingrediente_Queso"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Pizza_Margarita">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#Mozzarella"/>
+              <owl:Class rdf:about="#Tomate"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:SymmetricProperty rdf:about="#tiene_topping"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:SymmetricProperty rdf:about="#tiene_topping"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#Tomate"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#Mozzarella"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:SymmetricProperty rdf:about="#tiene_topping"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Pizza"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Pimiento">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Champiñon"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Cebolla"/>
+    <owl:disjointWith rdf:resource="#Tomate"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Ingrediente_Vegetal"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Ternera_pìcante">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Ingrediente_Carne"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Pepperoni"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="Pizza_con_Queso">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Pizza"/>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:SymmetricProperty rdf:about="#tiene_topping"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="#Ingrediente_Queso"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="Pizza_Vegetariana">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Pizza"/>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:SymmetricProperty rdf:about="#tiene_topping"/>
+            </owl:onProperty>
+            <owl:allValuesFrom>
+              <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                  <owl:Class rdf:about="#Ingrediente_Queso"/>
+                  <owl:Class rdf:about="#Ingrediente_Vegetal"/>
+                </owl:unionOf>
+              </owl:Class>
+            </owl:allValuesFrom>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="Protein_Lovers_pizza">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:SymmetricProperty rdf:about="#tiene_topping"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="Anchoa"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="Atun"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:SymmetricProperty rdf:about="#tiene_topping"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#Ternera_pìcante"/>
+        <owl:onProperty>
+          <owl:SymmetricProperty rdf:about="#tiene_topping"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#Pepperoni"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:SymmetricProperty rdf:about="#tiene_topping"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Pizza"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Anchoa">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Ingrediente_Pescado"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Atun"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Ingrediente_Carne">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Ternera_pìcante"/>
+          <owl:Class rdf:about="#Pepperoni"/>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Pizza_topping"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Ingrediente_Queso"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Ingrediente_Pescado"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Ingrediente_Vegetal"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Champiñon">
+    <owl:disjointWith rdf:resource="#Pimiento"/>
+    <owl:disjointWith rdf:resource="#Cebolla"/>
+    <owl:disjointWith rdf:resource="#Tomate"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Ingrediente_Vegetal"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Ingrediente_Vegetal">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Ingrediente_Pescado"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Ingrediente_Queso"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Ingrediente_Carne"/>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Tomate"/>
+          <owl:Class rdf:about="#Cebolla"/>
+          <owl:Class rdf:about="#Pimiento"/>
+          <owl:Class rdf:about="#Champiñon"/>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Pizza_topping"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Ingrediente_Pescado">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Pizza_topping"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Ingrediente_Queso"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Ingrediente_Carne"/>
+    <owl:disjointWith rdf:resource="#Ingrediente_Vegetal"/>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Atun"/>
+          <owl:Class rdf:about="#Anchoa"/>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="Probe_error_protein_pizza">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Pizza"/>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:SymmetricProperty rdf:about="#tiene_topping"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                  <owl:Class rdf:about="#Ingrediente_Pescado"/>
+                  <owl:Class rdf:about="#Ingrediente_Carne"/>
+                </owl:intersectionOf>
+              </owl:Class>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="#Pizza_base">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Ice_cream"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Ice_cream_cone"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Cone"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Pizza_topping"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Pizza"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Concepto_Dominio"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Pizza_topping">
+    <rdfs:subClassOf rdf:resource="#Concepto_Dominio"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Ice_cream"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Ice_cream_cone"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Cone"/>
+    <owl:disjointWith rdf:resource="#Pizza_base"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Pizza"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Mozzarella">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Ingrediente_Queso"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Parmesano"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Topless_pizza">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:SymmetricProperty rdf:about="#tiene_topping"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Pizza"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Ice_cream">
+    <rdfs:subClassOf rdf:resource="#Concepto_Dominio"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Ice_cream_cone"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Cone"/>
+    <owl:disjointWith rdf:resource="#Pizza_topping"/>
+    <owl:disjointWith rdf:resource="#Pizza_base"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Pizza"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Atun">
+    <owl:disjointWith rdf:resource="#Anchoa"/>
+    <rdfs:subClassOf rdf:resource="#Ingrediente_Pescado"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Ice_cream_cone">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#Ice_cream"/>
+        <owl:onProperty>
+          <owl:SymmetricProperty rdf:about="#tiene_topping"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#Cone"/>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:ID="tiene_base"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Concepto_Dominio"/>
+    <owl:disjointWith rdf:resource="#Ice_cream"/>
+    <owl:disjointWith rdf:resource="#Cone"/>
+    <owl:disjointWith rdf:resource="#Pizza_topping"/>
+    <owl:disjointWith rdf:resource="#Pizza_base"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Pizza"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="Pizza_Margarita_con_Carne">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:SymmetricProperty rdf:about="#tiene_topping"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#Pepperoni"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Pizza_Margarita"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Pepperoni">
+    <rdfs:subClassOf rdf:resource="#Ingrediente_Carne"/>
+    <owl:disjointWith rdf:resource="#Ternera_pìcante"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Pizza">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:SymmetricProperty rdf:about="#tiene_topping"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#tiene_base"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#Pizza_base"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Concepto_Dominio"/>
+    <owl:disjointWith rdf:resource="#Ice_cream"/>
+    <owl:disjointWith rdf:resource="#Ice_cream_cone"/>
+    <owl:disjointWith rdf:resource="#Cone"/>
+    <owl:disjointWith rdf:resource="#Pizza_topping"/>
+    <owl:disjointWith rdf:resource="#Pizza_base"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Pizza_de_ternera_picante">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:SymmetricProperty rdf:about="#tiene_topping"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#Ternera_pìcante"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:SymmetricProperty rdf:about="#tiene_topping"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#Mozzarella"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:SymmetricProperty rdf:about="#tiene_topping"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#Tomate"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Pizza"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Ingrediente_Queso">
+    <owl:disjointWith rdf:resource="#Ingrediente_Carne"/>
+    <owl:disjointWith rdf:resource="#Ingrediente_Pescado"/>
+    <owl:disjointWith rdf:resource="#Ingrediente_Vegetal"/>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Mozzarella"/>
+          <owl:Class rdf:about="#Parmesano"/>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="#Pizza_topping"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Prueba_carne_y_vegetal_topping">
+    <rdfs:subClassOf rdf:resource="#Ingrediente_Carne"/>
+    <rdfs:subClassOf rdf:resource="#Ingrediente_Vegetal"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="has_part">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Pizza"/>
+          <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Thing"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:ObjectProperty>
+  <owl:SymmetricProperty rdf:about="#tiene_topping">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="#has_part"/>
+    <rdfs:range rdf:resource="#Pizza_topping"/>
+    <owl:inverseOf rdf:resource="#tiene_topping"/>
+    <rdfs:domain rdf:resource="#Pizza_topping"/>
+  </owl:SymmetricProperty>
+  <owl:FunctionalProperty rdf:about="#tiene_base">
+    <rdfs:subPropertyOf rdf:resource="#has_part"/>
+    <rdfs:range rdf:resource="#Pizza_base"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="hasIngrediente_Vegetal">
+    <rdfs:range rdf:resource="#Ingrediente_Vegetal"/>
+    <rdfs:domain rdf:resource="#Pizza_topping"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="hasIngrediente_Carne">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="#Ingrediente_Carne"/>
+    <rdfs:domain rdf:resource="#Pizza_topping"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="hasIngrediente_Queso">
+    <rdfs:domain rdf:resource="#Pizza_topping"/>
+    <rdfs:range rdf:resource="#Ingrediente_Queso"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="hasIngrediente_Pescado">
+    <rdfs:domain rdf:resource="#Pizza_topping"/>
+    <rdfs:range rdf:resource="#Ingrediente_Pescado"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.3.1, Build 430)  http://protege.stanford.edu -->

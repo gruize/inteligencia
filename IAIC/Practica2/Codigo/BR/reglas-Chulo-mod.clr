@@ -1,0 +1,212 @@
+;
+; Asesor para encontrar trabajo en el extranjero.
+; ABROAD WORK ADVISER
+;
+; definicion del modulo ABROAD, todas las reglas, hechos, y templates
+; estan definidos en este modulo.
+(defmodule ABROAD)
+
+(assert (welcome))
+(defrule welcome-message
+  ?fact <- (welcome)
+  =>
+      (printout t "Bienvenido a \"Abroad Work & Intenrship Advisor\""crlf
+              "le vamos a realizar una serie de preguntas para conerle mejor"crlf)
+
+    (printout t "Es titulado universitario? Estudiante? O no dispone de titulacion universitaria?"crlf
+              "Introduzca: ( T-titulado / E-estudiante / N-no universitario)" crlf)
+     (assert (tipo-solicitante (read)))
+
+     (printout t "En que destino esta interesado?" crlf
+              "(U-USA /J-Japon /C-Canada / E-Europa)" crlf)
+     (assert (destino (read)))
+   
+     (printout t "Busca un empleo temporal (1 - 3 meses)? O de larga duracion?" crlf
+              "Introduzca: ( T-temporal / L-larga duracion)" crlf)
+     (assert (tipo-empleo (read)))
+)
+;------------------------------------------------
+;si son titulados
+;------------------------------------------------
+
+(defrule temp_tituladoUsa
+  (and (tipo-solicitante T)
+       (tipo-empleo T)
+       (destino U)
+       )
+   =>
+     
+      (printout t " Puede que aqui encuentres algo: http://becas.universia.net/ES/beca/16405/becas-practicas-titulados-estados-unidos.html" crlf)
+      (assert (fin)) )
+     
+(defrule temp_TituladoJapon
+  (and (tipo-solicitante T)
+       (tipo-empleo T)
+       (destino J)
+       )
+   =>
+     
+      (printout t "Consulta este link: http://internacional.universia.net/asia-pacifico/japon/antes-salir/finanzas/empleo.htm" crlf)
+      (assert (fin)))     
+(defrule temp_tituladoEuropa
+  (and (tipo-solicitante T)
+       (tipo-empleo T)
+       (destino E)
+       )
+   =>
+    
+      (printout t "Seguro que aqui encuentras trabajo: http://www.trabajos.com/" crlf)
+      (assert (fin)))       
+(defrule temp_tituladoCanada
+  (and (tipo-solicitante T)
+       (tipo-empleo T)
+       (destino C)
+       )
+   =>
+    
+      (printout t "Seguro que aqui encuentras trabajo: http://empleo.trovit.es/ofertas-empleo/ofertas-empleo-canada" crlf)
+      (assert (fin)))   
+     
+(defrule LargaDuracion_TituladoJapon
+  (and (tipo-solicitante T)
+       (tipo-empleo L)
+       (destino J)
+       )
+   =>
+     
+      (printout t "Esta gran multinacional puede que necesite de tus servicios: www.honda.co.jp" crlf)
+      (assert (fin)))     
+(defrule LargaDuracion_tituladoEuropa
+  (and (tipo-solicitante T)
+       (tipo-empleo L)
+       (destino E)
+       )
+   =>
+    
+      (printout t "En esta pagina puedes encontrar muchas ofertas de trabajo especializado: www.tecnoempleo.com" crlf)
+        (assert (fin)))
+(defrule LargaDuracion_TituladoCanada       
+  (and (tipo-solicitante T)
+       (tipo-empleo L)
+       (destino C)
+       )
+   =>
+      (printout t "Intente en esta pagina de trabajo especializado en ofertas de empleo para Canada: http://www.learn4good.com/jobs/language/spanish/list/country/canada/" crlf)
+      (assert (fin)))
+     
+;------------------------------------------------
+;si son no universitarios
+;------------------------------------------------
+;Se trata de un NoUniversitario:
+(defrule temp_NoUniversitarioUSA
+  (and (tipo-solicitante N)
+       (tipo-empleo T)
+       (destino U)
+       )
+   =>
+     
+      (printout t "Podria trabajar en USA en una cadena de restaurantes: www.bk.com" crlf)
+      (assert (fin)) )
+     
+(defrule temp_NoUniversitarioJapon
+  (and (tipo-solicitante N)
+       (tipo-empleo T)
+       (destino J)
+       )
+   =>
+     
+      (printout t "Consulte en la embajada de Japon: http://www.es.emb-japan.go.jp/" crlf)
+      (assert (fin)))     
+(defrule temp_NoUniversitarioEuropa
+  (and (tipo-solicitante N)
+       (tipo-empleo T)
+       (destino E)
+       )
+   =>
+    
+      (printout t "Consulte esta empresa de trabajo temporal: http://www.us.randstad.com/" crlf)
+      (assert (fin)))       
+(defrule temp_NoUniversitarioCanada
+  (and (tipo-solicitante N)
+       (tipo-empleo T)
+       (destino C)
+       )
+   =>
+      (printout t "En esta pagina podra encontrar informacion de su interes: http://www.aemigrar.com/canada/trabajartrabajoencanada.php" crlf)
+      (assert (fin)))
+     
+(defrule LargaDuracion_NoUniversitarioUSA
+  (and (tipo-solicitante N)
+       (tipo-empleo L)
+       (destino U)
+       )
+   =>
+     
+      (printout t "Hay mucho trabajo basura en USA, consulte este link: http://usa.acciontrabajo.com/" crlf)
+      (assert (fin)) )
+     
+
+(defrule LargaDuracion_NoUniversitarioJapon
+  (and (tipo-solicitante N)
+       (tipo-empleo L)
+       (destino J)
+       )
+   =>
+     
+      (printout t "Es facil encontrar trabajo en Japon, a largo plazo, consulte este link: http://es.answers.yahoo.com/question/index?qid=20070308073919AAo9pDi" crlf)
+      (assert (fin)))     
+(defrule LargaDuracion_NoUniversitarioEuropa
+  (and (tipo-solicitante N)
+       (tipo-empleo L)
+       (destino E)
+       )
+   =>
+    
+      (printout t "Consulte esta empresa de trabajo temporal: http://www.us.telepizza.es/" crlf)
+      (assert (fin)))       
+(defrule LargaDuracion_NoUniversitarioCanada
+  (and (tipo-solicitante N)
+       (tipo-empleo L)
+       (destino C)
+       )
+   =>
+      (printout t "En Canada es complicado encontrar trabajo  de larga duracion si no estas titulado, informate en esta pagina: http://internacional.universia.net/verano/trabajar/canada/index.htm" crlf)
+      (assert (fin)))
+;------------------------------------------------
+;si son estudiantes
+;------------------------------------------------
+(defrule estudianteUSA
+  (and (tipo-solicitante E)
+       (destino U)
+       )
+   => 
+      (printout t "Aqui te pongo una oferta de empleo que te puede interesar: www.oneco.org/oneco_new/pdf/programa_tw_estadosunidos_in.pd" crlf)
+      (assert (fin)) )
+     
+(defrule estudianteJapon
+  (and (tipo-solicitante E)
+       (destino J)
+       )
+   =>
+     
+      (printout t "Consulta esta pagina: http://movilidad.universiablogs.net/becas-japon" crlf)
+      (assert (fin)))     
+     
+(defrule EstudianteEuropa
+  (and (tipo-solicitante E)
+       (destino E)
+       )
+   =>
+    
+      (printout t "Aqui puedes encontrar informacion util: http://www.educaweb.com/noticia/2005/04/11/estudiar-extranjero-alemania-21619.html " crlf)
+      (assert (fin)))       
+(defrule estudianteCanada
+  (and (tipo-solicitante E)
+       (destino C)
+       )
+   =>
+      (printout t "Este articulo te puede interesar http://inglesencanada.blogspot.com/2007/10/estudiar-y-trabajar-en-canad.html" crlf)
+      (assert (fin)))
+           
+(focus ABROAD)
+(run)

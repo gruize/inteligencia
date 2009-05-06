@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<!-- DW6 -->
+<head>
+<!-- Copyright 2005 Macromedia, Inc. All rights reserved. -->
+<title>Text</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="../mm_health_nutr.css" type="text/css">
+<script language="javascript">
+//--------------- LOCALIZEABLE GLOBALS ---------------
+var d=new Date();
+var monthname=new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+//Ensure correct for language. English is "January 1, 2004"
+var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
+//---------------   END LOCALIZEABLE   ---------------
+</script>
+</head>
+<body bgcolor="#F4FFE4">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr bgcolor="#D5EDB3">
+    <td colspan="2" rowspan="2">&nbsp;</td>
+    <td width="494" height="50" id="logo" valign="bottom" align="center" nowrap>Cajas de colores</td>
+    <td width="103">&nbsp;</td>
+  </tr>
+
+  <tr bgcolor="#D5EDB3">
+    <td height="19" id="tagline" valign="top" align="center">Grupo 15</td>
+	<td width="103">&nbsp;</td>
+  </tr>
+
+  <tr>
+    <td colspan="4" bgcolor="#5C743D"><img src="mm_spacer.gif" alt="" width="1" height="2" border="0"></td>
+  </tr>
+
+  <tr>
+    <td colspan="4" bgcolor="#99CC66" background="mm_dashed_line.gif"><img src="mm_dashed_line.gif" alt="line decor" width="4" height="3" border="0"></td>
+  </tr>
+
+  <tr bgcolor="#99CC66">
+  <td>&nbsp;</td>
+  	<td colspan="3" id="dateformat" height="20"><a href="../index.html">INDICE</a>&nbsp;&nbsp;::&nbsp;&nbsp;<a href="../arquitectura.html#juegos">JUEGOS&nbsp; </a>::&nbsp;&nbsp;<script language="javascript">
+      document.write(TODAY);	</script>	</td>
+  </tr>
+
+  <tr>
+    <td colspan="4" bgcolor="#99CC66" background="mm_dashed_line.gif"><img src="mm_dashed_line.gif" alt="line decor" width="4" height="3" border="0"></td>
+  </tr>
+
+  <tr>
+    <td colspan="4" bgcolor="#5C743D"><img src="mm_spacer.gif" alt="" width="1" height="2" border="0"></td>
+  </tr>
+ <tr>
+    <td width="40">&nbsp;</td>
+    <td colspan="2" valign="top">&nbsp;<br>
+    &nbsp;<br>
+    <table border="0" cellspacing="0" cellpadding="2" width="773">
+        <tr>
+          <td width="769" class="pageName">Caja de colores o Rejilla</td>
+        </tr>
+        <tr>
+          <td class="bodyText">
+			<ul>
+				<li><font size="3">Descripción del juego:</font></li>
+			</ul>
+			<p align="justify">&nbsp;&nbsp;&nbsp; Disponemos de un tablero N x N 
+			en cuyas casillas pueden haber 2 tipos de valores, en este caso, los 
+			colores Rojo y Azul, quedando así representados los estados</p>
+			<p align="center"><img border="0" src="images/cajasc6.gif"></p>
+			<p align="justify">El objetivo del juego consiste en modificar los 
+			colores de las casillas en las que sean necesarias para obtener un 
+			tablero cuyas casillas adyacentes sean diferentes, a través de los 
+			diferentes operadores, cada uno referido a una casilla en concreto, 
+			que modifica el color que posea dicha casilla.</p>
+			<p align="center"><img border="0" src="images/cajasc7.gif" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="images/cajasc8.gif" align="right"></p>
+			<p align="center">Objetivos</p>
+			<p align="justify">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+			<p align="justify">&nbsp;</p>
+			<p align="justify">&nbsp;</p>
+			<p align="justify">&nbsp;</p>
+			<ul>
+				<li>
+				<p align="justify"><font size="3">Heurística:</font></p></li>
+			</ul>
+			<p align="justify">El objetivo del juego consiste en conseguir que 
+			las casillas adyacentes tengan valores diferentes, por lo que la 
+			medida heurística disminuye según disminuye el número de parejas de 
+			casillas adyacentes con valores iguales.</p>
+			<p align="center">h&#39;(n) = Número de parejas de casillas adyacentes 
+			con el mismo valor (vertical, horizontal y/o diagonal)</p>
+			<ul>
+				<li>
+				<p align="justify"><font size="3">Operadores</font></p></li>
+			</ul>
+			<p align="justify">Los operadores solo pueden aplicarse una vez.</p>
+			<ol>
+				<li>
+				<p align="justify">Modifica el valor de la casilla [0,0]</p>
+				</li>
+				<li>
+				<p align="justify">Modifica el valor de la casilla [0,1]</p>
+				</li>
+				<li>
+				<p align="justify">Modifica el valor de la casilla [0,2]</p>
+				</li>
+				<li>
+				<p align="justify">Modifica el valor de la casilla [1,0]</p>
+				</li>
+				<li>
+				<p align="justify">Modifica el valor de la casilla [1,1]</p>
+				</li>
+				<li>
+				<p align="justify">Modifica el valor de la casilla [1,2]</p>
+				</li>
+				<li>
+				<p align="justify">Modifica el valor de la casilla [2,0]</p>
+				</li>
+				<li>
+				<p align="justify">Modifica el valor de la casilla [2,1]</p>
+				</li>
+				<li>
+				<p align="justify">Modifica el valor de la casilla [2,2]</p>
+				</li>
+			</ol>
+			<ul>
+				<li>
+				<p align="justify"><font size="3">Algoritmo</font></p></li>
+			</ul>
+			<p align="justify">Algoritmo GreedyBestFirstSearch o Voraz: Técnica 
+			que en cada paso trata de situarse lo más cerca posible del 
+			objetivo. </p>
+			<p align="justify">f&#39;(n) = h&#39;(n): Representa el coste mínimo para 
+			llegar desde n hasta un nodo objetivo por el camino más corto, 
+			siendo h&#39;(n) = 0, para los nodos objetivos.</p>
+			<p align="justify">Utilizamos este algoritmo, ya que este juego 
+			genera un amplio espacio de estados por lo que una búsqueda 
+			desinformada conllevaría una eficiencia nula o cuestionable, por el 
+			contrario, el algoritmo de búsqueda voraz procura en cada paso 
+			acercarse lo mas posible al objetivo de forma efectiva, generando un 
+			mínimo número de expansiones.</p>
+			<p align="center"><img border="0" src="images/cajasc5.jpg"></p>
+			<ul>
+				<li>
+				<p align="justify"><font size="3">Espacio de estados</font></p>
+				</li>
+			</ul>
+			<p>Mediante la representación total del tablero, conseguimos estar 
+			informados de todos los datos del mismo, lo que resulta muy 
+			conveniente, sin suponer un coste elevado para el traspaso de 
+			información entre los estados.</p>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado ( tablero[ 3 ] [ 3 ] )</p>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;tablero[x][y] = Rojo ˇ Azul</p>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;[ Rojo/Azul Rojo/Azul Rojo/Azul ]<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;[ Rojo/Azul Rojo/Azul Rojo/Azul ]<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;[ Rojo/Azul Rojo/Azul Rojo/Azul ]<br>
+			</p>		  </td>
+		</tr>
+        <tr>
+          <td class="bodyText"><span class="pageName">Diagrama UML</span></td>
+        </tr>
+        <tr>
+          <td class="bodyText"><p>A continuacion se expone el diagrama uml de este juego para aportar informacion adicional sobre su implementacion.</p>
+          <p align="center"><img src="images/CajaColores.jpg" alt="UML Cajas de colores" width="700" height="700"></p></td>
+        </tr>
+      </table>
+  </tr>
+
+ <tr>
+    <td width="40">&nbsp;</td>
+    <td width="110">&nbsp;</td>
+    <td width="494">&nbsp;</td>
+	<td width="103">&nbsp;</td>
+  </tr>
+</table>
+</body>
+</html>

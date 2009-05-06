@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<!-- DW6 -->
+<head>
+<!-- Copyright 2005 Macromedia, Inc. All rights reserved. -->
+<title>Text</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="../mm_health_nutr.css" type="text/css">
+<script language="javascript">
+//--------------- LOCALIZEABLE GLOBALS ---------------
+var d=new Date();
+var monthname=new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+//Ensure correct for language. English is "January 1, 2004"
+var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
+//---------------   END LOCALIZEABLE   ---------------
+</script>
+</head>
+<body bgcolor="#F4FFE4">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr bgcolor="#D5EDB3">
+    <td colspan="2" rowspan="2">&nbsp;</td>
+    <td width="494" height="50" id="logo" valign="bottom" align="center" nowrap>8-Puzzle</td>
+    <td width="103">&nbsp;</td>
+  </tr>
+
+  <tr bgcolor="#D5EDB3">
+    <td height="19" id="tagline" valign="top" align="center">Grupo 15</td>
+	<td width="103">&nbsp;</td>
+  </tr>
+
+  <tr>
+    <td colspan="4" bgcolor="#5C743D"><img src="mm_spacer.gif" alt="" width="1" height="2" border="0"></td>
+  </tr>
+
+  <tr>
+    <td colspan="4" bgcolor="#99CC66" background="mm_dashed_line.gif"><img src="mm_dashed_line.gif" alt="line decor" width="4" height="3" border="0"></td>
+  </tr>
+
+  <tr bgcolor="#99CC66">
+  <td>&nbsp;</td>
+  	<td colspan="3" id="dateformat" height="20"><a href="../index.html">INDICE</a>&nbsp;&nbsp;::&nbsp;&nbsp;<a href="../arquitectura.html#juegos">JUEGOS&nbsp; </a>::&nbsp;&nbsp;<script language="javascript">
+      document.write(TODAY);	</script>	</td>
+  </tr>
+
+  <tr>
+    <td colspan="4" bgcolor="#99CC66" background="mm_dashed_line.gif"><img src="mm_dashed_line.gif" alt="line decor" width="4" height="3" border="0"></td>
+  </tr>
+
+  <tr>
+    <td colspan="4" bgcolor="#5C743D"><img src="mm_spacer.gif" alt="" width="1" height="2" border="0"></td>
+  </tr>
+ <tr>
+    <td width="40">&nbsp;</td>
+    <td colspan="2" valign="top">&nbsp;<br>
+    &nbsp;<br>
+    <table border="0" cellspacing="0" cellpadding="2" width="785">
+        <tr>
+          <td width="781" class="pageName">N - Puzzle</td>
+        </tr>
+        <tr>
+          <td class="bodyText">
+			<ul>
+				<li><font size="3">Descripción del juego:</font></li>
+			</ul>
+			<p>Disponemos de un tablero 3 x 3 que contiene 8 fichas y una 
+			casilla vacía. Las fichas pueden desplazarse horizontal o 
+			verticalmente a la posición adyacente siempre que esta casilla sea 
+			la vacía. El objetivo del puzzle es, dada una configuración inicial, 
+			llegar a través de una secuencia de movimientos válidos hasta la 
+			configuración dada.</p>
+			<p align="center"><img border="0" src="images/puzzle10.gif"></p>
+		  <ul>
+				<li>
+				<p align="justify"><font size="3">Heurística</font></p></li>
+			</ul>
+			<p>La medida heurística se obtiene en base al número de casillas 
+			diferentes al estado objetivo.</p>
+			<p align="center">h&#39;(n) = Distancia Manhattan.</p>
+			<ul>
+				<li>
+				<p align="justify"><font size="3">Operadores</font></p></li>
+			</ul>
+			<ol>
+				<li>Mover la casilla vacía hacia arriba</li>
+				<li>Mover la casilla vacía hacia abajo</li>
+				<li>Mover la casilla vacía hacia la izquierda</li>
+				<li>Mover la casilla vacía hacia la derecha</li>
+			</ol>
+			<ul>
+				<li>
+				<p align="justify"><font size="3">Algoritmo</font></p></li>
+			</ul>
+			<p align="justify">Algoritmo GreedyBestFirstSearch o Búsqueda voraz: 
+			Algoritmo que consiste en intentar situarse en cada paso lo más 
+			cerca posible del objetivo. Aplica la función:</p>
+			<p align="center">f&#39;(n) = h&#39;(n) = Representa el coste mínimo 
+			para ir desde el nodo n hasta un nodo objetivo.</p>
+			<p align="justify">Debido al gran número de operaciones que deben 
+			realizarse para conseguir una solución y teniendo en cuenta que 
+			todas las operaciones suponen el mismo coste, ya que es el 
+			intercambio de contenido de dos casillas adyacentes, no resulta 
+			necesario incluir dicho coste en la función sucesora, lo que 
+			describe el algoritmo voraz.</p>
+			<p align="center">&nbsp;<img border="0" src="images/puzzle7.jpg"></p>
+			<p align="center"><img border="0" src="images/puzzle8.jpg"></p>
+			<p align="center"><img border="0" src="images/puzzle9.jpg"></p>
+		  <ul>
+				<li>
+				<p align="justify"><font size="3">Espacio de estados</font></p>
+				</li>
+			</ul>
+			<p align="justify">Estado : Tablero <br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[  ,  ,  ]<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[  ,  ,  ]<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[  ,  ,  ]<br>
+			<p align="justify">Representación intuitiva 
+			mediante la que se tiene pleno conocimiento del estado del juego, 
+			así como su proximidad a un estado objetivo evitando a su vez, 
+			sobrecargar el contenido que contiene el estado (únicamente los 
+			datos necesarios)<p align="justify">
+			Estado inicial:<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img border="0" src="images/puzzle11.gif">
+			<p align="justify">Estado final:<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img border="0" src="images/puzzle12.gif"></td>
+		</tr>
+        <tr>
+          <td class="bodyText"><span class="pageName">Diagrama UML</span></td>
+        </tr>
+        <tr>
+          <td class="bodyText"><p>A continuacion se expone el diagrama uml de este juego para aportar informacion adicional sobre su implementacion.</p>
+          <p align="center"><img src="images/Puzzle.jpg" alt="UML 8-Puzzle" width="776" height="1188"></p></td>
+        </tr>
+      </table>
+  </tr>
+
+ <tr>
+    <td width="40">&nbsp;</td>
+    <td width="110">&nbsp;</td>
+    <td width="494">&nbsp;</td>
+	<td width="103">&nbsp;</td>
+  </tr>
+</table>
+</body>
+</html>

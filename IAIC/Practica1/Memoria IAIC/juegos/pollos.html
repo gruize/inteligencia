@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<!-- DW6 -->
+<head>
+<!-- Copyright 2005 Macromedia, Inc. All rights reserved. -->
+<title>Text</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="../mm_health_nutr.css" type="text/css">
+<script language="javascript">
+//--------------- LOCALIZEABLE GLOBALS ---------------
+var d=new Date();
+var monthname=new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+//Ensure correct for language. English is "January 1, 2004"
+var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
+//---------------   END LOCALIZEABLE   ---------------
+</script>
+</head>
+<body bgcolor="#F4FFE4">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr bgcolor="#D5EDB3">
+    <td colspan="2" rowspan="2">&nbsp;</td>
+    <td width="494" height="50" id="logo" valign="bottom" align="center" nowrap>Juego de los pollos</td>
+    <td width="103">&nbsp;</td>
+  </tr>
+
+  <tr bgcolor="#D5EDB3">
+    <td height="19" id="tagline" valign="top" align="center">Grupo 15</td>
+	<td width="103">&nbsp;</td>
+  </tr>
+
+  <tr>
+    <td colspan="4" bgcolor="#5C743D"><img src="mm_spacer.gif" alt="" width="1" height="2" border="0"></td>
+  </tr>
+
+  <tr>
+    <td colspan="4" bgcolor="#99CC66" background="mm_dashed_line.gif"><img src="mm_dashed_line.gif" alt="line decor" width="4" height="3" border="0"></td>
+  </tr>
+
+  <tr bgcolor="#99CC66">
+  <td>&nbsp;</td>
+  	<td colspan="3" id="dateformat" height="20"><a href="../index.html">INDICE</a>&nbsp;&nbsp;::&nbsp;&nbsp;<a href="../arquitectura.html#juegos">JUEGOS&nbsp; </a>::&nbsp;&nbsp;<script language="javascript">
+      document.write(TODAY);	</script>	</td>
+  </tr>
+
+  <tr>
+    <td colspan="4" bgcolor="#99CC66" background="mm_dashed_line.gif"><img src="mm_dashed_line.gif" alt="line decor" width="4" height="3" border="0"></td>
+  </tr>
+
+  <tr>
+    <td colspan="4" bgcolor="#5C743D"><img src="mm_spacer.gif" alt="" width="1" height="2" border="0"></td>
+  </tr>
+ <tr>
+    <td width="40">&nbsp;</td>
+    <td colspan="2" valign="top">&nbsp;<br>
+    &nbsp;<br>
+    <table border="0" cellspacing="0" cellpadding="2" width="787">
+        <tr>
+          <td width="783" class="pageName">Pollitos</td>
+        </tr>
+        <tr>
+          <td class="bodyText">
+			<ul>
+				<li><font size="3">Descripción del juego:</font></li>
+			</ul>
+			<p>El juego consiste en el nacimiento de 10 pollos, dependiendo del 
+			color que se le asigne. Dicha asignación depende del color en el que 
+			esté. El objetivo consiste en obtener 10 pollos.</p>
+			<p align="center"><img src="images/pollos5.jpg" width="750" border="0"></p>
+<ul>
+				<li>
+				<p align="justify"><font size="3">Heurística</font></p></li>
+			</ul>
+			<p align="justify">Declaramos valores constantes que se le asignan a 
+			la heurística según los colores de cada huevo.</p>
+			<ol>
+				<li>
+				<p align="left">Si el huevo es color Blanco, h&#39;(n) = 3</li>
+				<li>
+				<p align="left">Si el huevo es color Azul, h&#39;(n) = 2</li>
+				<li>
+				<p align="left">Si el huevo es color Rojo, h&#39;(n) = 1</li>
+				<li>
+				<p align="left">Si es un pollo, h&#39;(n) = 0</li>
+			</ol>
+			<ul>
+				<li>
+				<p align="justify"><font size="3">Función de coste</font></p></li>
+			</ul>
+			<p align="justify">El coste aumenta según el número de cambios que 
+			realicen entre dos estados.</p>
+			<ul>
+				<li>
+				<p align="justify"><font size="3">Operadores</font></p></li>
+			</ul>
+			<ol>
+				<li>Cambio en la posición [ 0 , 0 ]</li>
+				<li>Cambio en la posición [ 0 , 1 ]</li>
+				<li>Cambio en la posición [ 0 , 2 ]</li>
+				<li>Cambio en la posición [ 0 , 3 ]</li>
+				<li>Cambio en la posición [ 0 , 4 ]</li>
+				<li>Cambio en la posición [ 1 , 0 ]</li>
+				<li>Cambio en la posición [ 1 , 1 ]</li>
+				<li>Cambio en la posición [ 1 , 2 ]</li>
+				<li>Cambio en la posición [ 1 , 3 ]</li>
+				<li>Cambio en la posición [ 1 , 4 ]</li>
+			</ol>
+			<p>Todos y cada uno de los operadores al realizar el cambio del 
+			valor de la casilla&nbsp; [ i , j ] del tablero a su valor sucesor, 
+			realiza cambios a su vez en [ i - 1, j ], [ i + 1 , j ], [ i , j - 1 
+			] y [ i , j + 1 ] si es posible, es decir, sin salirse de las 
+			dimensiones del tablero.</p>
+			<ul>
+				<li>
+				<p align="justify"><font size="3">Algoritmo</font></p></li>
+			</ul>
+			<p align="justify">Algoritmo AStarSearch o A*: Combina los algoritmos de búsqueda primero en anchura y 
+			primero en profundidad, aplicándolos en la función:</p>
+			<p align="center">f&#39;(n) = g(n) + h&#39;(n) = Primero en Anchura + 
+			Primero en Profundidad = Coste real hasta el nodo n + Estimación del 
+			coste mínimo desde el nodo n hasta el objetivo</p>
+			<p align="justify">Debido al tamaño del espacio de estados y la 
+			necesidad de encontrar un camino mínimo, hacia la solución resulta 
+			evidente que la búsqueda elegida es la más acertada. También añadir 
+			que en comparación a otras búsquedas (tanto informadas como ciegas) 
+			los mejores resultados (Nodos expandidos, coste y solución obtenida) 
+			se obtienen con este algoritmo.</p>
+			<p align="center">&nbsp;<img border="0" src="images/pollos6.jpg"></p>
+		  <ul>
+				<li>
+				<p align="justify"><font size="3">Espacio de estados</font></p>
+				</li>
+			</ul>
+			<p align="justify">Estado ( Colores del tablero de huevos [ ] [ ])<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Colore = { Blanco, Azul, Rojo, Pollito }<br>						
+			
+			<p align="justify">La representación de estados más intuitiva es el 
+			propio tablero que muestre la evolución de todos y cada unos de los 
+			huevos, evitando así una representación de estados demasiado 
+			extensa.<p align="justify">Estados inalcanzables:<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Los estados inalcanzables son aquellos en los que los las 
+			casillas adyacentes a la casilla a la que se le aplica el operador 
+			poseen valores diferentes e inferiores con respecto a la sucesión. <br>
+			<p align="justify">Estado inicial:<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( [ Blanco, Blanco, Blanco, 
+			Blanco, Blanco ] [ Blanco, Blanco, Blanco, Blanco, Blanco ])<p align="justify">Estado final:<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estado( [ Pollito, Pollito, Pollito, Pollito, Pollito ] [ 
+			Pollito, Pollito, Pollito, Pollito, Pollito ])</td>
+		</tr>
+        <tr>
+          <td class="bodyText"><span class="pageName">Diagrama UML</span></td>
+        </tr>
+        <tr>
+          <td class="bodyText"><p>A continuacion se expone el diagrama uml de este juego para aportar informacion adicional sobre su implementacion.</p>
+          <p align="center"><img src="images/Pollos.jpg" alt="UML Pollos" width="405" height="1785"></p></td>
+        </tr>
+      </table>
+  </tr>
+
+ <tr>
+    <td width="40">&nbsp;</td>
+    <td width="110">&nbsp;</td>
+    <td width="494">&nbsp;</td>
+	<td width="103">&nbsp;</td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40">
+<!-- DW6 --><head><!-- Copyright 2005 Macromedia, Inc. All rights reserved. --><title>Text</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><link rel="stylesheet" href="../mm_health_nutr.css" type="text/css"><script language="javascript">
+//--------------- LOCALIZEABLE GLOBALS ---------------
+var d=new Date();
+var monthname=new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+//Ensure correct for language. English is "January 1, 2004"
+var TODAY = monthname[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
+//---------------   END LOCALIZEABLE   ---------------
+</script>
+</head>
+<body bgcolor="#F4FFE4">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr bgcolor="#D5EDB3">
+    <td colspan="2" rowspan="2">&nbsp;</td>
+    <td width="494" height="50" id="logo" valign="bottom" align="center" nowrap>Juego del Robot</td>
+    <td width="103">&nbsp;</td>
+  </tr>
+
+  <tr bgcolor="#D5EDB3">
+    <td height="19" id="tagline" valign="top" align="center">Grupo 15</td>
+	<td width="103">&nbsp;</td>
+  </tr>
+
+  <tr>
+    <td colspan="4" bgcolor="#5C743D"><img src="mm_spacer.gif" alt="" width="1" height="2" border="0"></td>
+  </tr>
+
+  <tr>
+    <td colspan="4" bgcolor="#99CC66" background="mm_dashed_line.gif"><img src="mm_dashed_line.gif" alt="line decor" width="4" height="3" border="0"></td>
+  </tr>
+
+  <tr bgcolor="#99CC66">
+  <td>&nbsp;</td>
+  	<td colspan="3" id="dateformat" height="20"><a href="../index.html">INDICE</a>&nbsp;&nbsp;::&nbsp;&nbsp;<a href="../arquitectura.html#juegos">JUEGOS&nbsp; </a>::&nbsp;&nbsp;<script language="javascript">
+      document.write(TODAY);	</script>	</td>
+  </tr>
+
+  <tr>
+    <td colspan="4" bgcolor="#99CC66" background="mm_dashed_line.gif"><img src="mm_dashed_line.gif" alt="line decor" width="4" height="3" border="0"></td>
+  </tr>
+
+  <tr>
+    <td colspan="4" bgcolor="#5C743D"><img src="mm_spacer.gif" alt="" width="1" height="2" border="0"></td>
+  </tr>
+ <tr>
+    <td width="40">&nbsp;</td>
+    <td colspan="2" valign="top">&nbsp;<br>
+    &nbsp;<br>
+    <table border="0" cellspacing="0" cellpadding="2" width="779">
+        <tr>
+          <td width="775" class="pageName">Robot en un laberinto</td>
+        </tr>
+        <tr>
+          <td class="bodyText">
+			<ul>
+				<li><font size="3">Descripción del juego:</font></li>
+			</ul>
+			<p>&nbsp;&nbsp;&nbsp; El juego consiste en conseguir que un robot 
+			atraviese el laberinto hasta una posición destino (o salida). 
+			Implementamos un laberinto de 6 x 6.</p>
+			<p align="center"><img border="0" src="images/robot.17.gif"></p>
+		  <ul>
+				<li>
+				<p align="justify"><font size="3">Heurística</font></p></li>
+			</ul>
+			<p>La medida heurística se basa en la distancia que hay entre la 
+			posición actual del robot en el laberinto a la posición final o 
+			salida.</p>
+			<p align="center">h&#39;(n) = Posición destino - Posición actual</p>
+			<ul>
+				<li>
+				<p align="justify"><font size="3">Operadores</font></p></li>
+			</ul>
+			<ol>
+				<li>Robot hacia arriba: Si y sólo si, no ha sido visitado, no es 
+				un Muro y no supera los limites del laberinto.</li>
+				<li>Robot hacia abajo: Si y sólo si, no ha sido visitado, no es 
+				un Muro y no supera los limites del laberinto.</li>
+				<li>Robot hacia la izquierda: Si y sólo si, no ha sido visitado, 
+				no es un Muro y no supera los limites del laberinto.</li>
+				<li>Robot hacia la derecha: Si y sólo si, no ha sido visitado, 
+				no es un Muro y no supera los limites del laberinto.</li>
+			</ol>
+			<ul>
+				<li>
+				<p align="justify"><font size="3">Algoritmo</font></p></li>
+			</ul>
+			<p align="justify">Algoritmo BreadthFirstSearch o Primero en Anchura: 
+			Los nodos se expanden por orden no decreciente de profundidad. Este 
+			algoritmo no implementa la vuelta atrás, ya que todos los nodos de 
+			profundidad p se expandes antes que cualquier nodo de profundidad 
+			p+1.</p>
+			<p align="justify">Aunque se esta en posesión de una función 
+			heurística válida, se utiliza este algoritmo garantizando aparición 
+			de la solución, si existe, demostrando así, pese a que se puede 
+			pensar que el tablero como representación del estado pueda resultar 
+			desfavorable debido a su tamaño, no lo es, ya que genera una 
+			solución con un grado de expansión lógico ya que el juego esta 
+			desarrollado de tal forma que evite la repetición de estados y 
+			generando estados imposibles, minimizando así las expansiones de 
+			nodos.</p>
+			<p align="center">&nbsp;<img border="0" src="images/robot.16.jpg"></p>
+    <ul>
+				<li>
+				<p align="justify"><font size="3">Espacio de estados</font></p>
+				</li>
+			</ul>
+			<p align="justify">Estado ( Tablero_Laberinto[][] )<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tablero_Laberinto[ i ] [ j ] = { Muro, Camino, Robot }<p align="justify">
+			Representación intuitiva 
+			mediante la que se tiene pleno conocimiento del estado del juego, 
+			así como su proximidad a un estado objetivo evitando a su vez, 
+			sobrecargar el contenido que contiene el estado (únicamente los 
+			datos necesarios)<p align="justify">Estados 
+			inalcanzables:<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Los estados prohibidos se refieren a ocupar casillas imposibles 
+			como Muro o superar los límites del tablero (laberinto)<br>
+			<p>Estado inicial:<br>
+			<center><img border="0" src="images/robot.20.jpg"></center>
+			<p>Estado final:<br>
+		  <center><img border="0" src="images/robot.21.jpg"></center></td>
+		</tr>
+        <tr>
+          <td class="bodyText"><span class="pageName">Diagrama UML</span></td>
+        </tr>
+        <tr>
+          <td class="bodyText"><p>A continuacion se expone el diagrama uml de este juego para aportar informacion adicional sobre su implementacion.</p>
+          <p align="center"><img src="images/Robot.jpg" alt="UML Robot" width="700" height="700"></p></td>
+        </tr>
+      </table>
+  </tr>
+
+ <tr>
+    <td width="40">&nbsp;</td>
+    <td width="110">&nbsp;</td>
+    <td width="494">&nbsp;</td>
+	<td width="103">&nbsp;</td>
+  </tr>
+</table>
+</body>
+</html>
